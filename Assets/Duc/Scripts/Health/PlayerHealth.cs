@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerHealth : HealthManager
 {
-    [Header("UI Reference")]
     [SerializeField] private HealthUI m_HealthUI;
 
     protected override void Awake()

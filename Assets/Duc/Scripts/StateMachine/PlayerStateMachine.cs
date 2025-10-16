@@ -8,10 +8,11 @@ public class PlayerStateMachine : StateMachine
     [SerializeField] private GameplayInput m_GameplayInput;
     [SerializeField] private Animator m_Animator;
     [SerializeField] private int m_SlapVariantCount = 20;
+
     private int m_HashIsWaiting;
     private int m_HashIsStartingSlap;
     private int m_HashIsSlapMega;
-    private int m_HashIsSlapSpecial;
+    private int m_HashIsSlapSpecial;a
     private int m_HashSlapNumber;
     private int m_HashStartGettingSlapped;
     private int m_HashGetSlappedNumber;
@@ -58,7 +59,6 @@ public class PlayerStateMachine : StateMachine
             if (!found && m_EnableDebugLogs && !m_LoggedAnimatorParams)
             {
                 m_LoggedAnimatorParams = true;
-                Debug.LogWarning($"Player Animator missing int parameter 'SlapNumber'. Available: " + string.Join(", ", System.Array.ConvertAll(m_Animator.parameters, pr => pr.name + ":" + pr.type)));
             }
 
             bool foundHit = false;
@@ -127,7 +127,7 @@ public class PlayerStateMachine : StateMachine
             m_Animator.SetBool(m_HashIsSlapMega, false);
             m_Animator.SetBool(m_HashIsSlapSpecial, false);
 
-            int randomGetSlapped = Random.Range(0, 5); // 0..4
+            int randomGetSlapped = Random.Range(0, 5); 
             m_Animator.SetFloat(m_HashGetSlappedNumber, (float)randomGetSlapped);
             m_Animator.SetBool(m_HashStartGettingSlapped, true);
         }
@@ -211,7 +211,6 @@ public class PlayerStateMachine : StateMachine
         {
             m_Animator.SetBool(m_HashIsWaiting, false);
 
-            // Reset slap animations
             m_Animator.SetBool(m_HashIsStartingSlap, false);
             m_Animator.SetBool(m_HashIsSlapMega, false);
             m_Animator.SetBool(m_HashIsSlapSpecial, false);
@@ -224,7 +223,6 @@ public class PlayerStateMachine : StateMachine
         {
             m_Animator.SetBool(m_HashIsWaiting, true);
 
-            // Reset slap animations
             m_Animator.SetBool(m_HashIsStartingSlap, false);
             m_Animator.SetBool(m_HashIsSlapMega, false);
             m_Animator.SetBool(m_HashIsSlapSpecial, false);
@@ -240,19 +238,16 @@ public class PlayerStateMachine : StateMachine
             var turnManager = FindObjectOfType<TurnManager>();
             if (turnManager != null && turnManager.IsPlayerTurn())
             {
-                // Decide between Normal and Mega based on PowerMeter value
                 int power = PowerMeter.Instance != null ? PowerMeter.Instance.GetPowerValue() : 0;
                 int maxPower = PowerMeter.Instance != null ? PowerMeter.Instance.GetMaxPower() : 100;
                 bool isMega = power >= (maxPower / 2);
 
-                // Reset all animations first
                 m_Animator.SetBool(m_HashIsStartingSlap, false);
                 m_Animator.SetBool(m_HashIsSlapMega, false);
                 m_Animator.SetBool(m_HashIsSlapSpecial, false);
 
                 if (isMega)
                 {
-                    // Mega slap blend tree: 11 variants (0..10)
                     int randomMega = Random.Range(0, 25);
                     m_Animator.SetFloat(m_HashSlapNumber, (float)randomMega);
                     m_Animator.SetBool(m_HashIsSlapMega, true);
@@ -260,19 +255,11 @@ public class PlayerStateMachine : StateMachine
                 }
                 else
                 {
-                    // Normal slap blend tree: 20 variants (0..19)
                     int randomNormal = Random.Range(0, 19);
                     m_Animator.SetFloat(m_HashSlapNumber, (float)randomNormal);
                     m_Animator.SetBool(m_HashIsSlapMega, false);
                     m_Animator.SetBool(m_HashIsSlapSpecial, false);
                 }
-
-                if (m_EnableDebugLogs)
-                {
-                    Debug.Log($"Player Attack - Mega:{isMega} Power:{power}/{maxPower} SlapNumber:{m_Animator.GetFloat(m_HashSlapNumber)}");
-                }
-
-                // Wait one frame then trigger animation
                 StartCoroutine(TriggerSlapAnimationDelayed());
             }
             else
