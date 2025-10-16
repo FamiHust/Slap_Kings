@@ -1,0 +1,50 @@
+{
+	"OneSignalSDKExample": {
+		"OneSignalKey": "",
+		"alertLevel": 6,
+		"infoLevel": 6,
+		"requiresPrivacyConsent": true,
+		"shareLocation": true
+	},
+	"LionStudios.Suite.SatoriController": {
+		"ClientURL": "",
+		"port": 443,
+		"ApiKey": "",
+		"TimeoutMilliseconds": 2000,
+		"EditorIdentity": "41d51fe0-3983-494e-94c7-9236463265ac",
+		"mabKey": ""
+	},
+	"LionStudios.Suite.Analytics.LionAnalytics": {
+		"heartbeatInterval": 5000,
+		"enableGameAnalyticsEvents": false
+	},
+	"LionStudios.Suite.NakamaClient.LionNakamaSettingsProvider": {
+		"connection": {
+			"instanceID": -5716
+		},
+		"googleWebClientId": "",
+		"autoSaveEnabled": false,
+		"autoSaveInterval": 60,
+		"conflictResolutionGroupName": "",
+		"conflictResolutionKeyCount": 0,
+		"conflictResolutionKeys": [
+
+		],
+		"friendDataGroupName": "",
+		"friendDataKeyCount": 0,
+		"friendDataKeys": [
+
+		]
+	},
+	"LionStudios.Suite.Core.LionCore": {
+		"_UseMultiDexSupport": true,
+		"_UseProGuard": true,
+		"_OverrideGradlePluginVersion": false,
+		"_GradlePluginOverride": ""
+	},
+	"LionStudios.Suite.Debugging.LionDebug": {
+		"debuggerEnabled": false,
+		"showDebuggerAtStartup": false,
+		"debugLogLevel": 4
+	}
+}

@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: mainBG
+  m_Shader: {fileID: 4800000, guid: e3d714b2094f21d48a62cad5d00b076c, type: 3}
+  m_ShaderKeywords:
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+      _MainTex:
+        m_Texture: {fileID: 2800000, guid: d578d6a597d68634fb6663c5065ef898, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: {}
+    m_Floats:
+      _BlendInit: 1
+      _ColorBoundry: 0
+      _ColorMask: 15
+      _ColorSmooth: 0
+      _RadialRamp: 0
+      _Stencil: 0
+      _StencilComp: 8
+      _StencilOp: 0
+      _StencilReadMask: 255
+      _StencilWriteMask: 255
+      _TexBlendMode: 0
+      _ToggleSwitch0: 0
+      _UseUIAlphaClip: 0
+      __dirty: 0
+      _solidColorInt: 1
+    m_Colors:
+      _Color: {r: 1, g: 1, b: 1, a: 1}
+      _Color1: {r: 0.1137255, g: 0.21960786, b: 0.46274513, a: 1}
+      _Color2: {r: 0.1137255, g: 0.21960786, b: 0.46274513, a: 1}
+      _SpeedScale: {r: -0.1, g: -0.1, b: 1, a: 1}
+      _solidColor: {r: 0.08235294, g: 0.1764706, b: 0.3882353, a: 1}
+  m_BuildTextureStacks: []
