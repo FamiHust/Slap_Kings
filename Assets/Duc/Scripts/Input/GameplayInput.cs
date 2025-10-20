@@ -36,12 +36,14 @@ public class GameplayInput : MonoBehaviour
 
     private void OnTapPerformed(InputAction.CallbackContext ctx)
     {
-        // Only allow tap to stop during player's turn; meter auto-starts in TurnManager
-        if (m_TurnManager != null && m_TurnManager.IsPlayerTurn())
+        // Only allow tap after game started and during player's turn
+        var gameManager = GameManager.Get();
+        bool gameStarted = gameManager != null && gameManager.HasGameStarted();
+        if (gameStarted && m_TurnManager != null && m_TurnManager.IsPlayerTurn())
         {
-            if (PowerMeter.Instance != null)
+            if (PowerMeter.Get() != null)
             {
-                PowerMeter.Instance.StopMeter();
+                PowerMeter.Get().StopMeter();
             }
             
             if (m_TurnManager != null)

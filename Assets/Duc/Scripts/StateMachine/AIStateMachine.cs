@@ -40,6 +40,8 @@ public class AIStateMachine : StateMachine
         
         if (m_Animator == null)
             m_Animator = GetComponent<Animator>();
+
+        
         m_HashStartGettingSlapped = Animator.StringToHash("StartGettingSlapped");
         m_HashGetSlappedNumber = Animator.StringToHash("GetSlappedNumber");
         m_HashSlapPower = Animator.StringToHash("SlapPower");
@@ -172,6 +174,8 @@ public class AIStateMachine : StateMachine
         SetAIComponents(m_EnableAIInDead);
         
         PlayDeathAnimation();
+        
+        // Ragdoll removed per request
         
         StartDeathSequence();
     }

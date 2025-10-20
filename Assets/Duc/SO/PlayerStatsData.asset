@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986f8edee3317dd478c4f0fd97ec684e, type: 3}
+  m_Name: PlayerStatsData
+  m_EditorClassIdentifier: 
+  health:
+    baseMaxHealth: 200
+    healthPerUpgrade: 10
+  power:
+    baseMinPower: 0
+    baseMaxPower: 90
+    minPowerPerUpgrade: 5
+    maxPowerPerUpgrade: 10
+    damagePerPowerUpgrade: 1
+    animSpeed: 1
+    loopPingPong: 1
+  knockback:
+    force: 10
+    multiplier: 5
+    direction: {x: 0, y: 0.3, z: -1}
+    useAllRigidbodies: 1
+    rigidbodyForceMultiplier: 1
+    duration: 0.5
+  animation:
+    slapVariantCount: 20
+    attackDuration: 1
+    victoryVariantCount: 12
+  controls:
+    enableInIdle: 1
+    enableInWaiting: 0
+    enableInAttacking: 0
+    enableInDead: 0

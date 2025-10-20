@@ -18,7 +18,6 @@ public class TurnManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private CameraSwitcher m_CameraSwitcher;
     [SerializeField] private PowerMeter m_PowerMeter;
-    [SerializeField] private AITurnManager m_AITurnManager;
     
     private bool m_IsPlayerTurn = true;
     private bool m_IsGameOver = false;
@@ -40,13 +39,11 @@ public class TurnManager : MonoBehaviour
         if (m_PowerMeter == null)
             m_PowerMeter = FindObjectOfType<PowerMeter>();
         
-        if (m_AITurnManager == null)
-            m_AITurnManager = FindObjectOfType<AITurnManager>();
     }
 
     private void Start()
     {
-        StartPlayerTurn();
+        // Game flow is started explicitly by GameManager.StartGame()
     }
 
     public void StartPlayerTurn()
@@ -307,5 +304,66 @@ public class TurnManager : MonoBehaviour
         {
             m_PlayerStateMachine.SetState(CharacterState.Hitted);
         }
+    }
+
+    public void StopAllTurns()
+    {
+        m_IsGameOver = true;
+        
+        // Stop any running coroutines
+        if (m_TurnCoroutine != null)
+        {
+            StopCoroutine(m_TurnCoroutine);
+            m_TurnCoroutine = null;
+        }
+        
+        
+        // Stop power meter
+        if (m_PowerMeter != null)
+        {
+            m_PowerMeter.StopMeter();
+        }
+        
+        Debug.Log("All turns stopped - Game Over");
+    }
+
+    public void ResetGame()
+    {
+        m_IsGameOver = false;
+        m_IsPlayerTurn = true;
+        m_IsAITurnActive = false;
+        m_NextTurnScheduled = false;
+        
+        // Stop any running coroutines
+        if (m_TurnCoroutine != null)
+        {
+            StopCoroutine(m_TurnCoroutine);
+            m_TurnCoroutine = null;
+        }
+        
+        // Reset state machines
+        if (m_PlayerStateMachine != null)
+        {
+            m_PlayerStateMachine.SetState(CharacterState.Idle);
+        }
+        
+        if (m_AIStateMachine != null)
+        {
+            m_AIStateMachine.SetState(CharacterState.Idle);
+        }
+        
+        // Reset power meter
+        if (m_PowerMeter != null)
+        {
+            m_PowerMeter.StopMeter();
+        }
+        
+        // Reset camera
+        if (m_CameraSwitcher != null)
+        {
+            m_CameraSwitcher.SwitchToPlayerCamera();
+        }
+        
+        Debug.Log("Game reset - Ready to start");
     }
 }

@@ -1,9 +1,8 @@
 using UnityEngine;
 using TMPro;
 
-public class PowerMeter : MonoBehaviour
+public class PowerMeter : SingletonManager<PowerMeter>
 {
-    public static PowerMeter Instance;
 
     [Header("Animation")]
     [SerializeField] private Animation m_PowerBarAnim;
@@ -23,9 +22,9 @@ public class PowerMeter : MonoBehaviour
     private int m_Direction = 1;        
     private int m_PowerValue = 0;
 
-    void Awake()
+    protected override void Awake()
     {
-        Instance = this;
+        base.Awake();
         // Eagerly cache animation state to avoid Start order race
         if (m_PowerBarAnim != null)
             m_AnimState = m_PowerBarAnim[clipName];
@@ -37,6 +36,52 @@ public class PowerMeter : MonoBehaviour
             m_PowerText.text = "0"; 
         if (m_PowerBarAnim != null)
             m_AnimState = m_PowerBarAnim[clipName];
+
+        // Apply power range from upgrades on start
+        ApplyPowerUpgradeRange();
+
+        // Listen to power upgrade events
+        var persistentData = PersistentDataManager.Instance;
+        if (persistentData != null)
+        {
+            persistentData.OnPowerUpgradePurchased -= OnPowerUpgradePurchased;
+            persistentData.OnPowerUpgradePurchased += OnPowerUpgradePurchased;
+            persistentData.OnProgressReset -= OnPowerUpgradePurchased;
+            persistentData.OnProgressReset += OnPowerUpgradePurchased;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        var persistentData = PersistentDataManager.Instance;
+        if (persistentData != null)
+        {
+            persistentData.OnPowerUpgradePurchased -= OnPowerUpgradePurchased;
+            persistentData.OnProgressReset -= OnPowerUpgradePurchased;
+        }
+    }
+
+    private void OnPowerUpgradePurchased()
+    {
+        bool wasActive = isActive;
+        if (wasActive) StopMeter();
+        ApplyPowerUpgradeRange();
+        if (wasActive) StartMeter();
+    }
+
+    private void ApplyPowerUpgradeRange()
+    {
+        var persistentData = PersistentDataManager.Instance;
+        var dataManager = DataManager.Get();
+        if (persistentData == null || dataManager == null) return;
+        int upgrades = persistentData.GetPowerUpgradeCount();
+        // Use PlayerStats via DataManager to compute min/max; fallback keeps existing values
+        var playerStats = DataManager.Get()?.PlayerStats;
+        if (playerStats != null)
+        {
+            m_MinPower = playerStats.power.GetMinPowerWithUpgrades(upgrades);
+            m_MaxPower = playerStats.power.GetMaxPowerWithUpgrades(upgrades);
+        }
     }
 
     void Update()

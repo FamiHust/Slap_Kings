@@ -8,11 +8,10 @@ public class PlayerStateMachine : StateMachine
     [SerializeField] private GameplayInput m_GameplayInput;
     [SerializeField] private Animator m_Animator;
     [SerializeField] private int m_SlapVariantCount = 20;
-
     private int m_HashIsWaiting;
     private int m_HashIsStartingSlap;
     private int m_HashIsSlapMega;
-    private int m_HashIsSlapSpecial;a
+    private int m_HashIsSlapSpecial;
     private int m_HashSlapNumber;
     private int m_HashStartGettingSlapped;
     private int m_HashGetSlappedNumber;
@@ -84,6 +83,22 @@ public class PlayerStateMachine : StateMachine
         if (m_PlayerHealth != null)
         {
             
+        }
+
+        // Subscribe to victory event to play celebration animation
+        var persistentGameManager = PersistentGameManager.Instance;
+        if (persistentGameManager != null)
+        {
+            persistentGameManager.OnPlayerVictory += OnPlayerVictory;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        var persistentGameManager = PersistentGameManager.Instance;
+        if (persistentGameManager != null)
+        {
+            persistentGameManager.OnPlayerVictory -= OnPlayerVictory;
         }
     }
 
@@ -166,6 +181,8 @@ public class PlayerStateMachine : StateMachine
         
         PlayDeathAnimation();
         
+        // Ragdoll removed per request
+        
         TriggerGameOver();
     }
 
@@ -238,8 +255,8 @@ public class PlayerStateMachine : StateMachine
             var turnManager = FindObjectOfType<TurnManager>();
             if (turnManager != null && turnManager.IsPlayerTurn())
             {
-                int power = PowerMeter.Instance != null ? PowerMeter.Instance.GetPowerValue() : 0;
-                int maxPower = PowerMeter.Instance != null ? PowerMeter.Instance.GetMaxPower() : 100;
+                int power = PowerMeter.Get() != null ? PowerMeter.Get().GetPowerValue() : 0;
+                int maxPower = PowerMeter.Get() != null ? PowerMeter.Get().GetMaxPower() : 100;
                 bool isMega = power >= (maxPower / 2);
 
                 m_Animator.SetBool(m_HashIsStartingSlap, false);
@@ -279,6 +296,68 @@ public class PlayerStateMachine : StateMachine
     private void TriggerGameOver()
     {
 
+    }
+
+    private void PlayVictoryAnimation()
+    {
+        if (m_Animator == null) return;
+
+        // Reset combat flags
+        m_Animator.SetBool(m_HashIsWaiting, false);
+        m_Animator.SetBool(m_HashIsStartingSlap, false);
+        m_Animator.SetBool(m_HashIsSlapMega, false);
+        m_Animator.SetBool(m_HashIsSlapSpecial, false);
+
+        // Try to find a victory boolean parameter
+        string[] victoryBoolNames = { "IsVictory", "Victory", "IsWin", "StartVictory" };
+        foreach (var name in victoryBoolNames)
+        {
+            foreach (var p in m_Animator.parameters)
+            {
+                if (p.type == AnimatorControllerParameterType.Bool && p.name == name)
+                {
+                    m_Animator.SetBool(p.nameHash, true);
+                    break;
+                }
+            }
+        }
+
+        // Optional variant selection if available
+        string[] victoryNumNames = { "VictoryNumber", "VictoryIndex" };
+        foreach (var numName in victoryNumNames)
+        {
+            foreach (var p in m_Animator.parameters)
+            {
+                if ((p.type == AnimatorControllerParameterType.Int || p.type == AnimatorControllerParameterType.Float) && p.name == numName)
+                {
+                    int maxVariants = 12;
+                    // Try get from PlayerStatsData if present
+                    int configured = 12;
+                    if (m_PlayerHealth != null)
+                    {
+                        var statsField = typeof(PlayerHealth).GetField("m_PlayerStatsData", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                        var stats = statsField != null ? statsField.GetValue(m_PlayerHealth) as PlayerStatsData : null;
+                        if (stats != null)
+                        {
+                            configured = stats.animation.victoryVariantCount;
+                        }
+                    }
+                    maxVariants = Mathf.Max(1, configured);
+                    int pick = Random.Range(0, maxVariants);
+                    if (p.type == AnimatorControllerParameterType.Int)
+                        m_Animator.SetInteger(p.nameHash, pick);
+                    else
+                        m_Animator.SetFloat(p.nameHash, (float)pick);
+                }
+            }
+        }
+    }
+
+    private void OnPlayerVictory()
+    {
+        // Force to Idle state then play victory anim to avoid conflicting flags
+        SetState(CharacterState.Idle);
+        PlayVictoryAnimation();
     }
 
     private IEnumerator TriggerSlapAnimationDelayed()

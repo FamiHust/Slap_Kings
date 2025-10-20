@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e21eae4db3f40846bdf2cbe90c2a9f5, type: 3}
+  m_Name: GameConfigData
+  m_EditorClassIdentifier: 
+  coinSystem:
+    baseReward: 100
+    rewardIncrement: 50
+    maxReward: 1000
+    loseReward: 25
+  upgradeSystem:
+    baseHealthPrice: 20
+    healthPriceIncrement: 10
+    basePowerPrice: 20
+    powerPriceIncrement: 10
+  turnSystem:
+    playerWaitTime: 1
+    playerAttackTime: 2
+    playerGetSlappedDelay: 1
+  cameraSystem:
+    shakeIntensity: 1
+    shakeDuration: 0.5
+  gameplay:
+    autoStartGame: 0
+    gameStartDelay: 0
+    uiUpdateDelay: 0.1
+    showDebugInfo: 0
