@@ -14,9 +14,9 @@ public class PowerMeter : SingletonManager<PowerMeter>
     [Header("Settings")]
     [SerializeField] private bool isActive = false;
     [SerializeField] private bool loopPingPong = true;  
-    [SerializeField] private float m_AnimSpeed = 1f;     
-    [SerializeField] private int m_MinPower = 0;         // configurable min power
-    [SerializeField] private int m_MaxPower = 90;        // configurable max power
+    private float m_AnimSpeed = 1f;     
+    private int m_MinPower = 0;        
+    private int m_MaxPower = 90;        
 
     private AnimationState m_AnimState;
     private int m_Direction = 1;        
@@ -25,7 +25,6 @@ public class PowerMeter : SingletonManager<PowerMeter>
     protected override void Awake()
     {
         base.Awake();
-        // Eagerly cache animation state to avoid Start order race
         if (m_PowerBarAnim != null)
             m_AnimState = m_PowerBarAnim[clipName];
     }
@@ -33,14 +32,12 @@ public class PowerMeter : SingletonManager<PowerMeter>
     void Start()
     {
         if (m_PowerText != null)
-            m_PowerText.text = "0"; 
+            m_PowerText.text = "100"; 
         if (m_PowerBarAnim != null)
             m_AnimState = m_PowerBarAnim[clipName];
 
-        // Apply power range from upgrades on start
         ApplyPowerUpgradeRange();
 
-        // Listen to power upgrade events
         var persistentData = PersistentDataManager.Instance;
         if (persistentData != null)
         {
@@ -75,12 +72,15 @@ public class PowerMeter : SingletonManager<PowerMeter>
         var dataManager = DataManager.Get();
         if (persistentData == null || dataManager == null) return;
         int upgrades = persistentData.GetPowerUpgradeCount();
-        // Use PlayerStats via DataManager to compute min/max; fallback keeps existing values
         var playerStats = DataManager.Get()?.PlayerStats;
+
         if (playerStats != null)
         {
             m_MinPower = playerStats.power.GetMinPowerWithUpgrades(upgrades);
             m_MaxPower = playerStats.power.GetMaxPowerWithUpgrades(upgrades);
+            // Apply animation settings from PlayerStatsData
+            m_AnimSpeed = playerStats.power.animSpeed;
+            loopPingPong = playerStats.power.loopPingPong;
         }
     }
 
@@ -123,13 +123,11 @@ public class PowerMeter : SingletonManager<PowerMeter>
 
     public void StartMeter()
     {
-        // Lazily resolve anim state in case Start hasn't run yet
         if (m_AnimState == null && m_PowerBarAnim != null)
             m_AnimState = m_PowerBarAnim[clipName];
 
         if (m_AnimState == null)
         {
-            Debug.LogWarning("PowerMeter.StartMeter called but AnimationState is null. Check clipName and Animation reference.");
             return;
         }
 
@@ -139,7 +137,6 @@ public class PowerMeter : SingletonManager<PowerMeter>
         m_AnimState.time = 0f;
         m_PowerBarAnim.Play(clipName);
 
-        // Force an immediate sample and UI update on start
         m_PowerBarAnim.Sample();
         float normalized = m_AnimState.time / m_AnimState.length;
         float triangle = 1f - Mathf.Abs(normalized * 2f - 1f);

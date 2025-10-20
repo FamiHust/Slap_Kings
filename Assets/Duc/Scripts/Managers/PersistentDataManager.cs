@@ -235,7 +235,6 @@ public class PersistentDataManager : MonoBehaviour
         }
         else
         {
-            // Fallback scaling
             m_CurrentAIHealth += 20;
             m_CurrentAIMinDamage += 5;
             m_CurrentAIMaxDamage += 5;

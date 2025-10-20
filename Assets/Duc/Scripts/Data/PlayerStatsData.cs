@@ -27,7 +27,7 @@ public class PlayerStatsData : ScriptableObject
         public int damagePerPowerUpgrade = 1;
         
         [Header("Power Meter Animation")]
-        public float animSpeed = 1f;
+        public float animSpeed = 2f;
         public bool loopPingPong = true;
         
         public int GetMinPowerWithUpgrades(int upgradeCount)

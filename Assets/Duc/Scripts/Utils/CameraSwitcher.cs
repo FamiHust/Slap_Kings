@@ -9,15 +9,51 @@ public class CameraSwitcher : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera m_Cam2;
 
     [SerializeField] private GameplayInput m_GameplayInput;
-    // AITurnManager removed - now handled by TurnManager
-
+    
+    [Header("Camera Transition Settings")]
+    [SerializeField] private float m_TransitionSpeed;
+    [SerializeField] private float m_BlendTime;
+    
     private bool isCam1Active = true;
 
     private void Start()
     {
-        m_Cam1.Priority = 20; // Start with Player camera active
+        m_Cam1.Priority = 20; 
         m_Cam2.Priority = 0;
-        Debug.Log("CameraSwitcher: Initialized - Cam1 (Player) active, Cam2 (AI) inactive");
+        
+        SetupCameraTransitions();
+    }
+    
+    private void SetupCameraTransitions()
+    {
+        var brain = CinemachineCore.Instance.GetActiveBrain(0);
+        if (brain != null)
+        {
+            brain.m_DefaultBlend.m_Time = m_BlendTime;
+        }
+        
+        SetupCameraBodySettings(m_Cam1);
+        SetupCameraBodySettings(m_Cam2);
+    }
+    
+    private void SetupCameraBodySettings(CinemachineVirtualCamera vcam)
+    {
+        if (vcam == null) return;
+        
+        var transposer = vcam.GetCinemachineComponent<CinemachineTransposer>();
+        if (transposer != null)
+        {
+            transposer.m_XDamping = m_TransitionSpeed;
+            transposer.m_YDamping = m_TransitionSpeed;
+            transposer.m_ZDamping = m_TransitionSpeed;
+        }
+        
+        var composer = vcam.GetCinemachineComponent<CinemachineComposer>();
+        if (composer != null)
+        {
+            composer.m_HorizontalDamping = m_TransitionSpeed;
+            composer.m_VerticalDamping = m_TransitionSpeed;
+        }
     }
 
     public void SwitchCamera()
@@ -25,47 +61,56 @@ public class CameraSwitcher : MonoBehaviour
         bool previousState = isCam1Active;
         isCam1Active = !isCam1Active;
         
-        Debug.Log($"CameraSwitcher: Previous state = {(previousState ? "Player (Cam1)" : "AI (Cam2)")}, Switching to {(isCam1Active ? "Player (Cam1)" : "AI (Cam2)")}");
-
         if (isCam1Active)
         {
-            // Switch to Player turn (vcam 1)
-            m_Cam1.Priority = 20; // Higher priority for smoother transition
+            m_Cam1.Priority = 20;
             m_Cam2.Priority = 0;
             m_GameplayInput.enabled = true;
-            Debug.Log($"CameraSwitcher: Set Cam1 Priority = 20, Cam2 Priority = 0 (Player Turn)");
         }
         else
         {
-            // Switch to AI turn (vcam 2)
             m_Cam1.Priority = 0;
-            m_Cam2.Priority = 20; // Higher priority for smoother transition
+            m_Cam2.Priority = 20;
             m_GameplayInput.enabled = false;
-            Debug.Log($"CameraSwitcher: Set Cam1 Priority = 0, Cam2 Priority = 20 (AI Turn)");
         }
     }
-    
-    /// <summary>
-    /// Force switch to Player camera (Cam1)
-    /// </summary>
+
     public void SwitchToPlayerCamera()
     {
         isCam1Active = true;
         m_Cam1.Priority = 20;
         m_Cam2.Priority = 0;
         m_GameplayInput.enabled = true;
-        Debug.Log("CameraSwitcher: Force switched to Player (Cam1)");
     }
-    
-    /// <summary>
-    /// Force switch to AI camera (Cam2)
-    /// </summary>
+
     public void SwitchToAICamera()
     {
         isCam1Active = false;
         m_Cam1.Priority = 0;
         m_Cam2.Priority = 20;
         m_GameplayInput.enabled = false;
-        Debug.Log("CameraSwitcher: Force switched to AI (Cam2)");
+    }
+
+    public void SetTransitionSpeed(float speed)
+    {
+        m_TransitionSpeed = Mathf.Max(0.1f, speed);
+        SetupCameraBodySettings(m_Cam1);
+        SetupCameraBodySettings(m_Cam2);
+    }
+ 
+    public void SetBlendTime(float blendTime)
+    {
+        m_BlendTime = Mathf.Max(0.01f, blendTime);
+        
+        var brain = CinemachineCore.Instance.GetActiveBrain(0);
+        if (brain != null)
+        {
+            brain.m_DefaultBlend.m_Time = m_BlendTime;
+        }
+    }
+
+    public (float transitionSpeed, float blendTime) GetTransitionSettings()
+    {
+        return (m_TransitionSpeed, m_BlendTime);
     }
 }

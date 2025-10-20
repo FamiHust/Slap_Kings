@@ -43,7 +43,7 @@ public class TurnManager : MonoBehaviour
 
     private void Start()
     {
-        // Game flow is started explicitly by GameManager.StartGame()
+        
     }
 
     public void StartPlayerTurn()
@@ -143,10 +143,7 @@ public class TurnManager : MonoBehaviour
         {
             m_AIStateMachine.MaintainWaitingAnimation();
         }
-        // Do not auto-advance here; we'll advance after AI finishes get-slapped
     }
-
-    // PlayerAttackSequence removed – next turn is scheduled after damage is applied
 
     public void CheckGameOver()
     {
@@ -228,16 +225,14 @@ public class TurnManager : MonoBehaviour
         }
         if (aiHealth == null)
         {
-            if (m_EnableDebugLogs) Debug.LogWarning("ApplyPlayerDamage: AIHealth not found");
             return;
         }
 
         int damage = (m_PowerMeter != null) ? Mathf.Max(0, m_PowerMeter.GetPowerValue()) : Random.Range(10, 31);
         aiHealth.TakeDamage(damage);
-        // Put AI in Hitted state if currently waiting
+
         if (m_AIStateMachine != null && m_AIStateMachine.IsInState(CharacterState.Waiting))
         {
-            // Provide normalized power to AI for get-slapped selection
             float normalizedPower = 0f;
             if (m_PowerMeter != null)
             {
@@ -247,7 +242,6 @@ public class TurnManager : MonoBehaviour
             m_AIStateMachine.PrepareGetSlapped(normalizedPower);
             m_AIStateMachine.SetState(CharacterState.Hitted);
 
-            // Schedule next turn after a short delay to allow get-slapped to play
             if (!m_NextTurnScheduled)
             {
                 m_NextTurnScheduled = true;
@@ -271,7 +265,6 @@ public class TurnManager : MonoBehaviour
     {
         if (m_IsGameOver)
         {
-            if (m_EnableDebugLogs) Debug.Log("ApplyAIDamage blocked: game over");
             return;
         }
         if (m_IsPlayerTurn)
@@ -295,13 +288,9 @@ public class TurnManager : MonoBehaviour
             return;
         }
 
-        // Get scaled damage based on current level
         int damage = GetScaledAIDamage();
         playerHealth.TakeDamage(damage);
         
-        if (m_EnableDebugLogs) Debug.Log($"AI deals {damage} damage to player");
-        
-        // Put Player in Hitted state if currently waiting
         if (m_PlayerStateMachine != null && m_PlayerStateMachine.IsInState(CharacterState.Waiting))
         {
             m_PlayerStateMachine.SetState(CharacterState.Hitted);
@@ -314,14 +303,12 @@ public class TurnManager : MonoBehaviour
         
         if (persistentData != null)
         {
-            // Use current AI damage from persistent data (only increases on victory)
             int minDmg = persistentData.GetCurrentAIMinDamage();
             int maxDmg = persistentData.GetCurrentAIMaxDamage();
             return Random.Range(minDmg, maxDmg + 1);
         }
         else
         {
-            // Fallback to original logic
             int minDmg = Mathf.Min(m_AIMinDamage, m_AIMaxDamage);
             int maxDmg = Mathf.Max(m_AIMinDamage, m_AIMaxDamage);
             return Random.Range(minDmg, maxDmg + 1);
@@ -332,7 +319,6 @@ public class TurnManager : MonoBehaviour
     {
         m_IsGameOver = true;
         
-        // Stop any running coroutines
         if (m_TurnCoroutine != null)
         {
             StopCoroutine(m_TurnCoroutine);
@@ -340,13 +326,10 @@ public class TurnManager : MonoBehaviour
         }
         
         
-        // Stop power meter
         if (m_PowerMeter != null)
         {
             m_PowerMeter.StopMeter();
         }
-        
-        Debug.Log("All turns stopped - Game Over");
     }
 
     public void ResetGame()
@@ -356,14 +339,12 @@ public class TurnManager : MonoBehaviour
         m_IsAITurnActive = false;
         m_NextTurnScheduled = false;
         
-        // Stop any running coroutines
         if (m_TurnCoroutine != null)
         {
             StopCoroutine(m_TurnCoroutine);
             m_TurnCoroutine = null;
         }
         
-        // Reset state machines
         if (m_PlayerStateMachine != null)
         {
             m_PlayerStateMachine.SetState(CharacterState.Idle);
@@ -374,18 +355,14 @@ public class TurnManager : MonoBehaviour
             m_AIStateMachine.SetState(CharacterState.Idle);
         }
         
-        // Reset power meter
         if (m_PowerMeter != null)
         {
             m_PowerMeter.StopMeter();
         }
         
-        // Reset camera
         if (m_CameraSwitcher != null)
         {
             m_CameraSwitcher.SwitchToPlayerCamera();
         }
-        
-        Debug.Log("Game reset - Ready to start");
     }
 }

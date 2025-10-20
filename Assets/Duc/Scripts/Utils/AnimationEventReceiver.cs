@@ -19,7 +19,6 @@ public class AnimationEventReceiver : MonoBehaviour
             if (playerSM == null) playerSM = GetComponentInParent<PlayerStateMachine>();
             if (playerSM != null)
             {
-                if (m_EnableDebugLogs) Debug.Log("AnimationEventReceiver: Forwarding OnSlapHit to PlayerStateMachine");
                 playerSM.OnSlapHit();
                 return;
             }
@@ -30,7 +29,6 @@ public class AnimationEventReceiver : MonoBehaviour
             if (aiSM == null) aiSM = GetComponentInParent<AIStateMachine>();
             if (aiSM != null)
             {
-                if (m_EnableDebugLogs) Debug.Log("AnimationEventReceiver: Forwarding OnSlapHit to AIStateMachine");
                 aiSM.OnSlapHit();
                 return;
             }
@@ -41,18 +39,12 @@ public class AnimationEventReceiver : MonoBehaviour
         {
             if (m_ActorType == ActorType.Player)
             {
-                if (m_EnableDebugLogs) Debug.Log("AnimationEventReceiver: Fallback ApplyPlayerDamage()");
                 turnManager.ApplyPlayerDamage();
             }
             else
             {
-                if (m_EnableDebugLogs) Debug.Log("AnimationEventReceiver: Fallback ApplyAIDamage()");
                 turnManager.ApplyAIDamage();
             }
-        }
-        else if (m_EnableDebugLogs)
-        {
-            Debug.LogWarning("AnimationEventReceiver: Neither StateMachine nor TurnManager found to receive OnSlapHit.");
         }
     }
 
