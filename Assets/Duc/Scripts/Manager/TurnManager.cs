@@ -295,14 +295,36 @@ public class TurnManager : MonoBehaviour
             return;
         }
 
-        int minDmg = Mathf.Min(m_AIMinDamage, m_AIMaxDamage);
-        int maxDmg = Mathf.Max(m_AIMinDamage, m_AIMaxDamage);
-        int damage = Random.Range(minDmg, maxDmg + 1);
+        // Get scaled damage based on current level
+        int damage = GetScaledAIDamage();
         playerHealth.TakeDamage(damage);
+        
+        if (m_EnableDebugLogs) Debug.Log($"AI deals {damage} damage to player");
+        
         // Put Player in Hitted state if currently waiting
         if (m_PlayerStateMachine != null && m_PlayerStateMachine.IsInState(CharacterState.Waiting))
         {
             m_PlayerStateMachine.SetState(CharacterState.Hitted);
+        }
+    }
+
+    private int GetScaledAIDamage()
+    {
+        var persistentData = PersistentDataManager.Instance;
+        
+        if (persistentData != null)
+        {
+            // Use current AI damage from persistent data (only increases on victory)
+            int minDmg = persistentData.GetCurrentAIMinDamage();
+            int maxDmg = persistentData.GetCurrentAIMaxDamage();
+            return Random.Range(minDmg, maxDmg + 1);
+        }
+        else
+        {
+            // Fallback to original logic
+            int minDmg = Mathf.Min(m_AIMinDamage, m_AIMaxDamage);
+            int maxDmg = Mathf.Max(m_AIMinDamage, m_AIMaxDamage);
+            return Random.Range(minDmg, maxDmg + 1);
         }
     }
 

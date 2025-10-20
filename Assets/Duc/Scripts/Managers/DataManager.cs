@@ -38,6 +38,12 @@ public class DataManager : SingletonManager<DataManager>
             m_GameConfig = m_MasterData.gameConfig;
             
             Debug.Log("Data loaded from MasterData");
+            Debug.Log($"AIStats loaded: {(m_AIStats != null ? "SUCCESS" : "NULL")}");
+            if (m_AIStats != null)
+            {
+                Debug.Log($"AIStats base health: {m_AIStats.BaseMaxHealth}");
+                Debug.Log($"AIStats scaled health for level 1: {m_AIStats.GetScaledHealth(1)}");
+            }
         }
         else
         {
@@ -104,11 +110,52 @@ public class DataManager : SingletonManager<DataManager>
         return UnityEngine.Random.Range(10, 31); // Fallback
     }
 
+    public int GetAIRandomDamage(int level)
+    {
+        if (m_AIStats != null) 
+            return m_AIStats.GetScaledRandomDamage(level);
+        return UnityEngine.Random.Range(10 + (level - 1) * 5, 31 + (level - 1) * 5); // Fallback with scaling
+    }
+
     public int GetAIAverageDamage()
     {
         if (m_AIStats != null) 
             return m_AIStats.damage.GetAverageDamage();
         return 20; // Fallback
+    }
+
+    public int GetAIAverageDamage(int level)
+    {
+        if (m_AIStats != null) 
+            return m_AIStats.GetScaledAverageDamage(level);
+        return 20 + (level - 1) * 5; // Fallback with scaling
+    }
+
+    public int GetAIMaxHealth(int level)
+    {
+        if (m_AIStats != null) 
+        {
+            int result = m_AIStats.GetScaledHealth(level);
+            Debug.Log($"DataManager.GetAIMaxHealth({level}) from AIStats: {result}");
+            return result;
+        }
+        int fallback = 100 + (level - 1) * 20;
+        Debug.LogWarning($"DataManager.GetAIMaxHealth({level}) using fallback: {fallback} (m_AIStats is null)");
+        return fallback; // Fallback with scaling
+    }
+
+    public int GetAIMinDamage(int level)
+    {
+        if (m_AIStats != null) 
+            return m_AIStats.GetScaledMinDamage(level);
+        return 10 + (level - 1) * 5; // Fallback with scaling
+    }
+
+    public int GetAIMaxDamage(int level)
+    {
+        if (m_AIStats != null) 
+            return m_AIStats.GetScaledMaxDamage(level);
+        return 30 + (level - 1) * 5; // Fallback with scaling
     }
 
     public int GetVictoryReward(int victoryCount)

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PersistentDataManager : MonoBehaviour
 {
@@ -11,10 +12,16 @@ public class PersistentDataManager : MonoBehaviour
     private int m_HealthUpgradeCount;
     private int m_PowerUpgradeCount;
     
+    // AI Stats tracking (only increases on victory)
+    private int m_CurrentAIHealth;
+    private int m_CurrentAIMinDamage;
+    private int m_CurrentAIMaxDamage;
+    
     // Events
     public System.Action OnHealthUpgradePurchased;
     public System.Action OnPowerUpgradePurchased;
     public System.Action OnProgressReset;
+    public System.Action OnAIStatsUpdated;
     
     // Keys
     private const string COIN_KEY = "PlayerCoins";
@@ -22,6 +29,9 @@ public class PersistentDataManager : MonoBehaviour
     private const string LEVEL_COUNT_KEY = "LevelCount";
     private const string HEALTH_UPGRADE_COUNT_KEY = "HealthUpgradeCount";
     private const string POWER_UPGRADE_COUNT_KEY = "PowerUpgradeCount";
+    private const string AI_HEALTH_KEY = "CurrentAIHealth";
+    private const string AI_MIN_DAMAGE_KEY = "CurrentAIMinDamage";
+    private const string AI_MAX_DAMAGE_KEY = "CurrentAIMaxDamage";
     
     public static PersistentDataManager Instance
     {
@@ -62,6 +72,16 @@ public class PersistentDataManager : MonoBehaviour
         m_LevelCount = PlayerPrefs.GetInt(LEVEL_COUNT_KEY, 1);
         m_HealthUpgradeCount = PlayerPrefs.GetInt(HEALTH_UPGRADE_COUNT_KEY, 0);
         m_PowerUpgradeCount = PlayerPrefs.GetInt(POWER_UPGRADE_COUNT_KEY, 0);
+        
+        // Load AI stats - always use base values first, then refresh from DataManager if available
+        m_CurrentAIHealth = PlayerPrefs.GetInt(AI_HEALTH_KEY, 200); // Base health from AIStatsData
+        m_CurrentAIMinDamage = PlayerPrefs.GetInt(AI_MIN_DAMAGE_KEY, 50); // Base min damage
+        m_CurrentAIMaxDamage = PlayerPrefs.GetInt(AI_MAX_DAMAGE_KEY, 100); // Base max damage
+        
+        Debug.Log($"PersistentDataManager loaded AI stats from PlayerPrefs: Health={m_CurrentAIHealth}, Damage={m_CurrentAIMinDamage}-{m_CurrentAIMaxDamage}");
+        
+        // Try to refresh from DataManager if it's available
+        StartCoroutine(RefreshAIStatsFromDataManager());
     }
     
     private void SaveData()
@@ -71,6 +91,9 @@ public class PersistentDataManager : MonoBehaviour
         PlayerPrefs.SetInt(LEVEL_COUNT_KEY, m_LevelCount);
         PlayerPrefs.SetInt(HEALTH_UPGRADE_COUNT_KEY, m_HealthUpgradeCount);
         PlayerPrefs.SetInt(POWER_UPGRADE_COUNT_KEY, m_PowerUpgradeCount);
+        PlayerPrefs.SetInt(AI_HEALTH_KEY, m_CurrentAIHealth);
+        PlayerPrefs.SetInt(AI_MIN_DAMAGE_KEY, m_CurrentAIMinDamage);
+        PlayerPrefs.SetInt(AI_MAX_DAMAGE_KEY, m_CurrentAIMaxDamage);
         PlayerPrefs.Save();
     }
     
@@ -87,9 +110,14 @@ public class PersistentDataManager : MonoBehaviour
         m_CurrentCoins += reward;
         m_VictoryCount++;
         m_LevelCount++;
+        
+        // Increase AI stats only on victory
+        IncreaseAIStats();
+        
         SaveData();
         
         Debug.Log($"Player Victory! Reward: {reward}, Total Coins: {m_CurrentCoins}, Level: {m_LevelCount}");
+        Debug.Log($"AI Stats increased - Health: {m_CurrentAIHealth}, Damage: {m_CurrentAIMinDamage}-{m_CurrentAIMaxDamage}");
     }
     
     public void OnPlayerDefeat()
@@ -105,6 +133,7 @@ public class PersistentDataManager : MonoBehaviour
         SaveData();
         
         Debug.Log($"Player Defeat! Reward: {reward}, Total Coins: {m_CurrentCoins}");
+        Debug.Log($"AI Stats remain unchanged - Health: {m_CurrentAIHealth}, Damage: {m_CurrentAIMinDamage}-{m_CurrentAIMaxDamage}");
     }
     
     // Upgrade system
@@ -155,8 +184,8 @@ public class PersistentDataManager : MonoBehaviour
         }
         
         // Fallback calculation
-        int basePrice = 100;
-        int increment = 50;
+        int basePrice = 20;
+        int increment = 10;
         return Mathf.Max(0, basePrice + (m_HealthUpgradeCount * increment));
     }
     
@@ -169,8 +198,8 @@ public class PersistentDataManager : MonoBehaviour
         }
         
         // Fallback calculation
-        int basePrice = 150;
-        int increment = 75;
+        int basePrice = 20;
+        int increment = 10;
         return Mathf.Max(0, basePrice + (m_PowerUpgradeCount * increment));
     }
     
@@ -190,10 +219,106 @@ public class PersistentDataManager : MonoBehaviour
         Debug.Log("Progress Reset!");
     }
     
+    // AI Stats management
+    private void IncreaseAIStats()
+    {
+        var dataManager = DataManager.Get();
+        if (dataManager != null)
+        {
+            // Use current level (already incremented in OnPlayerVictory)
+            int currentLevel = m_LevelCount;
+            m_CurrentAIHealth = dataManager.GetAIMaxHealth(currentLevel);
+            m_CurrentAIMinDamage = dataManager.GetAIMinDamage(currentLevel);
+            m_CurrentAIMaxDamage = dataManager.GetAIMaxDamage(currentLevel);
+            
+            Debug.Log($"IncreaseAIStats: Using level {currentLevel}, Health={m_CurrentAIHealth}, Damage={m_CurrentAIMinDamage}-{m_CurrentAIMaxDamage}");
+        }
+        else
+        {
+            // Fallback scaling
+            m_CurrentAIHealth += 20;
+            m_CurrentAIMinDamage += 5;
+            m_CurrentAIMaxDamage += 5;
+            
+            Debug.Log($"IncreaseAIStats: Using fallback scaling, Health={m_CurrentAIHealth}, Damage={m_CurrentAIMinDamage}-{m_CurrentAIMaxDamage}");
+        }
+    }
+    
     // Getters
     public int GetCurrentCoins() => m_CurrentCoins;
     public int GetVictoryCount() => m_VictoryCount;
     public int GetLevelCount() => m_LevelCount;
     public int GetHealthUpgradeCount() => m_HealthUpgradeCount;
     public int GetPowerUpgradeCount() => m_PowerUpgradeCount;
+    
+    // AI Stats getters
+    public int GetCurrentAIHealth() 
+    {
+        Debug.Log($"GetCurrentAIHealth called, returning: {m_CurrentAIHealth}");
+        return m_CurrentAIHealth;
+    }
+    public int GetCurrentAIMinDamage() => m_CurrentAIMinDamage;
+    public int GetCurrentAIMaxDamage() => m_CurrentAIMaxDamage;
+    
+    // Refresh AI stats from DataManager if it becomes available later
+    private IEnumerator RefreshAIStatsFromDataManager()
+    {
+        // Wait a few frames for DataManager to be fully initialized
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        
+        var dataManager = DataManager.Get();
+        if (dataManager != null)
+        {
+            int newHealth = dataManager.GetAIMaxHealth(1);
+            int newMinDamage = dataManager.GetAIMinDamage(1);
+            int newMaxDamage = dataManager.GetAIMaxDamage(1);
+            
+            // Check if we have old/incorrect values and update them
+            bool needsUpdate = false;
+            
+            // If we have old values (100, 10, 30) or no saved values, update to correct values
+            if (m_CurrentAIHealth == 100 && m_CurrentAIMinDamage == 10 && m_CurrentAIMaxDamage == 30)
+            {
+                needsUpdate = true;
+                Debug.Log("Detected old AI stats values, updating to correct values");
+            }
+            else if (!PlayerPrefs.HasKey(AI_HEALTH_KEY))
+            {
+                needsUpdate = true;
+                Debug.Log("No saved AI stats found, using DataManager values");
+            }
+            
+            if (needsUpdate)
+            {
+                m_CurrentAIHealth = newHealth;
+                m_CurrentAIMinDamage = newMinDamage;
+                m_CurrentAIMaxDamage = newMaxDamage;
+                
+                Debug.Log($"PersistentDataManager refreshed AI stats from DataManager: Health={m_CurrentAIHealth}, Damage={m_CurrentAIMinDamage}-{m_CurrentAIMaxDamage}");
+                SaveData();
+                
+                // Notify that AI stats have been updated
+                OnAIStatsUpdated?.Invoke();
+                
+                // Also try to refresh AI health directly
+                RefreshAIHealthInScene();
+            }
+        }
+    }
+    
+    // Method to refresh AI health in the current scene
+    private void RefreshAIHealthInScene()
+    {
+        var aiHealth = FindObjectOfType<AIHealth>();
+        if (aiHealth != null)
+        {
+            aiHealth.RefreshAIHealth();
+            Debug.Log("AI Health in scene refreshed successfully");
+        }
+        else
+        {
+            Debug.LogWarning("AIHealth component not found in scene");
+        }
+    }
 }

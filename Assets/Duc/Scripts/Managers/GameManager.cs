@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : SingletonManager<GameManager>
 {
@@ -22,8 +23,8 @@ public class GameManager : SingletonManager<GameManager>
         base.Awake();
         m_PersistentGameManager = PersistentGameManager.Instance;
         
-        // Initialize UI state
-        SetUIPanel(m_StartPanel, true);
+        // Initialize UI state - hide all panels initially
+        SetUIPanel(m_StartPanel, false);
         SetUIPanel(m_GameplayPanel, false);
         SetUIPanel(m_VictoryPanel, false);
         SetUIPanel(m_DefeatPanel, false);
@@ -44,6 +45,8 @@ public class GameManager : SingletonManager<GameManager>
     private void Start()
     {
         ReacquireReferences();
+        // Show start panel with 2-second delay
+        StartCoroutine(ShowStartPanelWithDelay());
     }
 
     private void ReacquireReferences()
@@ -99,9 +102,9 @@ public class GameManager : SingletonManager<GameManager>
         // Reacquire references before starting
         ReacquireReferences();
 
-        // Show gameplay UI
+        // Show gameplay UI with delay
         SetUIPanel(m_StartPanel, false);
-        SetUIPanel(m_GameplayPanel, true);
+        StartCoroutine(ShowPanelWithDelay(m_GameplayPanel, 2f));
 
         // Enable gameplay input now that the game has started
         if (m_GameplayInput != null)
@@ -139,9 +142,9 @@ public class GameManager : SingletonManager<GameManager>
 
         Debug.Log("Player Died - Game Over!");
         
-        // Show defeat panel
+        // Show defeat panel with delay
         SetUIPanel(m_GameplayPanel, false);
-        SetUIPanel(m_DefeatPanel, true);
+        StartCoroutine(ShowPanelWithDelay(m_DefeatPanel, 3f));
 
         // Award defeat reward
         var coinManager = CoinManager.Get();
@@ -161,42 +164,31 @@ public class GameManager : SingletonManager<GameManager>
 
         Debug.Log("AI Died - Player Victory!");
         
-        // Show victory panel
         SetUIPanel(m_GameplayPanel, false);
-        SetUIPanel(m_VictoryPanel, true);
+        StartCoroutine(ShowPanelWithDelay(m_VictoryPanel, 3f));
 
-        // Award victory reward
         var coinManager = CoinManager.Get();
         if (coinManager != null)
         {
             coinManager.OnPlayerVictory();
         }
 
-        // Notify persistent game manager
         m_PersistentGameManager.OnAIDied();
     }
 
     public void RestartGame()
     {
-        // Reset game objects
         if (m_TurnManager != null)
         {
             m_TurnManager.ResetGame();
         }
 
-        // Disable gameplay input until StartGame is pressed again
         if (m_GameplayInput != null) m_GameplayInput.enabled = false;
 
-        // Notify persistent game manager to restart
         if (m_PersistentGameManager != null)
         {
             m_PersistentGameManager.RestartGame();
         }
-    }
-
-    private void OnDestroy()
-    {
-        // Clean up any references
     }
 
     private void SetUIPanel(GameObject panel, bool active)
@@ -207,12 +199,10 @@ public class GameManager : SingletonManager<GameManager>
         }
     }
 
-    // Getters
     public bool HasGameStarted() => m_PersistentGameManager != null ? m_PersistentGameManager.HasGameStarted() : false;
     public bool IsGameOver() => m_PersistentGameManager != null ? m_PersistentGameManager.IsGameOver() : false;
     public bool IsPaused() => m_PersistentGameManager != null ? m_PersistentGameManager.IsPaused() : false;
 
-    // Public methods for UI buttons
     public void OnStartButtonClick()
     {
         StartGame();
@@ -223,4 +213,15 @@ public class GameManager : SingletonManager<GameManager>
         RestartGame();
     }
 
+    private IEnumerator ShowStartPanelWithDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        SetUIPanel(m_StartPanel, true);
+    }
+
+    private IEnumerator ShowPanelWithDelay(GameObject panel, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SetUIPanel(panel, true);
+    }
 }

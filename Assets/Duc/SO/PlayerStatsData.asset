@@ -21,12 +21,12 @@ MonoBehaviour:
     minPowerPerUpgrade: 5
     maxPowerPerUpgrade: 10
     damagePerPowerUpgrade: 1
-    animSpeed: 1
+    animSpeed: 2
     loopPingPong: 1
   knockback:
-    force: 10
-    multiplier: 5
-    direction: {x: 0, y: 0.3, z: -1}
+    force: 0.8
+    multiplier: 1
+    direction: {x: 0, y: 0.1, z: -1}
     useAllRigidbodies: 1
     rigidbodyForceMultiplier: 1
     duration: 0.5

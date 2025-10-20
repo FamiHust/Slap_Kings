@@ -8,6 +8,15 @@ public class AIStatsData : ScriptableObject
     {
         [Header("Base Health")]
         public int baseMaxHealth = 100;
+        
+        [Header("Level Scaling")]
+        public int healthPerLevel = 20;
+        public float healthScalingMultiplier = 1.0f;
+        
+        public int GetScaledHealth(int level)
+        {
+            return baseMaxHealth + (level - 1) * healthPerLevel;
+        }
     }
 
     [System.Serializable]
@@ -17,9 +26,20 @@ public class AIStatsData : ScriptableObject
         public int minDamage = 10;
         public int maxDamage = 30;
         
+        [Header("Level Scaling")]
+        public int damagePerLevel = 5;
+        public float damageScalingMultiplier = 1.0f;
+        
         public int GetRandomDamage()
         {
             return Random.Range(minDamage, maxDamage + 1);
+        }
+        
+        public int GetRandomDamage(int level)
+        {
+            int scaledMin = GetScaledMinDamage(level);
+            int scaledMax = GetScaledMaxDamage(level);
+            return Random.Range(scaledMin, scaledMax + 1);
         }
         
         public int GetAverageDamage()
@@ -27,9 +47,33 @@ public class AIStatsData : ScriptableObject
             return (minDamage + maxDamage) / 2;
         }
         
+        public int GetAverageDamage(int level)
+        {
+            int scaledMin = GetScaledMinDamage(level);
+            int scaledMax = GetScaledMaxDamage(level);
+            return (scaledMin + scaledMax) / 2;
+        }
+        
+        public int GetScaledMinDamage(int level)
+        {
+            return minDamage + (level - 1) * damagePerLevel;
+        }
+        
+        public int GetScaledMaxDamage(int level)
+        {
+            return maxDamage + (level - 1) * damagePerLevel;
+        }
+        
         public float GetNormalizedDamage(int damage)
         {
             return Mathf.Clamp01((float)(damage - minDamage) / (maxDamage - minDamage));
+        }
+        
+        public float GetNormalizedDamage(int damage, int level)
+        {
+            int scaledMin = GetScaledMinDamage(level);
+            int scaledMax = GetScaledMaxDamage(level);
+            return Mathf.Clamp01((float)(damage - scaledMin) / (scaledMax - scaledMin));
         }
     }
 
@@ -121,4 +165,12 @@ public class AIStatsData : ScriptableObject
     public int GetRandomDamage() => damage.GetRandomDamage();
     public int GetAverageDamage() => damage.GetAverageDamage();
     public float GetNormalizedDamage(int damage) => this.damage.GetNormalizedDamage(damage);
+    
+    // Level-scaled methods
+    public int GetScaledHealth(int level) => health.GetScaledHealth(level);
+    public int GetScaledRandomDamage(int level) => damage.GetRandomDamage(level);
+    public int GetScaledAverageDamage(int level) => damage.GetAverageDamage(level);
+    public int GetScaledMinDamage(int level) => damage.GetScaledMinDamage(level);
+    public int GetScaledMaxDamage(int level) => damage.GetScaledMaxDamage(level);
+    public float GetScaledNormalizedDamage(int damage, int level) => this.damage.GetNormalizedDamage(damage, level);
 }
