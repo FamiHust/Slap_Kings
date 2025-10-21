@@ -2,32 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SingletonManager<T> : MonoBehaviour where T: MonoBehaviour
+namespace Duc
 {
-    protected virtual void Awake()
+    /// <summary>
+    /// Legacy singleton manager - use EnhancedSingletonManager for new code
+    /// </summary>
+    public abstract class SingletonManager<T> : EnhancedSingletonManager<T> where T: MonoBehaviour
     {
-        T[] managers = FindObjectsByType<T>(FindObjectsSortMode.None);
-
-        if (managers.Length > 1)
+        // Legacy Get() method for backward compatibility
+        public static T Get()
         {
-            Destroy(gameObject);
-            return;
+            return Instance;
         }
-    }
-
-    public static T Get()
-    {
-        var tag = typeof(T).Name;
-        GameObject managerObject = GameObject.FindWithTag(tag);
-
-        if (managerObject != null)
-        {
-            return managerObject.GetComponent<T>();
-        }
-
-        GameObject go = new(tag);
-        go.tag = tag;
-
-        return go.AddComponent<T>();
     }
 }

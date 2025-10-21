@@ -1,53 +1,55 @@
 using UnityEngine;
 
-public class AnimationEventReceiver : MonoBehaviour
+namespace Duc
 {
-    public enum ActorType
+    public class AnimationEventReceiver : MonoBehaviour
     {
-        Player,
-        AI
-    }
-
-    [SerializeField] private ActorType m_ActorType = ActorType.Player;
-    [SerializeField] private bool m_EnableDebugLogs = true;
-
-    public void OnSlapHit()
-    {
-        if (m_ActorType == ActorType.Player)
+        public enum ActorType
         {
-            var playerSM = GetComponent<PlayerStateMachine>();
-            if (playerSM == null) playerSM = GetComponentInParent<PlayerStateMachine>();
-            if (playerSM != null)
-            {
-                playerSM.OnSlapHit();
-                return;
-            }
-        }
-        else 
-        {
-            var aiSM = GetComponent<AIStateMachine>();
-            if (aiSM == null) aiSM = GetComponentInParent<AIStateMachine>();
-            if (aiSM != null)
-            {
-                aiSM.OnSlapHit();
-                return;
-            }
+            Player,
+            AI
         }
 
-        var turnManager = FindObjectOfType<TurnManager>();
-        if (turnManager != null)
+        [SerializeField] private ActorType m_ActorType = ActorType.Player;
+        [SerializeField] private bool m_EnableDebugLogs = true;
+
+        public void OnSlapHit()
         {
             if (m_ActorType == ActorType.Player)
             {
-                turnManager.ApplyPlayerDamage();
+                var playerSM = GetComponent<PlayerStateMachine>();
+                if (playerSM == null) playerSM = GetComponentInParent<PlayerStateMachine>();
+                if (playerSM != null)
+                {
+                    playerSM.OnSlapHit();
+                    return;
+                }
             }
-            else
+            else 
             {
-                turnManager.ApplyAIDamage();
+                var aiSM = GetComponent<AIStateMachine>();
+                if (aiSM == null) aiSM = GetComponentInParent<AIStateMachine>();
+                if (aiSM != null)
+                {
+                    aiSM.OnSlapHit();
+                    return;
+                }
+            }
+
+            var turnManager = FindObjectOfType<TurnManager>();
+            if (turnManager != null)
+            {
+                if (m_ActorType == ActorType.Player)
+                {
+                    turnManager.ApplyPlayerDamage();
+                }
+                else
+                {
+                    turnManager.ApplyAIDamage();
+                }
             }
         }
     }
-
 }
 
 

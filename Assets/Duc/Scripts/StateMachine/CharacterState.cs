@@ -1,8 +1,11 @@
-public enum CharacterState
+namespace Duc
 {
-    Idle,
-    Waiting,
-    Hitted,
-    Attacking,
-    Dead
+    public enum CharacterState
+    {
+        Idle,
+        Waiting,
+        Hitted,
+        Attacking,
+        Dead
+    }
 }

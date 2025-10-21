@@ -14,19 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health:
     baseMaxHealth: 200
-    healthPerUpgrade: 10
-  power:
-    baseMinPower: 0
-    baseMaxPower: 90
-    minPowerPerUpgrade: 5
-    maxPowerPerUpgrade: 10
-    damagePerPowerUpgrade: 1
-    animSpeed: 2
-    loopPingPong: 1
   knockback:
     force: 0.8
     multiplier: 1
-    direction: {x: 0, y: 0.1, z: -1}
+    direction: {x: 0, y: 0.01, z: -1}
     useAllRigidbodies: 1
     rigidbodyForceMultiplier: 1
     duration: 0.5
@@ -34,6 +25,17 @@ MonoBehaviour:
     slapVariantCount: 20
     attackDuration: 1
     victoryVariantCount: 12
+  playerHealth:
+    baseMaxHealth: 200
+    healthPerUpgrade: 10
+  power:
+    baseMinPower: 0
+    baseMaxPower: 90
+    minPowerPerUpgrade: 5
+    maxPowerPerUpgrade: 10
+    damagePerPowerUpgrade: 1
+    animSpeed: 3
+    loopPingPong: 1
   controls:
     enableInIdle: 1
     enableInWaiting: 0
