@@ -23,7 +23,6 @@ namespace Duc
 
         private void ReacquireReferences()
         {
-            // Auto-assign data from DataManager if not set (moved to Start to ensure DataManager is initialized)
             if (m_GameConfigData == null && DataManager.Get() != null)
             {
                 m_GameConfigData = DataManager.Get().GameConfig;
@@ -37,7 +36,6 @@ namespace Duc
         
         private void OnDestroy()
         {
-            // Unsubscribe from events to prevent memory leaks
             if (m_PersistentData != null)
             {
                 m_PersistentData.OnHealthUpgradePurchased = null;
@@ -73,7 +71,6 @@ namespace Duc
                 }
             }
             
-            // Fallback calculation
             int baseReward = 100;
             int rewardIncrement = 50;
             int maxReward = 1000;
@@ -94,7 +91,7 @@ namespace Duc
                 }
             }
             
-            return 25; // Fallback
+            return 25;
         }
 
         public bool CanAffordHealthUpgrade()
@@ -173,14 +170,12 @@ namespace Duc
 
         protected override void OnInitialize()
         {
-            // CoinManager specific initialization
             m_PersistentData = PersistentDataManager.Instance;
             ReacquireReferences();
         }
 
         protected override void OnCleanup()
         {
-            // CoinManager specific cleanup
             if (m_PersistentData != null)
             {
                 m_PersistentData.OnHealthUpgradePurchased = null;

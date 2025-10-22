@@ -129,7 +129,6 @@ namespace Duc
 
         private void OnApplicationQuit()
         {
-            // Cleanup events to prevent memory leaks
             OnGameStart = null;
             OnGameOver = null;
             OnPlayerVictory = null;
@@ -140,7 +139,6 @@ namespace Duc
 
         private void OnDestroy()
         {
-            // Reset static instance when destroyed
             if (s_Instance == this)
             {
                 s_Instance = null;

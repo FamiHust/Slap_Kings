@@ -8,12 +8,10 @@ namespace Duc
         [Header("Master Data")]
         [SerializeField] private CharacterStatsData m_MasterData;
 
-        // Cached references for performance
         private PlayerStatsData m_PlayerStats;
         private AIStatsData m_AIStats;
         private GameConfigData m_GameConfig;
 
-        // Events for data changes
         public static event Action OnDataLoaded;
         public static event Action OnDataChanged;
 
@@ -32,34 +30,15 @@ namespace Duc
 
         private void LoadData()
         {
-            // Load from master data
             if (m_MasterData != null && m_MasterData.IsValid())
             {
                 m_PlayerStats = m_MasterData.playerStats;
                 m_AIStats = m_MasterData.aiStats;
                 m_GameConfig = m_MasterData.gameConfig;
-                
-                Debug.Log("Data loaded from MasterData");
-                Debug.Log($"AIStats loaded: {(m_AIStats != null ? "SUCCESS" : "NULL")}");
-                if (m_AIStats != null)
-                {
-                    Debug.Log($"AIStats base health: {m_AIStats.BaseMaxHealth}");
-                    Debug.Log($"AIStats scaled health for level 1: {m_AIStats.GetScaledHealth(1)}");
-                }
             }
             else
             {
-                // Try to find individual data assets
                 LoadIndividualData();
-                
-                if (m_MasterData != null)
-                {
-                    Debug.LogWarning($"MasterData validation failed: {m_MasterData.GetValidationErrors()}");
-                }
-                else
-                {
-                    Debug.LogWarning("MasterData is not assigned in DataManager");
-                }
             }
             
             OnDataLoaded?.Invoke();
@@ -67,7 +46,6 @@ namespace Duc
 
         private void LoadIndividualData()
         {
-            // Try to find individual ScriptableObjects
             if (m_PlayerStats == null)
             {
                 m_PlayerStats = Resources.Load<PlayerStatsData>("PlayerStatsData");
@@ -90,73 +68,98 @@ namespace Duc
             OnDataChanged?.Invoke();
         }
 
-        // Convenience methods with fallback values
         public int GetPlayerMaxHealth(int upgradeCount)
         {
             if (m_PlayerStats != null) 
                 return m_PlayerStats.GetMaxHealthWithUpgrades(upgradeCount);
-            return 100 + (upgradeCount * 10); // Fallback
+            return 100 + (upgradeCount * 10); 
         }
 
         public int GetPlayerPowerBonusDamage(int upgradeCount)
         {
             if (m_PlayerStats != null) 
                 return m_PlayerStats.power.GetPowerBonusDamage(upgradeCount);
-            return upgradeCount; // Fallback
+            return upgradeCount; 
         }
 
         public int GetAIRandomDamage()
         {
             if (m_AIStats != null) 
                 return m_AIStats.damage.GetRandomDamage();
-            return UnityEngine.Random.Range(10, 31); // Fallback
+            return UnityEngine.Random.Range(10, 31); 
         }
 
         public int GetAIRandomDamage(int level)
         {
             if (m_AIStats != null) 
                 return m_AIStats.GetScaledRandomDamage(level);
-            return UnityEngine.Random.Range(10 + (level - 1) * 5, 31 + (level - 1) * 5); // Fallback with scaling
+            return UnityEngine.Random.Range(10 + (level - 1) * 5, 31 + (level - 1) * 5);
         }
 
         public int GetAIAverageDamage()
         {
             if (m_AIStats != null) 
                 return m_AIStats.damage.GetAverageDamage();
-            return 20; // Fallback
+            return 20; 
         }
 
         public int GetAIAverageDamage(int level)
         {
             if (m_AIStats != null) 
                 return m_AIStats.GetScaledAverageDamage(level);
-            return 20 + (level - 1) * 5; // Fallback with scaling
+            return 20 + (level - 1) * 5; 
         }
 
         public int GetAIMaxHealth(int level)
         {
             if (m_AIStats != null) 
             {
-                int result = m_AIStats.GetScaledHealth(level);
-                Debug.Log($"DataManager.GetAIMaxHealth({level}) from AIStats: {result}");
-                return result;
+                int baseHealth = m_AIStats.GetScaledHealth(level);
+                
+                // Apply boss level multiplier if available
+                if (m_AIStats.bossLevelData != null && m_AIStats.bossLevelData.IsBossLevel(level))
+                {
+                    float multiplier = m_AIStats.bossLevelData.GetHealthMultiplier(level);
+                    return Mathf.RoundToInt(baseHealth * multiplier);
+                }
+                
+                return baseHealth;
             }
             int fallback = 100 + (level - 1) * 20;
-            Debug.LogWarning($"DataManager.GetAIMaxHealth({level}) using fallback: {fallback} (m_AIStats is null)");
             return fallback; // Fallback with scaling
         }
 
         public int GetAIMinDamage(int level)
         {
             if (m_AIStats != null) 
-                return m_AIStats.GetScaledMinDamage(level);
+            {
+                int baseDamage = m_AIStats.GetScaledMinDamage(level);
+                
+                if (m_AIStats.bossLevelData != null && m_AIStats.bossLevelData.IsBossLevel(level))
+                {
+                    float multiplier = m_AIStats.bossLevelData.GetDamageMultiplier(level);
+                    return Mathf.RoundToInt(baseDamage * multiplier);
+                }
+                
+                return baseDamage;
+            }
             return 10 + (level - 1) * 5; // Fallback with scaling
         }
 
         public int GetAIMaxDamage(int level)
         {
             if (m_AIStats != null) 
-                return m_AIStats.GetScaledMaxDamage(level);
+            {
+                int baseDamage = m_AIStats.GetScaledMaxDamage(level);
+                
+                if (m_AIStats.bossLevelData != null && m_AIStats.bossLevelData.IsBossLevel(level))
+                {
+                    float multiplier = m_AIStats.bossLevelData.GetDamageMultiplier(level);
+                    return Mathf.RoundToInt(baseDamage * multiplier);
+                }
+                
+                return baseDamage;
+            }
             return 30 + (level - 1) * 5; // Fallback with scaling
         }
 
@@ -164,14 +167,14 @@ namespace Duc
         {
             if (m_GameConfig != null) 
                 return m_GameConfig.coinSystem.CalculateReward(victoryCount);
-            return Mathf.Min(100 + (victoryCount * 50), 1000); // Fallback
+            return Mathf.Min(100 + (victoryCount * 50), 1000);
         }
 
         public int GetDefeatReward()
         {
             if (m_GameConfig != null) 
                 return m_GameConfig.coinSystem.loseReward;
-            return 25; // Fallback
+            return 25;
         }
 
         public int GetHealthUpgradePrice(int upgradeCount)
@@ -188,12 +191,11 @@ namespace Duc
             return Mathf.Max(0, 150 + (upgradeCount * 75)); // Fallback
         }
 
-        // Level scaling methods
         public float GetHealthScalingMultiplier(int level)
         {
             if (m_MasterData != null)
                 return m_MasterData.levelScaling.GetHealthMultiplier(level);
-            return 1f; // Fallback
+            return 1f; 
         }
 
         public float GetDamageScalingMultiplier(int level)
@@ -209,8 +211,34 @@ namespace Duc
                 return m_MasterData.levelScaling.GetPowerMultiplier(level);
             return 1f; // Fallback
         }
+        
+        public float GetPowerMeterSpeedWithBossBonus(int level)
+        {
+            if (m_PlayerStats != null && m_PlayerStats.power != null)
+            {
+                return m_PlayerStats.power.GetAnimSpeedWithBossBonus(level, m_PlayerStats.bossLevelData);
+            }
+            return 2f; // Fallback speed
+        }
+        
+        public bool IsBossLevel(int level)
+        {
+            if (m_AIStats != null && m_AIStats.bossLevelData != null)
+            {
+                return m_AIStats.bossLevelData.IsBossLevel(level);
+            }
+            return false;
+        }
+        
+        public string GetBossName(int level)
+        {
+            if (m_AIStats != null && m_AIStats.bossLevelData != null)
+            {
+                return m_AIStats.bossLevelData.GetBossName(level);
+            }
+            return "Normal Level";
+        }
 
-        // Validation
         public bool IsDataValid()
         {
             return m_PlayerStats != null && m_AIStats != null && m_GameConfig != null;
@@ -226,11 +254,10 @@ namespace Duc
             return status.ToString();
         }
 
-        // Debug methods
         [ContextMenu("Log Data Status")]
         private void LogDataStatus()
         {
-            Debug.Log($"DataManager Status:\n{GetDataStatus()}");
+            
         }
 
         [ContextMenu("Refresh Data")]
@@ -241,13 +268,11 @@ namespace Duc
 
         protected override void OnInitialize()
         {
-            // DataManager specific initialization
             LoadData();
         }
 
         protected override void OnCleanup()
         {
-            // DataManager specific cleanup
             OnDataLoaded = null;
             OnDataChanged = null;
         }

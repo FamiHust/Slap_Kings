@@ -20,7 +20,6 @@ namespace Duc
         {
             base.Start();
             
-            // Apply health upgrades at start
             ApplyHealthUpgrades();
         }
 
@@ -34,7 +33,6 @@ namespace Duc
         {
             base.SubscribeToEvents();
             
-            // Listen for health upgrade purchases to update max health immediately
             var persistentData = PersistentDataManager.Instance;
             if (persistentData != null)
             {
@@ -79,21 +77,17 @@ namespace Duc
             int newMax = dataManager.GetPlayerMaxHealth(upgrades);
             if (newMax <= 0) return;
 
-            // Increase max health and fill current health to new max
             SetMaxHealth(newMax, true);
         }
 
         protected override void HandleDeath()
         {
-            Debug.Log("Player has died! Game Over!");
-            
             var gameplayInput = GetComponent<GameplayInput>();
             if (gameplayInput != null)
             {
                 gameplayInput.enabled = false;
             }
 
-            // Notify GameManager about player death
             var gameManager = GameManager.Get();
             if (gameManager != null)
             {

@@ -2,9 +2,6 @@ using UnityEngine;
 
 namespace Duc
 {
-    /// <summary>
-    /// Base class for all health systems providing common functionality
-    /// </summary>
     public abstract class BaseHealth : MonoBehaviour
     {
         [Header("Health Settings")]
@@ -16,11 +13,10 @@ namespace Duc
         [Header("UI")]
         [SerializeField] protected HealthUI m_HealthUI;
         
-        // Events
-        public System.Action<int, int> OnHealthChanged; // current, max
-        public System.Action<int> OnDamageTaken; // damage amount
+        public System.Action<int, int> OnHealthChanged; 
+        public System.Action<int> OnDamageTaken;
         public System.Action OnDeath;
-        public System.Action OnHealthUpgraded; // when max health increases
+        public System.Action OnHealthUpgraded; 
 
         protected virtual void Awake()
         {
@@ -39,19 +35,11 @@ namespace Duc
         }
 
         #region Abstract Methods
-        /// <summary>
-        /// Initialize health values - implemented by derived classes
-        /// </summary>
+
         protected abstract void InitializeHealth();
-        
-        /// <summary>
-        /// Handle death logic specific to each character type
-        /// </summary>
+
         protected abstract void HandleDeath();
-        
-        /// <summary>
-        /// Get the appropriate state machine for this character
-        /// </summary>
+
         protected abstract StateMachine GetStateMachine();
         #endregion
 

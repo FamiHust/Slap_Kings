@@ -17,6 +17,7 @@ namespace Duc
         [SerializeField] private TurnManager m_TurnManager;
         [SerializeField] private CameraSwitcher m_CameraSwitcher;
         [SerializeField] private GameplayInput m_GameplayInput;
+        [SerializeField] private MapManager m_MapManager;
         
         private PersistentGameManager m_PersistentGameManager;
 
@@ -25,14 +26,12 @@ namespace Duc
             base.Awake();
             m_PersistentGameManager = PersistentGameManager.Instance;
             
-            // Initialize UI state - hide all panels initially
             SetUIPanel(m_StartPanel, false);
             SetUIPanel(m_GameplayPanel, false);
             SetUIPanel(m_VictoryPanel, false);
             SetUIPanel(m_DefeatPanel, false);
             SetUIPanel(m_PausePanel, false);
 
-            // Disable gameplay input until StartGame is pressed
             if (m_GameplayInput == null)
                 m_GameplayInput = FindObjectOfType<GameplayInput>();
             if (m_GameplayInput != null)
@@ -47,23 +46,19 @@ namespace Duc
         private void Start()
         {
             ReacquireReferences();
-            // Show start panel with 2-second delay
             StartCoroutine(ShowStartPanelWithDelay());
         }
 
         private void ReacquireReferences()
         {
-            // Auto-assign references if not set
             if (m_TurnManager == null)
                 m_TurnManager = FindObjectOfType<TurnManager>();
-            
             if (m_CameraSwitcher == null)
                 m_CameraSwitcher = FindObjectOfType<CameraSwitcher>();
-
             if (m_GameplayInput == null)
                 m_GameplayInput = FindObjectOfType<GameplayInput>();
-
-            // Reacquire UI panel references (include inactive objects under Canvas)
+            if (m_MapManager == null)
+                m_MapManager = FindObjectOfType<MapManager>();
             if (m_StartPanel == null)
                 m_StartPanel = FindObjectIncludingInactive("StartPanel");
             if (m_GameplayPanel == null)
@@ -79,14 +74,12 @@ namespace Duc
 
         private GameObject FindObjectIncludingInactive(string name)
         {
-            // Search all objects including inactive ones, filter to current scene (exclude prefabs/assets)
             var all = Resources.FindObjectsOfTypeAll<GameObject>();
             for (int i = 0; i < all.Length; i++)
             {
                 var go = all[i];
                 if (go == null) continue;
                 if (go.name != name) continue;
-                // Exclude assets not in a scene
                 if (go.scene.IsValid() && go.scene.isLoaded)
                 {
                     return go;
@@ -101,24 +94,19 @@ namespace Duc
             if (m_PersistentGameManager == null) return;
             if (m_PersistentGameManager.HasGameStarted()) return;
 
-            // Reacquire references before starting
             ReacquireReferences();
 
-            // Show gameplay UI with delay
             SetUIPanel(m_StartPanel, false);
             StartCoroutine(ShowPanelWithDelay(m_GameplayPanel, 2f));
 
-            // Enable gameplay input now that the game has started
             if (m_GameplayInput != null)
                 m_GameplayInput.enabled = true;
 
-            // Start the game
             if (m_TurnManager != null)
             {
                 m_TurnManager.StartPlayerTurn();
             }
 
-            // Notify persistent game manager
             m_PersistentGameManager.StartGame();
         }
 
@@ -127,13 +115,11 @@ namespace Duc
             if (m_PersistentGameManager == null) return;
             if (m_PersistentGameManager.IsGameOver()) return;
 
-            // Stop all turns
             if (m_TurnManager != null)
             {
                 m_TurnManager.StopAllTurns();
             }
 
-            // Notify persistent game manager
             m_PersistentGameManager.EndGame();
         }
 
@@ -142,9 +128,6 @@ namespace Duc
             if (m_PersistentGameManager == null) return;
             if (m_PersistentGameManager.IsGameOver()) return;
 
-            Debug.Log("Player Died - Game Over!");
-            
-            // Hide both bars when player dies
             if (PowerMeter.Get() != null)
             {
                 PowerMeter.Get().gameObject.SetActive(false);
@@ -155,18 +138,15 @@ namespace Duc
                 CounterSystem.Get().StopCounter();
             }
             
-            // Show defeat panel with delay
             SetUIPanel(m_GameplayPanel, false);
             StartCoroutine(ShowPanelWithDelay(m_DefeatPanel, 3f));
 
-            // Award defeat reward
             var coinManager = CoinManager.Get();
             if (coinManager != null)
             {
                 coinManager.OnPlayerDefeat();
             }
 
-            // Notify persistent game manager
             m_PersistentGameManager.OnPlayerDied();
         }
 
@@ -175,9 +155,6 @@ namespace Duc
             if (m_PersistentGameManager == null) return;
             if (m_PersistentGameManager.IsGameOver()) return;
 
-            Debug.Log("AI Died - Player Victory!");
-            
-            // Hide both bars when AI dies (player wins)
             if (PowerMeter.Get() != null)
             {
                 PowerMeter.Get().gameObject.SetActive(false);
@@ -197,6 +174,8 @@ namespace Duc
                 coinManager.OnPlayerVictory();
             }
 
+            // Map will be updated when restarting game, not immediately on victory
+
             m_PersistentGameManager.OnAIDied();
         }
 
@@ -208,6 +187,8 @@ namespace Duc
             }
 
             if (m_GameplayInput != null) m_GameplayInput.enabled = false;
+
+            // Map will be updated automatically when scene loads
 
             if (m_PersistentGameManager != null)
             {
@@ -251,17 +232,14 @@ namespace Duc
 
         protected override void OnInitialize()
         {
-            // GameManager specific initialization
             m_PersistentGameManager = PersistentGameManager.Instance;
             
-            // Initialize UI state - hide all panels initially
             SetUIPanel(m_StartPanel, false);
             SetUIPanel(m_GameplayPanel, false);
             SetUIPanel(m_VictoryPanel, false);
             SetUIPanel(m_DefeatPanel, false);
             SetUIPanel(m_PausePanel, false);
 
-            // Disable gameplay input until StartGame is pressed
             if (m_GameplayInput == null)
                 m_GameplayInput = FindObjectOfType<GameplayInput>();
             if (m_GameplayInput != null)
@@ -270,7 +248,6 @@ namespace Duc
 
         protected override void OnCleanup()
         {
-            // GameManager specific cleanup
             if (m_TurnManager != null)
             {
                 m_TurnManager.StopAllTurns();
@@ -284,10 +261,8 @@ namespace Duc
 
     private void OnApplicationQuit()
     {
-        // Cleanup all singleton instances
         SingletonCleanup.CleanupAllSingletons();
         
-        // Stop all turns
         if (m_TurnManager != null)
         {
             m_TurnManager.StopAllTurns();

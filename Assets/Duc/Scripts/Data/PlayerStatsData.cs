@@ -45,6 +45,19 @@ namespace Duc
             {
                 return upgradeCount * damagePerPowerUpgrade;
             }
+            
+            public float GetAnimSpeedWithBossBonus(int level, BossLevelData bossData)
+            {
+                float baseSpeed = animSpeed;
+                
+                if (bossData != null && bossData.IsBossLevel(level))
+                {
+                    float speedBonus = bossData.GetSpeedBonus(level);
+                    return baseSpeed + speedBonus;
+                }
+                
+                return baseSpeed;
+            }
         }
 
 
@@ -74,11 +87,12 @@ namespace Duc
         public PlayerHealthSettings playerHealth = new PlayerHealthSettings();
         public PowerSettings power = new PowerSettings();
         public ControlSettings controls = new ControlSettings();
+        
+        [Header("Boss Level Configuration")]
+        public BossLevelData bossLevelData;
 
-        // Override health settings to use PlayerHealthSettings
         public new PlayerHealthSettings health => playerHealth;
 
-        // Implement abstract methods
         public override int GetMaxHealthWithUpgrades(int upgradeCount)
         {
             return playerHealth.GetMaxHealth(upgradeCount);
@@ -89,7 +103,6 @@ namespace Duc
             return playerHealth.GetMaxHealth(level);
         }
 
-        // Convenience getters for backward compatibility
         public int HealthPerUpgrade => playerHealth.healthPerUpgrade;
         public int BaseMinPower => power.baseMinPower;
         public int BaseMaxPower => power.baseMaxPower;
@@ -103,7 +116,6 @@ namespace Duc
         public bool EnableControlsInAttacking => controls.enableInAttacking;
         public bool EnableControlsInDead => controls.enableInDead;
 
-        // Legacy methods for backward compatibility
         public int GetMinPowerWithUpgrades(int upgradeCount) => power.GetMinPowerWithUpgrades(upgradeCount);
         public int GetMaxPowerWithUpgrades(int upgradeCount) => power.GetMaxPowerWithUpgrades(upgradeCount);
         public int GetPowerBonusDamage(int upgradeCount) => power.GetPowerBonusDamage(upgradeCount);

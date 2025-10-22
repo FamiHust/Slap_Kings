@@ -1297,8 +1297,10 @@ MonoBehaviour:
   m_MaxHealth: 200
   m_CurrentHealth: 0
   m_IsDead: 0
-  m_StateMachine: {fileID: 0}
+  m_LastDamage: 0
   m_HealthUI: {fileID: 0}
+  m_StateMachine: {fileID: 0}
+  m_AIStatsData: {fileID: 11400000, guid: 5724a397a72d1c44db0a174e544b491c, type: 2}
 --- !u!114 &7521935904712593690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1312,7 +1314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ActorType: 1
-  m_EnableDebugLogs: 1
+  m_EnableDebugLogs: 0
 --- !u!1 &2944336898231069354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2792,7 +2794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &97063414596131297
 Transform:
   m_ObjectHideFlags: 0

@@ -47,7 +47,6 @@ namespace Duc
         {
             if (m_CurrentState == newState) return;
 
-            // Check if transition is allowed
             if (m_CurrentStateInstance != null && !m_CurrentStateInstance.CanTransitionTo(newState))
             {
                 if (m_EnableDebugLogs)
@@ -57,7 +56,6 @@ namespace Duc
                 return;
             }
 
-            // Check custom transition rules
             if (!CanChangeState(newState))
             {
                 return;
@@ -126,7 +124,6 @@ namespace Duc
             OnStateChanged?.Invoke(m_CurrentState);
         }
 
-        // Abstract methods for derived classes to implement specific behavior
         protected abstract void OnEnterIdle();
         protected abstract void OnExitIdle();
         protected abstract void OnEnterWaiting();

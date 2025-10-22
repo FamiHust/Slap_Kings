@@ -14,17 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health:
     baseMaxHealth: 200
-    healthPerLevel: 20
-    healthScalingMultiplier: 1
-  damage:
-    minDamage: 50
-    maxDamage: 100
-    damagePerLevel: 5
-    damageScalingMultiplier: 1
   knockback:
-    force: 0.8
+    force: 10
     multiplier: 1
-    direction: {x: 0, y: 0.1, z: 0.1}
+    direction: {x: 0, y: 0.1, z: 0}
     useAllRigidbodies: 1
     rigidbodyForceMultiplier: 1
     duration: 0.5
@@ -32,6 +25,15 @@ MonoBehaviour:
     slapVariantCount: 20
     attackDuration: 1
     victoryVariantCount: 12
+  aiHealth:
+    baseMaxHealth: 200
+    healthPerLevel: 20
+    healthScalingMultiplier: 1
+  damage:
+    minDamage: 50
+    maxDamage: 100
+    damagePerLevel: 5
+    damageScalingMultiplier: 1
   behavior:
     enableInIdle: 1
     enableInWaiting: 0
@@ -40,3 +42,5 @@ MonoBehaviour:
     waitTime: 1.5
     attackTime: 2
     getSlappedDelay: 0.5
+  appearanceData: {fileID: 11400000, guid: a3223e472792f3c4dad966c2a644ff0b, type: 2}
+  bossLevelData: {fileID: 11400000, guid: 698a0aad82df0e749a119c6b97d449b0, type: 2}

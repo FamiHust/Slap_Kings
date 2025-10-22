@@ -126,10 +126,7 @@ namespace Duc
             if (m_CounterBarAnim != null)
                 m_CounterBarAnim.Sample();
 
-            // Hide counter bar UI
             HideCounterBar();
-
-            Debug.Log("Counter system stopped and hidden");
             OnCounterEnded?.Invoke();
         }
 
@@ -152,42 +149,27 @@ namespace Duc
             return Mathf.Max(m_MinCounter, m_MaxCounter);
         }
 
-        /// <summary>
-        /// Apply counter damage reduction to AI damage
-        /// </summary>
         public int ApplyCounterReduction(int originalDamage, float counterValue)
         {
             int reducedDamage = Mathf.RoundToInt(originalDamage * (1f - counterValue));
-            return Mathf.Max(1, reducedDamage); // Minimum 1 damage
+            return Mathf.Max(1, reducedDamage); 
         }
 
         protected override void OnInitialize()
         {
-            // CounterSystem specific initialization
+            
         }
 
         private void ShowCounterBar()
         {
-            Debug.Log("ShowCounterBar() called");
-            
             if (m_CounterBarAnim != null)
             {
-                Debug.Log("Activating counter bar animation");
                 m_CounterBarAnim.gameObject.SetActive(true);
-            }
-            else
-            {
-                Debug.LogError("Counter bar animation is null!");
             }
             
             if (m_CounterText != null)
             {
-                Debug.Log("Activating counter text");
                 m_CounterText.gameObject.SetActive(true);
-            }
-            else
-            {
-                Debug.LogError("Counter text is null!");
             }
         }
 
@@ -206,7 +188,7 @@ namespace Duc
 
         protected override void OnCleanup()
         {
-            // CounterSystem specific cleanup
+           
         }
     }
 }

@@ -300,14 +300,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d31b97444776e409fffeab7018e7a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_EnableDebugLogs: 0
+  m_AutoInitialize: 1
   m_PowerBarAnim: {fileID: 3220099831962504454}
   clipName: PowerBarAnim3D
   m_PowerText: {fileID: 7193590272160033818}
   isActive: 0
   loopPingPong: 1
-  m_AnimSpeed: 2
-  m_MinPower: 10
-  m_MaxPower: 90
 --- !u!1 &7463693720623823852
 GameObject:
   m_ObjectHideFlags: 0

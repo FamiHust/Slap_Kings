@@ -16,6 +16,19 @@ namespace Duc
             {
                 return (level - 1) * healthPerLevel;
             }
+            
+            public int GetHealthBonusWithBossMultiplier(int level, BossLevelData bossData)
+            {
+                int baseBonus = GetHealthBonus(level);
+                
+                if (bossData != null && bossData.IsBossLevel(level))
+                {
+                    float multiplier = bossData.GetHealthMultiplier(level);
+                    return Mathf.RoundToInt(baseBonus * multiplier);
+                }
+                
+                return baseBonus;
+            }
         }
 
         [System.Serializable]
@@ -63,6 +76,32 @@ namespace Duc
                 return maxDamage + (level - 1) * damagePerLevel;
             }
             
+            public int GetScaledMinDamageWithBossMultiplier(int level, BossLevelData bossData)
+            {
+                int baseDamage = GetScaledMinDamage(level);
+                
+                if (bossData != null && bossData.IsBossLevel(level))
+                {
+                    float multiplier = bossData.GetDamageMultiplier(level);
+                    return Mathf.RoundToInt(baseDamage * multiplier);
+                }
+                
+                return baseDamage;
+            }
+            
+            public int GetScaledMaxDamageWithBossMultiplier(int level, BossLevelData bossData)
+            {
+                int baseDamage = GetScaledMaxDamage(level);
+                
+                if (bossData != null && bossData.IsBossLevel(level))
+                {
+                    float multiplier = bossData.GetDamageMultiplier(level);
+                    return Mathf.RoundToInt(baseDamage * multiplier);
+                }
+                
+                return baseDamage;
+            }
+            
             public float GetNormalizedDamage(int damage)
             {
                 return Mathf.Clamp01((float)(damage - minDamage) / (maxDamage - minDamage));
@@ -108,11 +147,15 @@ namespace Duc
         public AIHealthSettings aiHealth = new AIHealthSettings();
         public DamageSettings damage = new DamageSettings();
         public BehaviorSettings behavior = new BehaviorSettings();
+        
+        [Header("Appearance Configuration")]
+        public AIAppearanceData appearanceData;
+        
+        [Header("Boss Level Configuration")]
+        public BossLevelData bossLevelData;
 
-        // Override health settings to use AIHealthSettings
         public new AIHealthSettings health => aiHealth;
 
-        // Implement abstract methods
         public override int GetMaxHealthWithUpgrades(int level)
         {
             return aiHealth.GetMaxHealth(level);
@@ -123,7 +166,6 @@ namespace Duc
             return aiHealth.GetMaxHealth(level);
         }
 
-        // Convenience getters for backward compatibility
         public int MinDamage => damage.minDamage;
         public int MaxDamage => damage.maxDamage;
         public bool EnableAIInIdle => behavior.enableInIdle;
@@ -134,12 +176,9 @@ namespace Duc
         public float AIAttackTime => behavior.attackTime;
         public float AIGetSlappedDelay => behavior.getSlappedDelay;
 
-        // Legacy methods for backward compatibility
         public int GetRandomDamage() => damage.GetRandomDamage();
         public int GetAverageDamage() => damage.GetAverageDamage();
         public float GetNormalizedDamage(int damage) => this.damage.GetNormalizedDamage(damage);
-        
-        // Level-scaled methods
         public int GetScaledRandomDamage(int level) => damage.GetRandomDamage(level);
         public int GetScaledAverageDamage(int level) => damage.GetAverageDamage(level);
         public int GetScaledMinDamage(int level) => damage.GetScaledMinDamage(level);

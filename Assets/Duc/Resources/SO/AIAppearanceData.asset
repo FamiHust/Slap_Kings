@@ -1,0 +1,251 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ffa1f5caf1a72148a4a2ca88bc75bcb, type: 3}
+  m_Name: AIAppearanceData
+  m_EditorClassIdentifier: 
+  m_AppearanceSets:
+  - setName: CHI01
+    startLevel: 1
+    endLevel: 1
+    headMesh: {fileID: 4300000, guid: 6036562701c4d2447b7f4f3a708086de, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: c7d835fdec573544882f270615dc2ca2, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: CHI02
+    startLevel: 2
+    endLevel: 2
+    headMesh: {fileID: 4300000, guid: 922e8963fea5c4c4cb03ca65adb4ef74, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 22dab1606d172114e8d4526c8529c5c9, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: CHI03
+    startLevel: 3
+    endLevel: 3
+    headMesh: {fileID: 4300000, guid: aaac851f5035cc34285b91ef197ea93f, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 4aa35af5213fd3d4dbba50c93b4a6376, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: CHI04
+    startLevel: 4
+    endLevel: 4
+    headMesh: {fileID: 4300000, guid: 3dddf0d3895b10742977ca3000edb373, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 21c2747cd511ac44b8e6f8b530129dce, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: CHI-BOSS
+    startLevel: 5
+    endLevel: 5
+    headMesh: {fileID: 4300000, guid: 8fad0c11ec81840409d054a8055d64cd, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 60dfd1f47ba5b64478f50f3e13d53f6f, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: JAP01
+    startLevel: 6
+    endLevel: 6
+    headMesh: {fileID: 4300000, guid: 582207856dea65d45a5adda38f2fbaa9, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: f92f398307102fe4093ae4f7760e0dc5, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: JAP02
+    startLevel: 7
+    endLevel: 7
+    headMesh: {fileID: 4300000, guid: 7296020649a7c8743b68e385c91bf477, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: d4be9132b4b8cb44b81ebc1d1ad119f0, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: JAP03
+    startLevel: 8
+    endLevel: 8
+    headMesh: {fileID: 4300000, guid: ea0f6d42564b6e34c8d7483c6779462b, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 16e6b95a7e7ff9d4284c396e76fbc35c, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: JAP04
+    startLevel: 9
+    endLevel: 9
+    headMesh: {fileID: 4300000, guid: 4c04228189de23f4eb4ffa4a1a475294, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: de4f268cae1407c488a38022581902c9, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: JAP-BOSS
+    startLevel: 10
+    endLevel: 10
+    headMesh: {fileID: 4300000, guid: a44a870021fe9574bbef2e86ee15d602, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 31dff8cfd9f273e40a09f55fd5402b48, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: US01
+    startLevel: 11
+    endLevel: 11
+    headMesh: {fileID: 4300000, guid: cb3480a6965ea4245b5d659f703b50af, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 827b3a85ab92afe4189a681c4f5f61d4, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: US02
+    startLevel: 12
+    endLevel: 12
+    headMesh: {fileID: 4300000, guid: 2b34047a26223f84782877f92a9e31e3, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: b77345fa77f8fd649bfde76389ffaa14, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: US03
+    startLevel: 13
+    endLevel: 13
+    headMesh: {fileID: 4300000, guid: 6aacc8b4e1fe4634ca752b5ffca6a911, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 876af5ead46b6e84083fd12bcdbf7d69, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: US04
+    startLevel: 14
+    endLevel: 14
+    headMesh: {fileID: 4300000, guid: 81673f04e77804342a0dac75769f38cb, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 0bb2cdfef5afc9542b5528991f75e0ae, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: US-BOSS
+    startLevel: 15
+    endLevel: 15
+    headMesh: {fileID: 4300000, guid: f66e382209e200d4fa93c6ea825291eb, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 36ddf4c8b2b63954291711101cf0d0ce, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: UK01
+    startLevel: 16
+    endLevel: 16
+    headMesh: {fileID: 4300000, guid: ba658f1e870cf0543bee32ca7d97ff70, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 809a34d1dbd09014699d09eaec48e281, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: UK02
+    startLevel: 17
+    endLevel: 17
+    headMesh: {fileID: 4300000, guid: ffd61cd4123a9aa449b612326fe14001, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: b616a6b9c69afd1438cf19cba40f612e, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: UK03
+    startLevel: 18
+    endLevel: 18
+    headMesh: {fileID: 4300000, guid: c2d97c3f0c5b5e942b4b049d004149e9, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: b34f91bbcffc91547b07a7e20bb9e61f, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: UK04
+    startLevel: 19
+    endLevel: 19
+    headMesh: {fileID: 4300000, guid: 05db0ef4fb45e6549ae7f408797387e0, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 11b8f9cb0d98d4a4eb3125ca46457d71, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: UK-BOSS
+    startLevel: 20
+    endLevel: 20
+    headMesh: {fileID: 4300000, guid: a69d4ecf6eaf4424fa957426936209c2, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 683a710dd8abf2d489cd33003500d89d, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: RUS01
+    startLevel: 21
+    endLevel: 21
+    headMesh: {fileID: 4300000, guid: cb3480a6965ea4245b5d659f703b50af, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 827b3a85ab92afe4189a681c4f5f61d4, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: RUS02
+    startLevel: 22
+    endLevel: 22
+    headMesh: {fileID: 4300000, guid: 2b34047a26223f84782877f92a9e31e3, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: b77345fa77f8fd649bfde76389ffaa14, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: RUS03
+    startLevel: 23
+    endLevel: 23
+    headMesh: {fileID: 4300000, guid: 6aacc8b4e1fe4634ca752b5ffca6a911, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 876af5ead46b6e84083fd12bcdbf7d69, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: RUS04
+    startLevel: 24
+    endLevel: 24
+    headMesh: {fileID: 4300000, guid: 81673f04e77804342a0dac75769f38cb, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 0bb2cdfef5afc9542b5528991f75e0ae, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  - setName: RUS-BOSS
+    startLevel: 25
+    endLevel: 25
+    headMesh: {fileID: 4300000, guid: f66e382209e200d4fa93c6ea825291eb, type: 2}
+    headMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    bodyMesh: {fileID: 4300000, guid: 36ddf4c8b2b63954291711101cf0d0ce, type: 2}
+    bodyMaterial: {fileID: 2100000, guid: 8158474e1458cbd4c90b30b045531476, type: 2}
+    allowMultipleInstances: 0
+    transitionDuration: 0
+  m_DefaultAppearance:
+    setName: 
+    startLevel: 1
+    endLevel: 5
+    headMesh: {fileID: 0}
+    headMaterial: {fileID: 0}
+    bodyMesh: {fileID: 0}
+    bodyMaterial: {fileID: 0}
+    allowMultipleInstances: 0
+    transitionDuration: 0.5
+  m_EnableSmoothTransitions: 1

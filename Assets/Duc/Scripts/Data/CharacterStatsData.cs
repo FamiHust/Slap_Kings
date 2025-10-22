@@ -58,18 +58,9 @@ namespace Duc
 
         private void OnValidate()
         {
-            // Ensure all required references are set
-            if (playerStats == null)
-                Debug.LogWarning("PlayerStatsData is not assigned in CharacterStatsData");
             
-            if (aiStats == null)
-                Debug.LogWarning("AIStatsData is not assigned in CharacterStatsData");
-            
-            if (gameConfig == null)
-                Debug.LogWarning("GameConfigData is not assigned in CharacterStatsData");
         }
 
-        // Validation methods
         public bool IsValid()
         {
             return playerStats != null && aiStats != null && gameConfig != null;

@@ -73,7 +73,7 @@ namespace Duc
                 }
                 if (!foundHit && m_EnableDebugLogs)
                 {
-                    Debug.LogWarning("Player Animator missing float parameter 'GetSlappedNumber'.");
+
                 }
             }
         }
@@ -87,7 +87,6 @@ namespace Duc
                 
             }
 
-            // Subscribe to victory event to play celebration animation
             var persistentGameManager = PersistentGameManager.Instance;
             if (persistentGameManager != null)
             {
@@ -182,8 +181,6 @@ namespace Duc
             SetPlayerControls(m_EnableControlsInDead);
             
             PlayDeathAnimation();
-            
-            // Ragdoll removed per request
             
             TriggerGameOver();
         }
@@ -304,13 +301,11 @@ namespace Duc
         {
             if (m_Animator == null) return;
 
-            // Reset combat flags
             m_Animator.SetBool(m_HashIsWaiting, false);
             m_Animator.SetBool(m_HashIsStartingSlap, false);
             m_Animator.SetBool(m_HashIsSlapMega, false);
             m_Animator.SetBool(m_HashIsSlapSpecial, false);
 
-            // Try to find a victory boolean parameter
             string[] victoryBoolNames = { "IsVictory", "Victory", "IsWin", "StartVictory" };
             foreach (var name in victoryBoolNames)
             {
@@ -324,7 +319,6 @@ namespace Duc
                 }
             }
 
-            // Optional variant selection if available
             string[] victoryNumNames = { "VictoryNumber", "VictoryIndex" };
             foreach (var numName in victoryNumNames)
             {
@@ -333,7 +327,6 @@ namespace Duc
                     if ((p.type == AnimatorControllerParameterType.Int || p.type == AnimatorControllerParameterType.Float) && p.name == numName)
                     {
                         int maxVariants = 12;
-                        // Try get from PlayerStatsData if present
                         int configured = 12;
                         if (m_PlayerHealth != null)
                         {
@@ -357,28 +350,20 @@ namespace Duc
 
         private void OnPlayerVictory()
         {
-            // Force to Idle state then play victory anim to avoid conflicting flags
             SetState(CharacterState.Idle);
             PlayVictoryAnimation();
         }
 
         private IEnumerator TriggerSlapAnimationDelayed()
         {
-            // Wait one frame to ensure SlapNumber is properly set
             yield return null;
             
             if (m_Animator != null)
             {
-                // Double check it's still player's turn
                 var turnManager = FindObjectOfType<TurnManager>();
                 if (turnManager != null && turnManager.IsPlayerTurn())
                 {
                     m_Animator.SetBool(m_HashIsStartingSlap, true);
-                    
-                    if (m_EnableDebugLogs)
-                    {
-                        Debug.Log($"Player - Triggered IsStartingSlap with SlapNumber: {m_Animator.GetFloat(m_HashSlapNumber)}");
-                    }
                 }
             }
         }
@@ -392,7 +377,6 @@ namespace Duc
             ForceSetState(CharacterState.Dead);
         }
 
-        // Animation Event hook: call from the slap animation when the hit connects
         public void OnSlapHit()
         {
             var turnManager = FindObjectOfType<TurnManager>();

@@ -4,9 +4,6 @@ using System.Linq;
 
 namespace Duc
 {
-    /// <summary>
-    /// Interface for game managers
-    /// </summary>
     public interface IGameManager
     {
         void Initialize();
@@ -14,9 +11,6 @@ namespace Duc
         bool IsInitialized { get; }
     }
 
-    /// <summary>
-    /// Interface for data managers
-    /// </summary>
     public interface IDataManager
     {
         void LoadData();
@@ -24,9 +18,6 @@ namespace Duc
         bool IsDataLoaded { get; }
     }
 
-    /// <summary>
-    /// Interface for persistent managers
-    /// </summary>
     public interface IPersistentManager
     {
         void SavePersistentData();
@@ -34,9 +25,6 @@ namespace Duc
         void ResetData();
     }
 
-    /// <summary>
-    /// Base class for all managers with common functionality
-    /// </summary>
     public abstract class BaseManager : MonoBehaviour, IGameManager
     {
         [Header("Manager Settings")]
@@ -64,11 +52,6 @@ namespace Duc
             
             OnInitialize();
             IsInitialized = true;
-            
-            if (m_EnableDebugLogs)
-            {
-                Debug.Log($"{GetType().Name} initialized successfully");
-            }
         }
         
         public virtual void Cleanup()
@@ -77,20 +60,12 @@ namespace Duc
             
             OnCleanup();
             IsInitialized = false;
-            
-            if (m_EnableDebugLogs)
-            {
-                Debug.Log($"{GetType().Name} cleaned up");
-            }
         }
         
         protected abstract void OnInitialize();
         protected abstract void OnCleanup();
     }
 
-    /// <summary>
-    /// Enhanced singleton manager with better error handling
-    /// </summary>
     public abstract class EnhancedSingletonManager<T> : BaseManager where T : MonoBehaviour
     {
         private static T s_Instance;
@@ -103,7 +78,6 @@ namespace Duc
             {
                 if (s_IsApplicationQuitting)
                 {
-                    Debug.LogWarning($"Instance of {typeof(T)} was requested during application quit. Returning null.");
                     return null;
                 }
                 
@@ -118,8 +92,6 @@ namespace Duc
                             GameObject singletonObject = new GameObject($"{typeof(T).Name}");
                             s_Instance = singletonObject.AddComponent<T>();
                             DontDestroyOnLoad(singletonObject);
-                            
-                            Debug.Log($"Created new singleton instance of {typeof(T).Name}");
                         }
                     }
                     
@@ -132,7 +104,6 @@ namespace Duc
         {
             if (s_Instance != null && s_Instance != this)
             {
-                Debug.LogWarning($"Multiple instances of {typeof(T).Name} detected. Destroying duplicate.");
                 Destroy(gameObject);
                 return;
             }
@@ -160,20 +131,10 @@ namespace Duc
 
     }
 
-    /// <summary>
-    /// Static utility class for singleton management
-    /// </summary>
     public static class SingletonCleanup
     {
-        /// <summary>
-        /// Cleanup all singleton instances
-        /// Call this when application is quitting
-        /// </summary>
         public static void CleanupAllSingletons()
         {
-            Debug.Log("Cleaning up all singleton instances...");
-            
-            // Find and cleanup all singleton managers
             var allSingletons = UnityEngine.Object.FindObjectsOfType<MonoBehaviour>()
                 .Where(mb => mb is IGameManager)
                 .Cast<IGameManager>()

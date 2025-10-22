@@ -81,7 +81,6 @@ namespace Duc
         public CameraSystemSettings cameraSystem = new CameraSystemSettings();
         public GameplaySettings gameplay = new GameplaySettings();
 
-        // Convenience getters for backward compatibility
         public int BaseReward => coinSystem.baseReward;
         public int RewardIncrement => coinSystem.rewardIncrement;
         public int MaxReward => coinSystem.maxReward;
@@ -96,7 +95,6 @@ namespace Duc
         public float CameraShakeIntensity => cameraSystem.shakeIntensity;
         public float CameraShakeDuration => cameraSystem.shakeDuration;
 
-        // Legacy methods for backward compatibility
         public int CalculateReward(int victoryCount) => coinSystem.CalculateReward(victoryCount);
         public int CalculateHealthUpgradePrice(int upgradeCount) => upgradeSystem.CalculateHealthUpgradePrice(upgradeCount);
         public int CalculatePowerUpgradePrice(int upgradeCount) => upgradeSystem.CalculatePowerUpgradePrice(upgradeCount);

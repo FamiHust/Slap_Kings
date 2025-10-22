@@ -38,7 +38,6 @@ namespace Duc
 
         private void OnTapPerformed(InputAction.CallbackContext ctx)
         {
-            // Only allow tap after game started and during player's turn
             var gameManager = GameManager.Get();
             bool gameStarted = gameManager != null && gameManager.HasGameStarted();
             if (gameStarted && m_TurnManager != null && m_TurnManager.IsPlayerTurn())

@@ -2,9 +2,6 @@ using UnityEngine;
 
 namespace Duc
 {
-    /// <summary>
-    /// Interface for character statistics data
-    /// </summary>
     public interface ICharacterStats
     {
         int BaseMaxHealth { get; }
@@ -18,9 +15,6 @@ namespace Duc
         float AttackDuration { get; }
     }
 
-    /// <summary>
-    /// Base class for character statistics data
-    /// </summary>
     public abstract class BaseCharacterStats : ScriptableObject, ICharacterStats
     {
         [System.Serializable]
@@ -36,7 +30,7 @@ namespace Duc
             
             protected virtual int GetHealthBonus(int level)
             {
-                return 0; // Override in derived classes
+                return 0;
             }
         }
 
@@ -75,7 +69,6 @@ namespace Duc
         public KnockbackSettings knockback = new KnockbackSettings();
         public AnimationSettings animation = new AnimationSettings();
 
-        // ICharacterStats implementation
         public int BaseMaxHealth => health.baseMaxHealth;
         public float KnockbackForce => knockback.force;
         public float KnockbackMultiplier => knockback.multiplier;
@@ -86,7 +79,6 @@ namespace Duc
         public int SlapVariantCount => animation.slapVariantCount;
         public float AttackDuration => animation.attackDuration;
 
-        // Abstract methods for derived classes
         public abstract int GetMaxHealthWithUpgrades(int upgradeCount);
         public abstract int GetScaledHealth(int level);
     }

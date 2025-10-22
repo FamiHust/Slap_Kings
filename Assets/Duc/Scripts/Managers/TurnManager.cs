@@ -53,8 +53,6 @@ namespace Duc
 
         public void StartPlayerTurn()
         {
-            Debug.Log("StartPlayerTurn() called");
-            
             if (m_IsGameOver) return;
             
             m_IsPlayerTurn = true;
@@ -81,18 +79,14 @@ namespace Duc
                 m_PowerMeter.StartMeter();
             }
 
-            // Stop counter system when player turn starts
             if (m_CounterSystem != null)
             {
-                Debug.Log("Stopping counter system for player turn");
                 m_CounterSystem.StopCounter();
             }
         }
 
         public void StartAITurn()
         {
-            Debug.Log("StartAITurn() called");
-            
             if (m_IsGameOver) return;
             
             m_IsPlayerTurn = false;
@@ -119,7 +113,6 @@ namespace Duc
                 m_PowerMeter.gameObject.SetActive(false);
             }
 
-            // Start counter system immediately when AI turn starts
             if (m_CounterSystem != null)
             {
                 m_CounterSystem.StartCounter();
@@ -134,10 +127,7 @@ namespace Duc
 
         private IEnumerator AITurnSequence()
         {
-            Debug.Log("AITurnSequence started");
-            
             yield return new WaitForSeconds(m_AIWaitTime);
-            Debug.Log("AI wait time finished, starting attack");
             
             if (m_AIStateMachine != null)
             {
@@ -152,7 +142,6 @@ namespace Duc
             }
             
             yield return new WaitForSeconds(m_AIAttackTime);
-            Debug.Log("AITurnSequence finished, calling StartPlayerTurn()");
             StartPlayerTurn();
         }
 
@@ -198,7 +187,6 @@ namespace Duc
                     m_TurnCoroutine = null;
                 }
 
-                // Hide both bars when game is over
                 if (m_PowerMeter != null)
                 {
                     m_PowerMeter.gameObject.SetActive(false);
@@ -327,13 +315,10 @@ namespace Duc
 
             int damage = GetScaledAIDamage();
             
-            // Apply counter reduction if counter was captured
             if (m_CounterSystem != null && m_CounterSystem.IsCounterCaptured)
             {
-                float counterValue = m_CounterSystem.GetCounterValue(); // Already 0-0.9 range
+                float counterValue = m_CounterSystem.GetCounterValue(); 
                 damage = m_CounterSystem.ApplyCounterReduction(damage, counterValue);
-                
-                Debug.Log($"AI Damage after counter: {damage} (Counter value: {counterValue:F2})");
             }
             
             playerHealth.TakeDamage(damage);

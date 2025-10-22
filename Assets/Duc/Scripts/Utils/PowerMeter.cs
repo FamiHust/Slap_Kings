@@ -15,7 +15,7 @@ namespace Duc
 
         [Header("Settings")]
         [SerializeField] private bool isActive = false;
-        [SerializeField] private bool loopPingPong = true;  
+        [SerializeField] private bool loopPingPong = true;
         private float m_AnimSpeed = 1f;     
         private int m_MinPower = 0;        
         private int m_MaxPower = 90;        
@@ -74,15 +74,22 @@ namespace Duc
             var dataManager = DataManager.Get();
             if (persistentData == null || dataManager == null) return;
             int upgrades = persistentData.GetPowerUpgradeCount();
+            int currentLevel = persistentData.GetLevelCount();
             var playerStats = DataManager.Get()?.PlayerStats;
 
             if (playerStats != null)
             {
                 m_MinPower = playerStats.power.GetMinPowerWithUpgrades(upgrades);
                 m_MaxPower = playerStats.power.GetMaxPowerWithUpgrades(upgrades);
-                // Apply animation settings from PlayerStatsData
-                m_AnimSpeed = playerStats.power.animSpeed;
+                
+                // Apply animation settings from PlayerStatsData with boss level bonus
+                m_AnimSpeed = dataManager.GetPowerMeterSpeedWithBossBonus(currentLevel);
                 loopPingPong = playerStats.power.loopPingPong;
+                
+                if (m_EnableDebugLogs && dataManager.IsBossLevel(currentLevel))
+                {
+                    Debug.Log($"Boss Level {currentLevel}: PowerMeter speed increased to {m_AnimSpeed}");
+                }
             }
         }
 
@@ -171,7 +178,6 @@ namespace Duc
 
         protected override void OnInitialize()
         {
-            // PowerMeter specific initialization
             if (m_PowerBarAnim != null)
                 m_AnimState = m_PowerBarAnim[clipName];
                 
@@ -189,7 +195,6 @@ namespace Duc
 
         protected override void OnCleanup()
         {
-            // PowerMeter specific cleanup
             var persistentData = PersistentDataManager.Instance;
             if (persistentData != null)
             {

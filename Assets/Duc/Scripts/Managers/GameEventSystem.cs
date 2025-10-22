@@ -4,9 +4,6 @@ using System.Collections.Generic;
 
 namespace Duc
 {
-    /// <summary>
-    /// Centralized event system for loose coupling
-    /// </summary>
     public class GameEventSystem : MonoBehaviour
     {
         private static GameEventSystem s_Instance;
@@ -38,10 +35,7 @@ namespace Duc
                 Destroy(gameObject);
             }
         }
-        
-        /// <summary>
-        /// Subscribe to an event
-        /// </summary>
+
         public void Subscribe<T>(Action<T> handler) where T : IGameEvent
         {
             Type eventType = typeof(T);
@@ -54,9 +48,6 @@ namespace Duc
             s_EventHandlers[eventType].Add(handler);
         }
         
-        /// <summary>
-        /// Unsubscribe from an event
-        /// </summary>
         public void Unsubscribe<T>(Action<T> handler) where T : IGameEvent
         {
             Type eventType = typeof(T);
@@ -71,10 +62,7 @@ namespace Duc
                 }
             }
         }
-        
-        /// <summary>
-        /// Publish an event
-        /// </summary>
+
         public void Publish<T>(T gameEvent) where T : IGameEvent
         {
             Type eventType = typeof(T);
@@ -89,32 +77,23 @@ namespace Duc
                     }
                     catch (Exception e)
                     {
-                        Debug.LogError($"Error handling event {eventType.Name}: {e.Message}");
+                        
                     }
                 }
             }
         }
-        
-        /// <summary>
-        /// Clear all event handlers
-        /// </summary>
+
         public void Clear()
         {
             s_EventHandlers.Clear();
         }
     }
 
-    /// <summary>
-    /// Interface for game events
-    /// </summary>
     public interface IGameEvent
     {
         DateTime Timestamp { get; }
     }
 
-    /// <summary>
-    /// Base class for game events
-    /// </summary>
     public abstract class GameEvent : IGameEvent
     {
         public DateTime Timestamp { get; private set; }
@@ -125,9 +104,6 @@ namespace Duc
         }
     }
 
-    /// <summary>
-    /// Specific game events
-    /// </summary>
     public class PlayerHealthChangedEvent : GameEvent
     {
         public int CurrentHealth { get; }
@@ -207,9 +183,6 @@ namespace Duc
         Victory
     }
 
-    /// <summary>
-    /// Extension methods for easier event handling
-    /// </summary>
     public static class GameEventExtensions
     {
         public static void SubscribeToEvent<T>(this MonoBehaviour component, Action<T> handler) where T : IGameEvent

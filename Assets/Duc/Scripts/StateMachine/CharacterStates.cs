@@ -4,9 +4,6 @@ using System.Collections.Generic;
 
 namespace Duc
 {
-    /// <summary>
-    /// Interface for character states
-    /// </summary>
     public interface ICharacterState
     {
         CharacterState StateType { get; }
@@ -16,9 +13,6 @@ namespace Duc
         bool CanTransitionTo(CharacterState targetState);
     }
 
-    /// <summary>
-    /// Base state implementation
-    /// </summary>
     public abstract class BaseCharacterState : ICharacterState
     {
         public abstract CharacterState StateType { get; }
@@ -40,13 +34,10 @@ namespace Duc
 
         public virtual bool CanTransitionTo(CharacterState targetState)
         {
-            return true; // Default: allow all transitions
+            return true; 
         }
     }
 
-    /// <summary>
-    /// State factory for creating state instances
-    /// </summary>
     public static class StateFactory
     {
         private static Dictionary<CharacterState, ICharacterState> s_StateInstances = new Dictionary<CharacterState, ICharacterState>();
@@ -80,16 +71,12 @@ namespace Duc
         }
     }
 
-    /// <summary>
-    /// Concrete state implementations
-    /// </summary>
     public class IdleState : BaseCharacterState
     {
         public override CharacterState StateType => CharacterState.Idle;
 
         public override void OnEnter(StateMachine stateMachine)
         {
-            // Use reflection to call protected methods
             var method = typeof(StateMachine).GetMethod("OnEnterIdle", 
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             method?.Invoke(stateMachine, null);
@@ -180,7 +167,7 @@ namespace Duc
 
         public override bool CanTransitionTo(CharacterState targetState)
         {
-            return false; // Dead state cannot transition to any other state
+            return false; 
         }
     }
 }
