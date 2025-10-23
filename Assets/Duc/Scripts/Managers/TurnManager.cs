@@ -110,7 +110,7 @@ namespace Duc
             if (m_PowerMeter != null)
             {
                 m_PowerMeter.StopMeter();
-                m_PowerMeter.gameObject.SetActive(false);
+                m_PowerMeter.EndTurnHide();
             }
 
             if (m_CounterSystem != null)

@@ -15,9 +15,9 @@ MonoBehaviour:
   health:
     baseMaxHealth: 200
   knockback:
-    force: 10
-    multiplier: 1
-    direction: {x: 0, y: 0.1, z: 0}
+    force: 0.01
+    multiplier: 0.1
+    direction: {x: 1, y: 3, z: 2.5}
     useAllRigidbodies: 1
     rigidbodyForceMultiplier: 1
     duration: 0.5

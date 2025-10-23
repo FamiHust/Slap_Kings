@@ -77,7 +77,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: a69d4ecf6eaf4424fa957426936209c2, type: 2}
+  m_Mesh: {fileID: 0}
   m_Bones:
   - {fileID: 6510486094360121483}
   - {fileID: 3872588322688537171}
@@ -1237,6 +1237,7 @@ GameObject:
   - component: {fileID: 3216695347416817282}
   - component: {fileID: 7578791192017036324}
   - component: {fileID: 7521935904712593690}
+  - component: {fileID: 1114908282281570043}
   m_Layer: 0
   m_Name: UK10
   m_TagString: Untagged
@@ -1258,6 +1259,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6510486094360121483}
+  - {fileID: 956664194293359410}
   - {fileID: 2507238179727544198}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
@@ -1315,6 +1317,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ActorType: 1
   m_EnableDebugLogs: 0
+--- !u!114 &1114908282281570043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2729854586235688990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b4203273ef657499aab1cea7f67985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AppearanceData: {fileID: 11400000, guid: a3223e472792f3c4dad966c2a644ff0b, type: 2}
+  m_HeadRenderer: {fileID: 208629944464191417}
+  m_BodyRenderer: {fileID: 896978987381200343}
+  m_EnableDebugLogs: 1
+  m_AutoUpdateOnStart: 1
+  m_HealthThreshold: 0.5
 --- !u!1 &2944336898231069354
 GameObject:
   m_ObjectHideFlags: 0
@@ -3440,6 +3460,37 @@ Transform:
   - {fileID: 4760548013389355533}
   m_Father: {fileID: 1564612537561191563}
   m_LocalEulerAnglesHint: {x: 0.000045389934, y: -0.005642718, z: -0.19453633}
+--- !u!1 &7359051976292595914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 956664194293359410}
+  m_Layer: 0
+  m_Name: HitEffect_Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &956664194293359410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7359051976292595914}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 1.486, z: 0.21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5679402905696016454}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7507404634888154250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3804,7 +3855,7 @@ GameObject:
   - component: {fileID: 2507238179727544198}
   - component: {fileID: 896978987381200343}
   m_Layer: 0
-  m_Name: slapUkBOSS
+  m_Name: Body_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3872,7 +3923,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 683a710dd8abf2d489cd33003500d89d, type: 2}
+  m_Mesh: {fileID: 0}
   m_Bones:
   - {fileID: 6510486094360121483}
   - {fileID: 3872588322688537171}

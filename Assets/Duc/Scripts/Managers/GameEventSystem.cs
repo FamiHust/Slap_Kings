@@ -152,6 +152,32 @@ namespace Duc
         }
     }
 
+    public class CameraShakeEvent : GameEvent
+    {
+        public float Intensity { get; }
+        public float Duration { get; }
+        public bool ShakeFOV { get; }
+        
+        public CameraShakeEvent(float intensity, float duration, bool shakeFOV = true)
+        {
+            Intensity = intensity;
+            Duration = duration;
+            ShakeFOV = shakeFOV;
+        }
+    }
+
+    public class CameraFOVShakeEvent : GameEvent
+    {
+        public float FOVAmount { get; }
+        public float Duration { get; }
+        
+        public CameraFOVShakeEvent(float fovAmount, float duration)
+        {
+            FOVAmount = fovAmount;
+            Duration = duration;
+        }
+    }
+
     public class TurnChangedEvent : GameEvent
     {
         public bool IsPlayerTurn { get; }

@@ -50,10 +50,19 @@ namespace Duc
             {
                 float baseSpeed = animSpeed;
                 
-                if (bossData != null && bossData.IsBossLevel(level))
+                if (bossData != null)
                 {
-                    float speedBonus = bossData.GetSpeedBonus(level);
-                    return baseSpeed + speedBonus;
+                    // Treat boss speed as multiplier (1.0 = no change)
+                    float speedMultiplier = bossData.GetSpeedMultiplier(level);
+                    float finalSpeed = baseSpeed * Mathf.Max(0f, speedMultiplier);
+                    
+                    // Debug log to see speed changes
+                    if (bossData.IsBossLevel(level))
+                    {
+                        Debug.Log($"[PlayerStatsData] Boss Level {level}: Base Speed = {baseSpeed}, Multiplier = {speedMultiplier}, Final Speed = {finalSpeed}");
+                    }
+                    
+                    return finalSpeed;
                 }
                 
                 return baseSpeed;

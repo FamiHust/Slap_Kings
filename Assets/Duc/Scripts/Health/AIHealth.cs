@@ -54,6 +54,11 @@ namespace Duc
             return m_StateMachine;
         }
 
+        protected override ICharacterStats GetCharacterStats()
+        {
+            return m_AIStatsData;
+        }
+
         protected override void HandleDeath()
         {
             var gameManager = GameManager.Get();

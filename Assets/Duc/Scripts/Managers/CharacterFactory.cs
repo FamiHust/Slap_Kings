@@ -109,6 +109,11 @@ namespace Duc
             if (appearanceManager == null)
             {
                 appearanceManager = ai.AddComponent<AIAppearanceManager>();
+                Debug.Log("CharacterFactory: Added AIAppearanceManager to AI");
+            }
+            else
+            {
+                Debug.Log("CharacterFactory: AIAppearanceManager already exists on AI");
             }
             
             // Set appearance data from AIStatsData if available
@@ -116,6 +121,11 @@ namespace Duc
             if (dataManager != null && dataManager.AIStats != null && dataManager.AIStats.appearanceData != null)
             {
                 appearanceManager.SetAppearanceData(dataManager.AIStats.appearanceData);
+                Debug.Log("CharacterFactory: Set appearance data for AI");
+            }
+            else
+            {
+                Debug.LogWarning("CharacterFactory: No appearance data available for AI");
             }
         }
 

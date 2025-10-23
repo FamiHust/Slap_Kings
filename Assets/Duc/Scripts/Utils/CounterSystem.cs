@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 namespace Duc
 {
@@ -19,12 +20,19 @@ namespace Duc
         [SerializeField] private float m_MinCounter;        
         [SerializeField] private float m_MaxCounter;
         
+        [Header("DOTween Scale Animation")]
+        [SerializeField] private float m_ScaleInDuration = 0.3f;
+        [SerializeField] private float m_ScaleOutDuration = 0.2f;
+        [SerializeField] private Ease m_ScaleInEase = Ease.OutBack;
+        [SerializeField] private Ease m_ScaleOutEase = Ease.InBack;
+        
         public bool IsActive => isActive;
         public bool IsCounterCaptured => !isActive && m_CounterValue > 0f;        
 
         private AnimationState m_AnimState;
         private int m_Direction = 1;        
         private float m_CounterValue = 0f;
+        private Tween m_ScaleTween;
         
         public System.Action<float> OnCounterAttempted; 
         public System.Action OnCounterStarted;
@@ -90,7 +98,7 @@ namespace Duc
         }
 
         public void StartCounter()
-        {            
+        {
             if (m_AnimState == null && m_CounterBarAnim != null)
                 m_AnimState = m_CounterBarAnim[clipName];
 
@@ -100,23 +108,38 @@ namespace Duc
             }
 
             ShowCounterBar();
+
+            // Kill existing scale tween
+            if (m_ScaleTween != null)
+            {
+                m_ScaleTween.Kill();
+            }
+
+            // Set initial scale to 0
+            transform.localScale = Vector3.zero;
             
-            isActive = true;
-            m_Direction = 1;
-            m_AnimState.speed = 0f;  
-            m_AnimState.time = 0f;
-            m_CounterBarAnim.Play(clipName);
+            // Scale in animation
+            m_ScaleTween = transform.DOScale(Vector3.one, m_ScaleInDuration)
+                .SetEase(m_ScaleInEase)
+                .OnComplete(() => {
+                    // Start the actual counter animation after scale in
+                    isActive = true;
+                    m_Direction = 1;
+                    m_AnimState.speed = 0f;  
+                    m_AnimState.time = 0f;
+                    m_CounterBarAnim.Play(clipName);
 
-            m_CounterBarAnim.Sample();
-            float normalized = m_AnimState.time / m_AnimState.length;
-            float triangle = 1f - Mathf.Abs(normalized * 2f - 1f);
-            float minC = Mathf.Min(m_MinCounter, m_MaxCounter);
-            float maxC = Mathf.Max(m_MinCounter, m_MaxCounter);
-            m_CounterValue = Mathf.Clamp(triangle * (maxC - minC) + minC, minC, maxC);
-            if (m_CounterText != null)
-                m_CounterText.text = m_CounterValue.ToString();
+                    m_CounterBarAnim.Sample();
+                    float normalized = m_AnimState.time / m_AnimState.length;
+                    float triangle = 1f - Mathf.Abs(normalized * 2f - 1f);
+                    float minC = Mathf.Min(m_MinCounter, m_MaxCounter);
+                    float maxC = Mathf.Max(m_MinCounter, m_MaxCounter);
+                    m_CounterValue = Mathf.Clamp(triangle * (maxC - minC) + minC, minC, maxC);
+                    if (m_CounterText != null)
+                        m_CounterText.text = m_CounterValue.ToString();
 
-            OnCounterStarted?.Invoke();
+                    OnCounterStarted?.Invoke();
+                });
         }
 
         public void StopCounter()
@@ -128,6 +151,22 @@ namespace Duc
 
             HideCounterBar();
             OnCounterEnded?.Invoke();
+        }
+
+        public void EndTurnHide()
+        {
+            // Kill existing scale tween
+            if (m_ScaleTween != null)
+            {
+                m_ScaleTween.Kill();
+            }
+
+            // Scale out animation then hide
+            m_ScaleTween = transform.DOScale(Vector3.zero, m_ScaleOutDuration)
+                .SetEase(m_ScaleOutEase)
+                .OnComplete(() => {
+                    HideCounterBar();
+                });
         }
 
         private void AttemptCounter()
@@ -188,7 +227,11 @@ namespace Duc
 
         protected override void OnCleanup()
         {
-           
+            // Kill any active tween
+            if (m_ScaleTween != null)
+            {
+                m_ScaleTween.Kill();
+            }
         }
     }
 }

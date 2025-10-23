@@ -18,6 +18,10 @@ namespace Duc
             public Mesh headMesh;
             public Material headMaterial;
             
+            [Header("Head Slapped Mesh (for low health)")]
+            public Mesh headSlappedMesh;
+            public Material headSlappedMaterial;
+            
             [Header("Body Mesh")]
             public Mesh bodyMesh;
             public Material bodyMaterial;
@@ -58,12 +62,9 @@ namespace Duc
                 }
             }
             
-            return m_DefaultAppearance; // Fallback to default
+            return m_DefaultAppearance; 
         }
         
-        /// <summary>
-        /// Lấy tất cả appearance sets cho level hiện tại
-        /// </summary>
         public List<AppearanceSet> GetAllAppearancesForLevel(int level)
         {
             List<AppearanceSet> result = new List<AppearanceSet>();
@@ -78,26 +79,17 @@ namespace Duc
             
             return result;
         }
-        
-        /// <summary>
-        /// Kiểm tra xem có appearance nào cho level này không
-        /// </summary>
+
         public bool HasAppearanceForLevel(int level)
         {
             return GetAppearanceForLevel(level) != null;
         }
-        
-        /// <summary>
-        /// Lấy tổng số appearance sets được cấu hình
-        /// </summary>
+ 
         public int GetAppearanceCount()
         {
             return m_AppearanceSets.Count;
         }
-        
-        /// <summary>
-        /// Validate dữ liệu appearance
-        /// </summary>
+
         [ContextMenu("Validate Appearance Data")]
         public void ValidateAppearanceData()
         {
@@ -115,6 +107,11 @@ namespace Duc
                     Debug.LogWarning($"Appearance '{appearance.setName}' has no head mesh assigned!");
                 }
                 
+                if (appearance.headSlappedMesh == null)
+                {
+                    Debug.LogWarning($"Appearance '{appearance.setName}' has no head slapped mesh assigned!");
+                }
+                
                 if (appearance.bodyMesh == null)
                 {
                     Debug.LogWarning($"Appearance '{appearance.setName}' has no body mesh assigned!");
@@ -125,8 +122,6 @@ namespace Duc
                     Debug.LogWarning($"Appearance '{appearance.setName}' has invalid level range: {appearance.startLevel}-{appearance.endLevel}");
                 }
             }
-            
-            Debug.Log($"Appearance data validated. Total sets: {m_AppearanceSets.Count}");
         }
     }
 }

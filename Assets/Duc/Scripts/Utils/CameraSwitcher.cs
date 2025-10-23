@@ -1,6 +1,7 @@
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.UI;
+using Duc.Managers;
 
 namespace Duc
 {
@@ -24,6 +25,18 @@ namespace Duc
             m_Cam2.Priority = 0;
             
             SetupCameraTransitions();
+            RegisterCamerasWithShakeManager();
+        }
+        
+        private void RegisterCamerasWithShakeManager()
+        {
+            if (CameraShakeManager.Instance != null)
+            {
+                if (m_Cam1 != null)
+                    CameraShakeManager.Instance.AddCamera(m_Cam1);
+                if (m_Cam2 != null)
+                    CameraShakeManager.Instance.AddCamera(m_Cam2);
+            }
         }
         
         private void SetupCameraTransitions()
@@ -114,6 +127,54 @@ namespace Duc
         public (float transitionSpeed, float blendTime) GetTransitionSettings()
         {
             return (m_TransitionSpeed, m_BlendTime);
+        }
+        
+        // Camera Zoom Shake Methods
+        public void TriggerCameraZoomShake(float zoomInAmount = 3f, float zoomOutAmount = 5f, float duration = 0.2f)
+        {
+            if (CameraShakeManager.Instance != null)
+            {
+                CameraShakeManager.Instance.ZoomShakeAllCameras(zoomInAmount, zoomOutAmount, duration);
+            }
+        }
+        
+        public void TriggerFOVShake(float fovAmount = 3f, float duration = 0.2f)
+        {
+            if (CameraShakeManager.Instance != null)
+            {
+                this.PublishEvent(new CameraFOVShakeEvent(fovAmount, duration));
+            }
+        }
+        
+        public void TriggerActiveCameraZoomShake(float zoomInAmount = 3f, float zoomOutAmount = 5f, float duration = 0.2f)
+        {
+            if (CameraShakeManager.Instance != null)
+            {
+                CinemachineVirtualCamera activeCamera = isCam1Active ? m_Cam1 : m_Cam2;
+                if (activeCamera != null)
+                {
+                    CameraShakeManager.Instance.ZoomShakeCamera(activeCamera, zoomInAmount, zoomOutAmount, duration);
+                }
+            }
+        }
+        
+        // Giữ lại cho tương thích
+        public void TriggerCameraShake(float intensity = 1f, float duration = 0.5f)
+        {
+            TriggerCameraZoomShake(intensity * 3f, intensity * 5f, duration);
+        }
+        
+        public void TriggerActiveCameraShake(float intensity = 1f, float duration = 0.5f)
+        {
+            TriggerActiveCameraZoomShake(intensity * 3f, intensity * 5f, duration);
+        }
+        
+        public void StopAllCameraShakes()
+        {
+            if (CameraShakeManager.Instance != null)
+            {
+                CameraShakeManager.Instance.StopAllShakes();
+            }
         }
     }
 }

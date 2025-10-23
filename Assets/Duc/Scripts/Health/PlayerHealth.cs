@@ -99,5 +99,10 @@ namespace Duc
         {
             return m_StateMachine;
         }
+
+        protected override ICharacterStats GetCharacterStats()
+        {
+            return m_PlayerStatsData;
+        }
     }
 }

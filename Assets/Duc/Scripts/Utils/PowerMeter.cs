@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 namespace Duc
 {
@@ -12,6 +13,12 @@ namespace Duc
 
         [Header("UI")]
         [SerializeField] private TextMeshProUGUI m_PowerText;
+        
+        [Header("DOTween Scale Animation")]
+        [SerializeField] private float m_ScaleInDuration = 0.3f;
+        [SerializeField] private float m_ScaleOutDuration = 0.2f;
+        [SerializeField] private Ease m_ScaleInEase = Ease.OutBack;
+        [SerializeField] private Ease m_ScaleOutEase = Ease.InBack;
 
         [Header("Settings")]
         [SerializeField] private bool isActive = false;
@@ -23,6 +30,7 @@ namespace Duc
         private AnimationState m_AnimState;
         private int m_Direction = 1;        
         private int m_PowerValue = 0;
+        private Tween m_ScaleTween;
 
         protected override void Awake()
         {
@@ -140,20 +148,35 @@ namespace Duc
                 return;
             }
 
-            isActive = true;
-            m_Direction = 1;
-            m_AnimState.speed = 0f;  
-            m_AnimState.time = 0f;
-            m_PowerBarAnim.Play(clipName);
+            // Kill existing scale tween
+            if (m_ScaleTween != null)
+            {
+                m_ScaleTween.Kill();
+            }
 
-            m_PowerBarAnim.Sample();
-            float normalized = m_AnimState.time / m_AnimState.length;
-            float triangle = 1f - Mathf.Abs(normalized * 2f - 1f);
-            int minP = Mathf.Min(m_MinPower, m_MaxPower);
-            int maxP = Mathf.Max(m_MinPower, m_MaxPower);
-            m_PowerValue = Mathf.Clamp(Mathf.RoundToInt(triangle * (maxP - minP) + minP), minP, maxP);
-            if (m_PowerText != null)
-                m_PowerText.text = m_PowerValue.ToString();
+            // Set initial scale to 0
+            transform.localScale = Vector3.zero;
+            
+            // Scale in animation
+            m_ScaleTween = transform.DOScale(Vector3.one, m_ScaleInDuration)
+                .SetEase(m_ScaleInEase)
+                .OnComplete(() => {
+                    // Start the actual meter animation after scale in
+                    isActive = true;
+                    m_Direction = 1;
+                    m_AnimState.speed = 0f;  
+                    m_AnimState.time = 0f;
+                    m_PowerBarAnim.Play(clipName);
+
+                    m_PowerBarAnim.Sample();
+                    float normalized = m_AnimState.time / m_AnimState.length;
+                    float triangle = 1f - Mathf.Abs(normalized * 2f - 1f);
+                    int minP = Mathf.Min(m_MinPower, m_MaxPower);
+                    int maxP = Mathf.Max(m_MinPower, m_MaxPower);
+                    m_PowerValue = Mathf.Clamp(Mathf.RoundToInt(triangle * (maxP - minP) + minP), minP, maxP);
+                    if (m_PowerText != null)
+                        m_PowerText.text = m_PowerValue.ToString();
+                });
         }
 
         public void StopMeter()
@@ -163,7 +186,23 @@ namespace Duc
 
             if (m_PowerBarAnim != null)
                 m_PowerBarAnim.Sample();
+        }
 
+        public void EndTurnHide()
+        {
+            // Kill existing scale tween
+            if (m_ScaleTween != null)
+            {
+                m_ScaleTween.Kill();
+            }
+
+            // Scale out animation then disable
+            m_ScaleTween = transform.DOScale(Vector3.zero, m_ScaleOutDuration)
+                .SetEase(m_ScaleOutEase)
+                .OnComplete(() =>
+                {
+                    gameObject.SetActive(false);
+                });
         }
 
         public int GetPowerValue()
@@ -195,6 +234,12 @@ namespace Duc
 
         protected override void OnCleanup()
         {
+            // Kill any active tween
+            if (m_ScaleTween != null)
+            {
+                m_ScaleTween.Kill();
+            }
+            
             var persistentData = PersistentDataManager.Instance;
             if (persistentData != null)
             {

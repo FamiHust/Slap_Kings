@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: GameConfigData
   m_EditorClassIdentifier: 
   coinSystem:
-    baseReward: 100
-    rewardIncrement: 50
+    baseReward: 50
+    rewardIncrement: 20
     maxReward: 1000
-    loseReward: 25
+    loseReward: 10
   upgradeSystem:
     baseHealthPrice: 20
     healthPriceIncrement: 10

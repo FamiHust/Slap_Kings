@@ -15,9 +15,9 @@ MonoBehaviour:
   health:
     baseMaxHealth: 200
   knockback:
-    force: 0.8
-    multiplier: 1
-    direction: {x: 0, y: 0.1, z: -1}
+    force: 0.001
+    multiplier: 0.2
+    direction: {x: -0.1, y: 0.5, z: -0.5}
     useAllRigidbodies: 1
     rigidbodyForceMultiplier: 1
     duration: 0.5
@@ -29,8 +29,8 @@ MonoBehaviour:
     baseMaxHealth: 200
     healthPerUpgrade: 10
   power:
-    baseMinPower: 0
-    baseMaxPower: 90
+    baseMinPower: 10
+    baseMaxPower: 100
     minPowerPerUpgrade: 5
     maxPowerPerUpgrade: 10
     damagePerPowerUpgrade: 1
@@ -41,3 +41,4 @@ MonoBehaviour:
     enableInWaiting: 0
     enableInAttacking: 0
     enableInDead: 0
+  bossLevelData: {fileID: 0}

@@ -17,6 +17,8 @@ namespace Duc
         public System.Action OnPlayerDefeat;
         public System.Action OnGamePause;
         public System.Action OnGameResume;
+        public System.Action OnHealthUpgradePurchased;
+        public System.Action OnPowerUpgradePurchased;
         
         public static PersistentGameManager Instance
         {
@@ -118,6 +120,16 @@ namespace Duc
             EndGame();
         }
         
+        public void TriggerHealthUpgrade()
+        {
+            OnHealthUpgradePurchased?.Invoke();
+        }
+        
+        public void TriggerPowerUpgrade()
+        {
+            OnPowerUpgradePurchased?.Invoke();
+        }
+        
         public void RestartGame()
         {
             m_HasGameStarted = false;
@@ -135,6 +147,8 @@ namespace Duc
             OnPlayerDefeat = null;
             OnGamePause = null;
             OnGameResume = null;
+            OnHealthUpgradePurchased = null;
+            OnPowerUpgradePurchased = null;
         }
 
         private void OnDestroy()

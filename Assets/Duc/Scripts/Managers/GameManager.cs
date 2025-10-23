@@ -188,11 +188,11 @@ namespace Duc
 
             if (m_GameplayInput != null) m_GameplayInput.enabled = false;
 
-            // Map will be updated automatically when scene loads
-
-            if (m_PersistentGameManager != null)
+            // Show async loading UI to reload current scene
+            var loadingPanel = FindObjectIncludingInactive("LoadingPanel");
+            if (loadingPanel != null)
             {
-                m_PersistentGameManager.RestartGame();
+                loadingPanel.SetActive(true);
             }
         }
 

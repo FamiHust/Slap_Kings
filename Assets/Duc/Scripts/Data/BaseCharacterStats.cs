@@ -38,14 +38,14 @@ namespace Duc
         public class KnockbackSettings
         {
             [Header("Knockback Force")]
-            public float force = 500f;
-            public float multiplier = 5.0f;
-            public Vector3 direction = new Vector3(0, 0.3f, -1f);
+            public float force = 1f;
+            public float multiplier = 0.8f;
+            public Vector3 direction = new Vector3(1, 0.1f, -1f);
             
             [Header("Ragdoll Settings")]
             public bool useAllRigidbodies = true;
-            public float rigidbodyForceMultiplier = 2.0f;
-            public float duration = 2.0f;
+            public float rigidbodyForceMultiplier = 1.0f;
+            public float duration = 0.5f;
             
             public float CalculateForce(float damage)
             {

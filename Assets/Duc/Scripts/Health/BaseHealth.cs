@@ -41,6 +41,8 @@ namespace Duc
         protected abstract void HandleDeath();
 
         protected abstract StateMachine GetStateMachine();
+        
+        protected abstract ICharacterStats GetCharacterStats();
         #endregion
 
         #region Virtual Methods
@@ -93,6 +95,68 @@ namespace Duc
             foreach (var col in cols)
             {
                 if (col != null) col.enabled = true;
+            }
+        }
+
+        protected virtual void ApplyKnockbackForce(ICharacterStats stats, int damage)
+        {
+            if (stats == null) 
+            {
+                Debug.LogWarning("ApplyKnockbackForce: stats is null");
+                return;
+            }
+
+            var rbs = GetComponentsInChildren<Rigidbody>(true);
+            if (rbs.Length == 0) 
+            {
+                Debug.LogWarning("ApplyKnockbackForce: No rigidbodies found");
+                return;
+            }
+
+            // Calculate force based on damage and stats
+            float force = stats.KnockbackForce + (damage * stats.KnockbackMultiplier);
+            Vector3 direction = stats.KnockbackDirection;
+            
+            // Check if direction is zero or too small
+            if (direction.magnitude < 0.01f)
+            {
+                Debug.LogWarning($"ApplyKnockbackForce: Direction is zero or too small: {stats.KnockbackDirection}. No force will be applied.");
+                return; // Don't apply any force if direction is zero
+            }
+            
+            direction = direction.normalized;
+
+            Debug.Log($"ApplyKnockbackForce: Force={force}, Direction={direction}, Damage={damage}");
+
+            // Apply force to rigidbodies
+            foreach (var rb in rbs)
+            {
+                if (rb != null)
+                {
+                    // Make sure rigidbody is not kinematic before applying force
+                    if (rb.isKinematic)
+                    {
+                        rb.isKinematic = false;
+                    }
+                    
+                    if (stats.UseAllRigidbodies)
+                    {
+                        Vector3 finalForce = direction * force * stats.RigidbodyForceMultiplier;
+                        rb.AddForce(finalForce, ForceMode.Impulse);
+                        Debug.Log($"Applied force to {rb.name}: {finalForce}");
+                    }
+                    else
+                    {
+                        // Only apply to main rigidbody
+                        var mainRb = GetComponent<Rigidbody>();
+                        if (mainRb != null && mainRb == rb)
+                        {
+                            Vector3 finalForce = direction * force;
+                            mainRb.AddForce(finalForce, ForceMode.Impulse);
+                            Debug.Log($"Applied force to main rigidbody: {finalForce}");
+                        }
+                    }
+                }
             }
         }
         #endregion
@@ -168,7 +232,15 @@ namespace Duc
                 stateMachine.SetState(CharacterState.Dead);
             }
 
+            // Apply knockback force BEFORE activating ragdoll
+            var stats = GetCharacterStats();
+            if (stats != null)
+            {
+                ApplyKnockbackForce(stats, m_LastDamage);
+            }
+            
             ActivateRagdoll();
+            
             HandleDeath();
             
             OnDeath?.Invoke();

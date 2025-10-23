@@ -19,8 +19,8 @@ namespace Duc
             public float healthMultiplier = 2.0f;
             [Tooltip("Damage multiplier for boss level (2.0 = double damage)")]
             public float damageMultiplier = 2.0f;
-            [Tooltip("Speed bonus for PowerMeter and CounterMeter (+1 = add 1 to speed)")]
-            public float speedBonus = 1.0f;
+            [Tooltip("Speed multiplier for PowerMeter and CounterMeter (1.0 = normal, 1.5 = +50%)")]
+            public float speedMultiplier = 1.0f;
             
             
             public bool IsLevelBoss(int checkLevel)
@@ -36,13 +36,13 @@ namespace Duc
         [SerializeField] private bool m_EnableBossLevels = true;
         [SerializeField] private float m_DefaultHealthMultiplier = 2.0f;
         [SerializeField] private float m_DefaultDamageMultiplier = 2.0f;
-        [SerializeField] private float m_DefaultSpeedBonus = 1.0f;
+        [SerializeField] private float m_DefaultSpeedMultiplier = 1.0f;
         
         public List<BossLevel> BossLevels => m_BossLevels;
         public bool EnableBossLevels => m_EnableBossLevels;
         public float DefaultHealthMultiplier => m_DefaultHealthMultiplier;
         public float DefaultDamageMultiplier => m_DefaultDamageMultiplier;
-        public float DefaultSpeedBonus => m_DefaultSpeedBonus;
+        public float DefaultSpeedMultiplier => m_DefaultSpeedMultiplier;
 
         public bool IsBossLevel(int level)
         {
@@ -94,15 +94,20 @@ namespace Duc
             return 1.0f; 
         }
 
-        public float GetSpeedBonus(int level)
+        public float GetSpeedMultiplier(int level)
         {
             if (IsBossLevel(level))
             {
                 var bossLevel = GetBossLevel(level);
-                return bossLevel != null ? bossLevel.speedBonus : m_DefaultSpeedBonus;
+                return bossLevel != null ? Mathf.Max(0f, bossLevel.speedMultiplier) : Mathf.Max(0f, m_DefaultSpeedMultiplier);
             }
-            
-            return 0.0f; 
+            return 1.0f;
+        }
+        
+        // Backwards-compat API: derives bonus from multiplier
+        public float GetSpeedBonus(int level)
+        {
+            return GetSpeedMultiplier(level) - 1.0f;
         }
 
         public string GetBossName(int level)

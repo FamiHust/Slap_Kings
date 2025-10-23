@@ -81,6 +81,22 @@ namespace Duc
         protected override void Start()
         {
             base.Start();
+            
+            // Subscribe to player defeat event for AI victory
+            var persistentGameManager = PersistentGameManager.Instance;
+            if (persistentGameManager != null)
+            {
+                persistentGameManager.OnPlayerDefeat += OnPlayerDefeat;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            var persistentGameManager = PersistentGameManager.Instance;
+            if (persistentGameManager != null)
+            {
+                persistentGameManager.OnPlayerDefeat -= OnPlayerDefeat;
+            }
         }
 
         protected override bool CanChangeState(CharacterState newState)
@@ -260,6 +276,52 @@ namespace Duc
         private void PlayDeathAnimation()
         {
             
+        }
+
+        private void PlayVictoryAnimation()
+        {
+            if (m_Animator == null) return;
+
+            m_Animator.SetBool(m_HashIsWaiting, false);
+            m_Animator.SetBool(m_HashIsStartingSlap, false);
+            m_Animator.SetBool(m_HashIsSlapMega, false);
+            m_Animator.SetBool(m_HashIsSlapSpecial, false);
+
+            string[] victoryBoolNames = { "IsVictory", "Victory", "IsWin", "StartVictory" };
+            foreach (var name in victoryBoolNames)
+            {
+                foreach (var p in m_Animator.parameters)
+                {
+                    if (p.type == AnimatorControllerParameterType.Bool && p.name == name)
+                    {
+                        m_Animator.SetBool(p.nameHash, true);
+                        break;
+                    }
+                }
+            }
+
+            string[] victoryNumNames = { "VictoryNumber", "VictoryIndex" };
+            foreach (var numName in victoryNumNames)
+            {
+                foreach (var p in m_Animator.parameters)
+                {
+                    if ((p.type == AnimatorControllerParameterType.Int || p.type == AnimatorControllerParameterType.Float) && p.name == numName)
+                    {
+                        int maxVariants = 12; // Default AI victory variants
+                        int pick = Random.Range(0, maxVariants);
+                        if (p.type == AnimatorControllerParameterType.Int)
+                            m_Animator.SetInteger(p.nameHash, pick);
+                        else
+                            m_Animator.SetFloat(p.nameHash, (float)pick);
+                    }
+                }
+            }
+        }
+
+        private void OnPlayerDefeat()
+        {
+            SetState(CharacterState.Idle);
+            PlayVictoryAnimation();
         }
 
         private void StartAttackSequence()

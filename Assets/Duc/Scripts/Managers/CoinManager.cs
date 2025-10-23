@@ -108,7 +108,15 @@ namespace Duc
         {
             if (m_PersistentData != null)
             {
-                m_PersistentData.PurchaseHealthUpgrade();
+                if (m_PersistentData.CanAffordHealthUpgrade())
+                {
+                    m_PersistentData.PurchaseHealthUpgrade();
+                    
+                    if (PersistentGameManager.Instance != null)
+                    {
+                        PersistentGameManager.Instance.TriggerHealthUpgrade();
+                    }
+                }
             }
         }
 
@@ -116,7 +124,15 @@ namespace Duc
         {
             if (m_PersistentData != null)
             {
-                m_PersistentData.PurchasePowerUpgrade();
+                if (m_PersistentData.CanAffordPowerUpgrade())
+                {
+                    m_PersistentData.PurchasePowerUpgrade();
+                    
+                    if (PersistentGameManager.Instance != null)
+                    {
+                        PersistentGameManager.Instance.TriggerPowerUpgrade();
+                    }
+                }
             }
         }
 
