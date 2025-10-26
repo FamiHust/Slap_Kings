@@ -51,25 +51,21 @@ namespace Duc
             if (m_PlayerHealth == null)
             {
                 m_PlayerHealth = FindObjectOfType<PlayerHealth>();
-                Debug.Log($"[HealthUI] Found PlayerHealth: {m_PlayerHealth != null}");
             }
             if (m_AIHealth == null)
             {
                 m_AIHealth = FindObjectOfType<AIHealth>();
-                Debug.Log($"[HealthUI] Found AIHealth: {m_AIHealth != null}");
             }
             
             if (m_PlayerHealth != null)
             {
                 m_TargetPlayerHealth = m_PlayerHealth.GetCurrentHealth();
                 m_LastPlayerHealth = m_PlayerHealth.GetCurrentHealth();
-                Debug.Log($"[HealthUI] Player health initialized: {m_LastPlayerHealth}");
             }
             if (m_AIHealth != null)
             {
                 m_TargetAIHealth = m_AIHealth.GetCurrentHealth();
                 m_LastAIHealth = m_AIHealth.GetCurrentHealth();
-                Debug.Log($"[HealthUI] AI health initialized: {m_LastAIHealth}");
             }
         }
 
@@ -105,7 +101,6 @@ namespace Duc
             if (currentHealth < m_LastPlayerHealth)
             {
                 int damage = m_LastPlayerHealth - currentHealth;
-                Debug.Log($"[HealthUI] Player took {damage} damage! Current: {currentHealth}, Last: {m_LastPlayerHealth}");
                 ShowPlayerDamageText(damage);
             }
             m_LastPlayerHealth = currentHealth;
@@ -146,7 +141,6 @@ namespace Duc
             if (currentHealth < m_LastAIHealth)
             {
                 int damage = m_LastAIHealth - currentHealth;
-                Debug.Log($"[HealthUI] AI took {damage} damage! Current: {currentHealth}, Last: {m_LastAIHealth}");
                 ShowAIDamageText(damage);
             }
             m_LastAIHealth = currentHealth;
@@ -206,8 +200,6 @@ namespace Duc
                 m_PlayerDamageTextContainer.offsetMax = Vector2.zero;
                 m_PlayerDamageTextContainer.anchoredPosition = Vector2.zero;
                 m_PlayerDamageTextContainer.localScale = Vector3.one;
-                
-                Debug.Log($"[HealthUI] Player container setup - AnchoredPos: {m_PlayerDamageTextContainer.anchoredPosition}, LocalPos: {m_PlayerDamageTextContainer.localPosition}");
             }
 
             // Create AI damage text container
@@ -224,8 +216,6 @@ namespace Duc
                 m_AIDamageTextContainer.offsetMax = Vector2.zero;
                 m_AIDamageTextContainer.anchoredPosition = Vector2.zero;
                 m_AIDamageTextContainer.localScale = Vector3.one;
-                
-                Debug.Log($"[HealthUI] AI container setup - AnchoredPos: {m_AIDamageTextContainer.anchoredPosition}, LocalPos: {m_AIDamageTextContainer.localPosition}");
             }
         }
 
@@ -252,8 +242,6 @@ namespace Duc
                 aiText.SetActive(false);
                 m_AIDamageTextPool.Enqueue(aiText);
             }
-
-            Debug.Log($"[HealthUI] Initialized damage text pools - Player: {m_PlayerDamageTextPool.Count}, AI: {m_AIDamageTextPool.Count}");
         }
 
         private void CreateDefaultDamageTextPrefab()
@@ -282,18 +270,10 @@ namespace Duc
 
         private void ShowPlayerDamageText(int damage)
         {
-            if (m_PlayerHealth == null) 
-            {
-                Debug.LogWarning("[HealthUI] PlayerHealth is null!");
-                return;
-            }
+            if (m_PlayerHealth == null) return;
 
             GameObject damageText = GetPlayerDamageTextFromPool();
-            if (damageText == null) 
-            {
-                Debug.LogWarning("[HealthUI] No player damage text available in pool!");
-                return;
-            }
+            if (damageText == null) return;
 
             RectTransform damageRect = damageText.GetComponent<RectTransform>();
             damageRect.anchoredPosition = new Vector2(0f, 20f);
@@ -305,7 +285,6 @@ namespace Duc
             {
                 textComponent.text = "-" + damage.ToString();
                 textComponent.color = m_DamageTextColor;
-                Debug.Log($"[HealthUI] Player damage text: -{damage} at left position {damageRect.anchoredPosition}");
             }
 
             StartCoroutine(AnimateDamageText(damageText, true));
@@ -313,18 +292,10 @@ namespace Duc
 
         private void ShowAIDamageText(int damage)
         {
-            if (m_AIHealth == null) 
-            {
-                Debug.LogWarning("[HealthUI] AIHealth is null!");
-                return;
-            }
+            if (m_AIHealth == null) return;
 
             GameObject damageText = GetAIDamageTextFromPool();
-            if (damageText == null) 
-            {
-                Debug.LogWarning("[HealthUI] No AI damage text available in pool!");
-                return;
-            }
+            if (damageText == null) return;
 
             RectTransform damageRect = damageText.GetComponent<RectTransform>();
             damageRect.anchoredPosition = new Vector2(0f, 20f); 
@@ -336,7 +307,6 @@ namespace Duc
             {
                 textComponent.text = "-" + damage.ToString();
                 textComponent.color = m_DamageTextColor;
-                Debug.Log($"[HealthUI] AI damage text: -{damage} at right position {damageRect.anchoredPosition}");
             }
 
             StartCoroutine(AnimateDamageText(damageText, false));

@@ -116,7 +116,6 @@ namespace Duc
             {
                 int baseHealth = m_AIStats.GetScaledHealth(level);
                 
-                // Apply boss level multiplier if available
                 if (m_AIStats.bossLevelData != null && m_AIStats.bossLevelData.IsBossLevel(level))
                 {
                     float multiplier = m_AIStats.bossLevelData.GetHealthMultiplier(level);
@@ -126,7 +125,7 @@ namespace Duc
                 return baseHealth;
             }
             int fallback = 100 + (level - 1) * 20;
-            return fallback; // Fallback with scaling
+            return fallback; 
         }
 
         public int GetAIMinDamage(int level)
@@ -143,7 +142,7 @@ namespace Duc
                 
                 return baseDamage;
             }
-            return 10 + (level - 1) * 5; // Fallback with scaling
+            return 10 + (level - 1) * 5; 
         }
 
         public int GetAIMaxDamage(int level)
@@ -160,7 +159,7 @@ namespace Duc
                 
                 return baseDamage;
             }
-            return 30 + (level - 1) * 5; // Fallback with scaling
+            return 30 + (level - 1) * 5; 
         }
 
         public int GetVictoryReward(int victoryCount)
@@ -181,14 +180,14 @@ namespace Duc
         {
             if (m_GameConfig != null) 
                 return m_GameConfig.upgradeSystem.CalculateHealthUpgradePrice(upgradeCount);
-            return Mathf.Max(0, 100 + (upgradeCount * 50)); // Fallback
+            return Mathf.Max(0, 100 + (upgradeCount * 50)); 
         }
 
         public int GetPowerUpgradePrice(int upgradeCount)
         {
             if (m_GameConfig != null) 
                 return m_GameConfig.upgradeSystem.CalculatePowerUpgradePrice(upgradeCount);
-            return Mathf.Max(0, 150 + (upgradeCount * 75)); // Fallback
+            return Mathf.Max(0, 150 + (upgradeCount * 75)); 
         }
 
         public float GetHealthScalingMultiplier(int level)
@@ -202,14 +201,14 @@ namespace Duc
         {
             if (m_MasterData != null)
                 return m_MasterData.levelScaling.GetDamageMultiplier(level);
-            return 1f; // Fallback
+            return 1f; 
         }
 
         public float GetPowerScalingMultiplier(int level)
         {
             if (m_MasterData != null)
                 return m_MasterData.levelScaling.GetPowerMultiplier(level);
-            return 1f; // Fallback
+            return 1f; 
         }
         
         public float GetPowerMeterSpeedWithBossBonus(int level)
@@ -218,7 +217,7 @@ namespace Duc
             {
                 return m_PlayerStats.power.GetAnimSpeedWithBossBonus(level, m_PlayerStats.bossLevelData);
             }
-            return 2f; // Fallback speed
+            return 2f; 
         }
         
         public bool IsBossLevel(int level)

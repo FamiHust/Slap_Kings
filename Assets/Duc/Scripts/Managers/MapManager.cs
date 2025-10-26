@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 namespace Duc
 {
@@ -51,10 +52,8 @@ namespace Duc
         
         protected override void OnInitialize()
         {
-            // Subscribe to scene loaded events
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+            SceneManager.sceneLoaded += OnSceneLoaded;
             
-            // Load current level from persistent data
             LoadCurrentLevel();
         }
         
@@ -64,15 +63,13 @@ namespace Duc
             ClearAllMaps();
             ClearAllPools();
             
-            // Unsubscribe from scene loaded events
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
         
         private void InitializeMapPools()
         {
             if (m_MapData == null)
             {
-                Debug.LogError("MapData is not assigned!");
                 return;
             }
             
@@ -82,11 +79,6 @@ namespace Duc
                 {
                     CreatePoolForMap(mapInfo.mapPrefab);
                 }
-            }
-            
-            if (m_EnableDebugLogs)
-            {
-                Debug.Log($"Initialized {m_MapPools.Count} map pools");
             }
         }
         
@@ -98,7 +90,6 @@ namespace Duc
             Queue<GameObject> pool = new Queue<GameObject>();
             List<GameObject> activeList = new List<GameObject>();
             
-            // Pre-instantiate objects
             for (int i = 0; i < m_InitialPoolSize; i++)
             {
                 GameObject instance = Instantiate(mapPrefab, m_MapContainer);
@@ -108,11 +99,6 @@ namespace Duc
             
             m_MapPools[mapPrefab] = pool;
             m_ActiveMaps[mapPrefab] = activeList;
-            
-            if (m_EnableDebugLogs)
-            {
-                Debug.Log($"Created pool for map: {mapPrefab.name}");
-            }
         }
         
         private int GetCurrentLevelFromPersistentData()
@@ -122,7 +108,7 @@ namespace Duc
             {
                 return persistentDataManager.GetLevelCount();
             }
-            return 1; // Default level
+            return 1; 
         }
         
         private void LoadCurrentLevel()
@@ -132,25 +118,17 @@ namespace Duc
         
         private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
         {
-            if (m_EnableDebugLogs)
-            {
-                Debug.Log($"Scene loaded: {scene.name}, updating map...");
-            }
-            
-            // Update map after scene is fully loaded
             UpdateMapForCurrentLevel();
         }
         
         public void SetLevel(int level)
         {
-            // Level is managed by PersistentDataManager, we just update the map
             OnLevelChanged?.Invoke(level);
             UpdateMapForCurrentLevel();
         }
         
         public void OnLevelUp()
         {
-            // Level up is handled by PersistentDataManager, we just update the map
             UpdateMapForCurrentLevel();
         }
         
@@ -158,7 +136,6 @@ namespace Duc
         {
             if (m_MapData == null)
             {
-                Debug.LogError("MapData is not assigned!");
                 return;
             }
             
@@ -167,25 +144,14 @@ namespace Duc
             
             if (newMapInfo == null)
             {
-                Debug.LogWarning($"No map found for level {currentLevel}");
                 return;
             }
             
             if (m_CurrentMapInfo == newMapInfo)
             {
-                if (m_EnableDebugLogs)
-                {
-                    Debug.Log($"Map for level {currentLevel} is already active: {newMapInfo.mapName}");
-                }
                 return;
             }
             
-            if (m_EnableDebugLogs)
-            {
-                Debug.Log($"Changing map for level {currentLevel}: {newMapInfo.mapName}");
-            }
-            
-            // Start transition
             if (m_TransitionCoroutine != null)
             {
                 StopCoroutine(m_TransitionCoroutine);
@@ -196,25 +162,20 @@ namespace Duc
         
         private IEnumerator TransitionToMap(MapData.MapInfo newMapInfo)
         {
-            // Deactivate current maps
             DeactivateAllMaps();
             
-            // Wait for destroy delay
             if (m_CurrentMapInfo != null && m_CurrentMapInfo.destroyDelay > 0)
             {
                 yield return new WaitForSeconds(m_CurrentMapInfo.destroyDelay);
             }
             
-            // Wait for spawn delay
             if (newMapInfo.spawnDelay > 0)
             {
                 yield return new WaitForSeconds(newMapInfo.spawnDelay);
             }
             
-            // Activate new map
             ActivateMap(newMapInfo);
             
-            // Update current map info
             m_CurrentMapInfo = newMapInfo;
             OnMapChanged?.Invoke(newMapInfo);
             
@@ -225,7 +186,6 @@ namespace Duc
         {
             if (mapInfo.mapPrefab == null)
             {
-                Debug.LogError($"Map prefab is null for map: {mapInfo.mapName}");
                 return;
             }
             
@@ -234,11 +194,6 @@ namespace Duc
             {
                 mapInstance.SetActive(true);
                 m_ActiveMaps[mapInfo.mapPrefab].Add(mapInstance);
-                
-                if (m_EnableDebugLogs)
-                {
-                    Debug.Log($"Activated map: {mapInfo.mapName}");
-                }
             }
         }
         
@@ -269,16 +224,10 @@ namespace Duc
             }
             else if (m_ExpandPool)
             {
-                // Create new instance if pool is empty and expansion is allowed
                 GameObject newInstance = Instantiate(mapPrefab, m_MapContainer);
-                if (m_EnableDebugLogs)
-                {
-                    Debug.Log($"Expanded pool for map: {mapPrefab.name}");
-                }
                 return newInstance;
             }
             
-            Debug.LogWarning($"Pool exhausted for map: {mapPrefab.name}");
             return null;
         }
         
@@ -286,7 +235,6 @@ namespace Duc
         {
             if (!m_MapPools.ContainsKey(mapPrefab))
             {
-                Debug.LogError($"No pool found for map: {mapPrefab.name}");
                 Destroy(mapInstance);
                 return;
             }
@@ -318,19 +266,9 @@ namespace Duc
             m_ActiveMaps.Clear();
         }
         
-        // Public API methods
         public void ForceUpdateMap()
         {
             UpdateMapForCurrentLevel();
-        }
-        
-        public void RefreshMapForCurrentLevel()
-        {
-            // Map will be updated when scene loads, not immediately
-            if (m_EnableDebugLogs)
-            {
-                Debug.Log("Map will be updated when scene loads");
-            }
         }
         
         public bool IsMapActive(GameObject mapPrefab)
@@ -359,22 +297,6 @@ namespace Duc
                 InitializeMapPools();
                 UpdateMapForCurrentLevel();
             }
-        }
-        
-        // Debug methods
-        [ContextMenu("Debug Map Status")]
-        public void DebugMapStatus()
-        {
-            Debug.Log($"Current Level: {CurrentLevel}");
-            Debug.Log($"Current Map: {(m_CurrentMapInfo != null ? m_CurrentMapInfo.mapName : "None")}");
-            Debug.Log($"Active Maps: {GetActiveMapCount()}");
-            Debug.Log($"Total Pools: {m_MapPools.Count}");
-        }
-        
-        [ContextMenu("Test Level Up")]
-        public void TestLevelUp()
-        {
-            OnLevelUp();
         }
     }
 }

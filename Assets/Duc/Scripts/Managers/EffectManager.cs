@@ -170,7 +170,6 @@ namespace Duc.Managers
             effect.Play();
             m_ActiveEffects.Add(effect);
             
-            // Trigger camera zoom shake khi player bị hit
             this.PublishEvent(new CameraShakeEvent(3f, 0.2f, true));
             
             StartCoroutine(ReturnEffectToPool(effect, m_PlayerHitPool));
@@ -192,7 +191,6 @@ namespace Duc.Managers
             effect.Play();
             m_ActiveEffects.Add(effect);
             
-            // Trigger camera zoom shake khi AI bị hit
             this.PublishEvent(new CameraShakeEvent(2.5f, 0.18f, true));
             
             StartCoroutine(ReturnEffectToPool(effect, m_AIHitPool));

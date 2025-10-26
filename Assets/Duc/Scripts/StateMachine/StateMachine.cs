@@ -51,7 +51,7 @@ namespace Duc
             {
                 if (m_EnableDebugLogs)
                 {
-                    Debug.LogWarning($"Cannot transition from {m_CurrentState} to {newState}");
+                    // Invalid state transition
                 }
                 return;
             }

@@ -141,11 +141,8 @@ namespace Duc
             SetUIPanel(m_GameplayPanel, false);
             StartCoroutine(ShowPanelWithDelay(m_DefeatPanel, 3f));
 
-            var coinManager = CoinManager.Get();
-            if (coinManager != null)
-            {
-                coinManager.OnPlayerDefeat();
-            }
+            // Delay coin addition until panel shows
+            StartCoroutine(AddDefeatRewardWithDelay(3f));
 
             m_PersistentGameManager.OnPlayerDied();
         }
@@ -168,11 +165,8 @@ namespace Duc
             SetUIPanel(m_GameplayPanel, false);
             StartCoroutine(ShowPanelWithDelay(m_VictoryPanel, 3f));
 
-            var coinManager = CoinManager.Get();
-            if (coinManager != null)
-            {
-                coinManager.OnPlayerVictory();
-            }
+            // Delay coin addition until panel shows
+            StartCoroutine(AddVictoryRewardWithDelay(3f));
 
             // Map will be updated when restarting game, not immediately on victory
 
@@ -228,6 +222,64 @@ namespace Duc
         {
             yield return new WaitForSeconds(delay);
             SetUIPanel(panel, true);
+        }
+        
+        private IEnumerator AddDefeatRewardWithDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            
+            // Show visual reward coins from defeat panel position
+            var rewardManager = RewardManager.Get();
+            if (rewardManager != null && m_DefeatPanel != null)
+            {
+                Vector3 panelPosition = m_DefeatPanel.transform.position;
+                rewardManager.ShowRewardCoinsFromPosition(5, panelPosition);
+            }
+            
+            // Add actual coins after coins finish flying
+            yield return new WaitForSeconds(2f); // Wait for coins to fly to target
+            
+            var coinManager = CoinManager.Get();
+            if (coinManager != null)
+            {
+                coinManager.OnPlayerDefeat();
+                
+                // Update coin display immediately
+                var coinDisplay = FindObjectOfType<CoinDisplay>();
+                if (coinDisplay != null)
+                {
+                    coinDisplay.UpdateDisplay();
+                }
+            }
+        }
+        
+        private IEnumerator AddVictoryRewardWithDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            
+            // Show visual reward coins from victory panel position
+            var rewardManager = RewardManager.Get();
+            if (rewardManager != null && m_VictoryPanel != null)
+            {
+                Vector3 panelPosition = m_VictoryPanel.transform.position;
+                rewardManager.ShowRewardCoinsFromPosition(10, panelPosition);
+            }
+            
+            // Add actual coins after coins finish flying
+            yield return new WaitForSeconds(2f); // Wait for coins to fly to target
+            
+            var coinManager = CoinManager.Get();
+            if (coinManager != null)
+            {
+                coinManager.OnPlayerVictory();
+                
+                // Update coin display immediately
+                var coinDisplay = FindObjectOfType<CoinDisplay>();
+                if (coinDisplay != null)
+                {
+                    coinDisplay.UpdateDisplay();
+                }
+            }
         }
 
         protected override void OnInitialize()

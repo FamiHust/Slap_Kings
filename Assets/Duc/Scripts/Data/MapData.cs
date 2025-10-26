@@ -109,23 +109,13 @@ namespace Duc
             {
                 var map = m_Maps[i];
                 
-                if (string.IsNullOrEmpty(map.mapName))
+                if (string.IsNullOrEmpty(map.mapName) || 
+                    map.mapPrefab == null || 
+                    map.startLevel > map.endLevel)
                 {
-                    Debug.LogWarning($"Map at index {i} has no name!");
-                }
-                
-                if (map.mapPrefab == null)
-                {
-                    Debug.LogWarning($"Map '{map.mapName}' has no prefab assigned!");
-                }
-                
-                if (map.startLevel > map.endLevel)
-                {
-                    Debug.LogWarning($"Map '{map.mapName}' has invalid level range: {map.startLevel}-{map.endLevel}");
+                    // Invalid map data
                 }
             }
-            
-            Debug.Log($"Map data validated. Total maps: {m_Maps.Count}");
         }
     }
 }

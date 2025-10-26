@@ -29,10 +29,12 @@ namespace Duc
                 persistentData.OnHealthUpgradePurchased -= UpdateDisplay; // avoid double subscribe
                 persistentData.OnPowerUpgradePurchased -= UpdateDisplay;
                 persistentData.OnProgressReset -= UpdateDisplay;
+                persistentData.OnCoinsChanged -= UpdateDisplay;
 
                 persistentData.OnHealthUpgradePurchased += UpdateDisplay;
                 persistentData.OnPowerUpgradePurchased += UpdateDisplay;
                 persistentData.OnProgressReset += UpdateDisplay;
+                persistentData.OnCoinsChanged += UpdateDisplay;
             }
             UpdateDisplay();
         }
@@ -46,6 +48,7 @@ namespace Duc
                 persistentData.OnHealthUpgradePurchased -= UpdateDisplay;
                 persistentData.OnPowerUpgradePurchased -= UpdateDisplay;
                 persistentData.OnProgressReset -= UpdateDisplay;
+                persistentData.OnCoinsChanged -= UpdateDisplay;
             }
         }
 

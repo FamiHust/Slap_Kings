@@ -100,33 +100,19 @@ namespace Duc
 
         protected virtual void ApplyKnockbackForce(ICharacterStats stats, int damage)
         {
-            if (stats == null) 
-            {
-                Debug.LogWarning("ApplyKnockbackForce: stats is null");
-                return;
-            }
+            if (stats == null) return;
 
             var rbs = GetComponentsInChildren<Rigidbody>(true);
-            if (rbs.Length == 0) 
-            {
-                Debug.LogWarning("ApplyKnockbackForce: No rigidbodies found");
-                return;
-            }
+            if (rbs.Length == 0) return;
 
             // Calculate force based on damage and stats
             float force = stats.KnockbackForce + (damage * stats.KnockbackMultiplier);
             Vector3 direction = stats.KnockbackDirection;
             
             // Check if direction is zero or too small
-            if (direction.magnitude < 0.01f)
-            {
-                Debug.LogWarning($"ApplyKnockbackForce: Direction is zero or too small: {stats.KnockbackDirection}. No force will be applied.");
-                return; // Don't apply any force if direction is zero
-            }
+            if (direction.magnitude < 0.01f) return;
             
             direction = direction.normalized;
-
-            Debug.Log($"ApplyKnockbackForce: Force={force}, Direction={direction}, Damage={damage}");
 
             // Apply force to rigidbodies
             foreach (var rb in rbs)
@@ -143,7 +129,6 @@ namespace Duc
                     {
                         Vector3 finalForce = direction * force * stats.RigidbodyForceMultiplier;
                         rb.AddForce(finalForce, ForceMode.Impulse);
-                        Debug.Log($"Applied force to {rb.name}: {finalForce}");
                     }
                     else
                     {
@@ -153,7 +138,6 @@ namespace Duc
                         {
                             Vector3 finalForce = direction * force;
                             mainRb.AddForce(finalForce, ForceMode.Impulse);
-                            Debug.Log($"Applied force to main rigidbody: {finalForce}");
                         }
                     }
                 }

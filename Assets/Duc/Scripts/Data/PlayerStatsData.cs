@@ -59,7 +59,7 @@ namespace Duc
                     // Debug log to see speed changes
                     if (bossData.IsBossLevel(level))
                     {
-                        Debug.Log($"[PlayerStatsData] Boss Level {level}: Base Speed = {baseSpeed}, Multiplier = {speedMultiplier}, Final Speed = {finalSpeed}");
+                        // Boss level speed calculation
                     }
                     
                     return finalSpeed;

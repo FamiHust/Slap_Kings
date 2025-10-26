@@ -104,7 +104,6 @@ namespace Duc
             return 1.0f;
         }
         
-        // Backwards-compat API: derives bonus from multiplier
         public float GetSpeedBonus(int level)
         {
             return GetSpeedMultiplier(level) - 1.0f;
@@ -123,24 +122,12 @@ namespace Duc
             {
                 var bossLevel = m_BossLevels[i];
                 
-                if (string.IsNullOrEmpty(bossLevel.bossName))
+                if (string.IsNullOrEmpty(bossLevel.bossName) || 
+                    bossLevel.level <= 0 || 
+                    bossLevel.healthMultiplier <= 0 || 
+                    bossLevel.damageMultiplier <= 0)
                 {
-                    Debug.LogWarning($"Boss level at index {i} has no name!");
-                }
-                
-                if (bossLevel.level <= 0)
-                {
-                    Debug.LogWarning($"Boss level '{bossLevel.bossName}' has invalid level: {bossLevel.level}");
-                }
-                
-                if (bossLevel.healthMultiplier <= 0)
-                {
-                    Debug.LogWarning($"Boss level '{bossLevel.bossName}' has invalid health multiplier: {bossLevel.healthMultiplier}");
-                }
-                
-                if (bossLevel.damageMultiplier <= 0)
-                {
-                    Debug.LogWarning($"Boss level '{bossLevel.bossName}' has invalid damage multiplier: {bossLevel.damageMultiplier}");
+                    // Invalid boss level data
                 }
             }
         }

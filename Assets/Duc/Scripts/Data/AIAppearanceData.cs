@@ -16,19 +16,19 @@ namespace Duc
             
             [Header("Head Mesh")]
             public Mesh headMesh;
-            public Material headMaterial;
             
             [Header("Head Slapped Mesh (for low health)")]
             public Mesh headSlappedMesh;
-            public Material headSlappedMaterial;
             
             [Header("Body Mesh")]
             public Mesh bodyMesh;
-            public Material bodyMaterial;
+            
+            [Header("Avatar Sprite")]
+            [HideInInspector] public Sprite avatarSprite;
             
             [Header("Additional Settings")]
-            public bool allowMultipleInstances = false;
-            public float transitionDuration = 0.5f;
+            [HideInInspector] public bool allowMultipleInstances = false;
+            [HideInInspector] public float transitionDuration = 0.5f;
             
             public bool IsLevelInRange(int level)
             {
@@ -38,6 +38,17 @@ namespace Duc
             public int GetLevelRange()
             {
                 return endLevel - startLevel + 1;
+            }
+            
+            public void LoadAvatarSprite()
+            {
+                if (string.IsNullOrEmpty(setName))
+                {
+                    return;
+                }
+                
+                string resourcePath = $"SO/AIAvatar/{setName.ToLower()}";
+                avatarSprite = Resources.Load<Sprite>(resourcePath);
             }
         }
         
@@ -89,6 +100,19 @@ namespace Duc
         {
             return m_AppearanceSets.Count;
         }
+        
+        public void LoadAllAvatarSprites()
+        {
+            foreach (var appearance in m_AppearanceSets)
+            {
+                appearance.LoadAvatarSprite();
+            }
+            
+            if (m_DefaultAppearance != null)
+            {
+                m_DefaultAppearance.LoadAvatarSprite();
+            }
+        }
 
         [ContextMenu("Validate Appearance Data")]
         public void ValidateAppearanceData()
@@ -97,29 +121,14 @@ namespace Duc
             {
                 var appearance = m_AppearanceSets[i];
                 
-                if (string.IsNullOrEmpty(appearance.setName))
+                if (string.IsNullOrEmpty(appearance.setName) || 
+                    appearance.headMesh == null || 
+                    appearance.headSlappedMesh == null || 
+                    appearance.bodyMesh == null || 
+                    appearance.avatarSprite == null || 
+                    appearance.startLevel > appearance.endLevel)
                 {
-                    Debug.LogWarning($"Appearance at index {i} has no name!");
-                }
-                
-                if (appearance.headMesh == null)
-                {
-                    Debug.LogWarning($"Appearance '{appearance.setName}' has no head mesh assigned!");
-                }
-                
-                if (appearance.headSlappedMesh == null)
-                {
-                    Debug.LogWarning($"Appearance '{appearance.setName}' has no head slapped mesh assigned!");
-                }
-                
-                if (appearance.bodyMesh == null)
-                {
-                    Debug.LogWarning($"Appearance '{appearance.setName}' has no body mesh assigned!");
-                }
-                
-                if (appearance.startLevel > appearance.endLevel)
-                {
-                    Debug.LogWarning($"Appearance '{appearance.setName}' has invalid level range: {appearance.startLevel}-{appearance.endLevel}");
+                    // Invalid appearance data
                 }
             }
         }

@@ -82,6 +82,7 @@ namespace Duc.Managers
             if (hitEvent.DamageAmount > 0)
             {
                 ZoomShakeAllCameras(m_ZoomInAmount, m_ZoomOutAmount, m_ZoomDuration);
+                TriggerVibration();
             }
         }
         
@@ -90,6 +91,7 @@ namespace Duc.Managers
             if (hitEvent.DamageAmount > 0)
             {
                 ZoomShakeAllCameras(m_ZoomInAmount * 0.7f, m_ZoomOutAmount * 0.7f, m_ZoomDuration);
+                TriggerVibration();
             }
         }
         
@@ -103,11 +105,13 @@ namespace Duc.Managers
             {
                 ShakeAllCameras(shakeEvent.Intensity, shakeEvent.Duration);
             }
+            TriggerVibration();
         }
         
         private void OnCameraFOVShakeEvent(CameraFOVShakeEvent fovShakeEvent)
         {
             ZoomShakeAllCameras(fovShakeEvent.FOVAmount, fovShakeEvent.FOVAmount * 1.2f, fovShakeEvent.Duration);
+            TriggerVibration();
         }
         
         public void ZoomShakeAllCameras(float zoomInAmount = -1f, float zoomOutAmount = -1f, float duration = -1f)
@@ -123,6 +127,8 @@ namespace Duc.Managers
                     ZoomShakeCamera(camera, zoomIn, zoomOut, zoomDuration);
                 }
             }
+            
+            TriggerVibration();
         }
         
         public void ZoomShakeCamera(CinemachineVirtualCamera camera, float zoomInAmount = -1f, float zoomOutAmount = -1f, float duration = -1f)
@@ -258,6 +264,14 @@ namespace Duc.Managers
         {
             m_ZoomInDuration = zoomInDuration;
             m_ZoomOutDuration = zoomOutDuration;
+        }
+
+        private void TriggerVibration()
+        {
+            if (VibrationManager.Instance != null)
+            {
+                VibrationManager.Instance.Vibrate();
+            }
         }
         
         public void SetZoomEasing(Ease zoomInEase, Ease zoomOutEase)

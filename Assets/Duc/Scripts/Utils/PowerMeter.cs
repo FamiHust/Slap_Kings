@@ -96,7 +96,7 @@ namespace Duc
                 
                 if (m_EnableDebugLogs && dataManager.IsBossLevel(currentLevel))
                 {
-                    Debug.Log($"Boss Level {currentLevel}: PowerMeter speed increased to {m_AnimSpeed}");
+                    // Boss level power meter speed increased
                 }
             }
         }

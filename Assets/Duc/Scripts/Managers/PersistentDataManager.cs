@@ -21,6 +21,7 @@ namespace Duc
         public System.Action OnPowerUpgradePurchased;
         public System.Action OnProgressReset;
         public System.Action OnAIStatsUpdated;
+        public System.Action OnCoinsChanged;
         
         private const string COIN_KEY = "PlayerCoins";
         private const string VICTORY_COUNT_KEY = "VictoryCount";
@@ -62,6 +63,7 @@ namespace Duc
                 Destroy(gameObject);
             }
         }
+        
         
         private void LoadData()
         {
@@ -106,6 +108,7 @@ namespace Duc
             
             IncreaseAIStats();
             
+            OnCoinsChanged?.Invoke();
             SaveData();
         }
         
@@ -119,6 +122,8 @@ namespace Duc
             }
             
             m_CurrentCoins += reward;
+            
+            OnCoinsChanged?.Invoke();
             SaveData();
         }
         
@@ -139,6 +144,8 @@ namespace Duc
                 int price = GetHealthUpgradePrice();
                 m_CurrentCoins -= price;
                 m_HealthUpgradeCount++;
+                
+                OnCoinsChanged?.Invoke();
                 SaveData();
                 
                 OnHealthUpgradePurchased?.Invoke();
@@ -152,10 +159,36 @@ namespace Duc
                 int price = GetPowerUpgradePrice();
                 m_CurrentCoins -= price;
                 m_PowerUpgradeCount++;
+                
+                OnCoinsChanged?.Invoke();
                 SaveData();
                 
                 OnPowerUpgradePurchased?.Invoke();
             }
+        }
+        
+        /// <summary>
+        /// Trừ tiền cho việc mua skin
+        /// </summary>
+        public bool SpendCoins(int amount)
+        {
+            if (m_CurrentCoins >= amount)
+            {
+                m_CurrentCoins -= amount;
+                
+                OnCoinsChanged?.Invoke();
+                SaveData();
+                return true;
+            }
+            return false;
+        }
+        
+        /// <summary>
+        /// Kiểm tra có đủ tiền để mua skin không
+        /// </summary>
+        public bool CanAffordSkin(int cost)
+        {
+            return m_CurrentCoins >= cost;
         }
         
         public int GetHealthUpgradePrice()

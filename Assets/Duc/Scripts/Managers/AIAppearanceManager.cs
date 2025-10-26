@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -13,10 +14,12 @@ namespace Duc
         [SerializeField] private SkinnedMeshRenderer m_HeadRenderer;
         [SerializeField] private SkinnedMeshRenderer m_BodyRenderer;
         
+        [Header("Avatar Image Component")]
+        [SerializeField] private Image m_AvatarImage;
+        
         [Header("Settings")]
-        [SerializeField] private bool m_EnableDebugLogs = true;
         [SerializeField] private bool m_AutoUpdateOnStart = true;
-        [SerializeField] private float m_HealthThreshold = 0.5f; // 50% health threshold
+        [SerializeField] private float m_HealthThreshold = 0.5f; // 50% health threshold 
         
         private AIAppearanceData.AppearanceSet m_CurrentAppearance;
         private AIHealth m_AIHealth;
@@ -40,38 +43,21 @@ namespace Duc
                 m_BodyRenderer = FindSkinnedMeshRenderer("Body");
             }
             
-            // Find AIHealth component - try multiple ways
-            m_AIHealth = GetComponent<AIHealth>();
-            if (m_AIHealth != null)
+            if (m_AvatarImage == null)
             {
-                Debug.Log("AIHealth found on same GameObject");
+                m_AvatarImage = FindImageComponent("Avatar");
             }
-            else
+            
+            m_AIHealth = GetComponent<AIHealth>();
+            if (m_AIHealth == null)
             {
                 m_AIHealth = GetComponentInChildren<AIHealth>();
-                if (m_AIHealth != null)
-                {
-                    Debug.Log("AIHealth found in children");
-                }
-                else
+                if (m_AIHealth == null)
                 {
                     m_AIHealth = GetComponentInParent<AIHealth>();
-                    if (m_AIHealth != null)
+                    if (m_AIHealth == null)
                     {
-                        Debug.Log("AIHealth found in parent");
-                    }
-                    else
-                    {
-                        // Try to find in the scene
                         m_AIHealth = FindObjectOfType<AIHealth>();
-                        if (m_AIHealth != null)
-                        {
-                            Debug.Log("AIHealth found in scene");
-                        }
-                        else
-                        {
-                            Debug.LogWarning("AIHealth not found anywhere!");
-                        }
                     }
                 }
             }
@@ -79,25 +65,24 @@ namespace Duc
         
         private void Start()
         {
-            Debug.Log("AIAppearanceManager Start() called");
-            Debug.Log($"m_AIHealth: {m_AIHealth != null}");
-            Debug.Log($"m_HeadRenderer: {m_HeadRenderer != null}");
-            Debug.Log($"m_AppearanceData: {m_AppearanceData != null}");
+            // Load all avatar sprites from Resources
+            if (m_AppearanceData != null)
+            {
+                m_AppearanceData.LoadAllAvatarSprites();
+            }
             
             if (m_AutoUpdateOnStart)
             {
                 UpdateAppearanceForCurrentLevel();
             }
             
-            // Subscribe to health changes in Start to ensure AIHealth is ready
             if (m_AIHealth != null)
             {
                 m_AIHealth.OnHealthChanged += OnAIHealthChanged;
-                Debug.Log("AIAppearanceManager: Subscribed to AIHealth.OnHealthChanged");
             }
             else
             {
-                Debug.LogWarning("AIAppearanceManager: m_AIHealth is null in Start!");
+                Debug.LogWarning("AIAppearanceManager: AIHealth is null, cannot subscribe to health changes");
             }
         }
         
@@ -119,6 +104,67 @@ namespace Duc
             }
             
             return null;
+        }
+        
+        private Image FindImageComponent(string name)
+        {
+            Image[] images = GetComponentsInChildren<Image>();
+            
+            foreach (var image in images)
+            {
+                if (image.name.ToLower().Contains(name.ToLower()))
+                {
+                    return image;
+                }
+            }
+            
+            if (images.Length > 0)
+            {
+                return images[0];
+            }
+            
+            return null;
+        }
+        
+        private bool IsMeshCompatible(SkinnedMeshRenderer renderer, Mesh mesh)
+        {
+            
+            if (renderer == null || mesh == null) 
+            {
+                return false;
+            }
+            
+            
+            // Check if the mesh has the same vertex count and bone structure
+            if (renderer.sharedMesh != null)
+            {
+                
+                // Basic compatibility check - same vertex count
+                // Note: Vertex count can be different for different mesh variants (e.g., normal vs slapped)
+                if (renderer.sharedMesh.vertexCount != mesh.vertexCount)
+                {
+                    // Don't return false for vertex count mismatch - different meshes can have different vertex counts
+                }
+                
+                // Check bone count if using bones
+                if (renderer.bones != null && renderer.bones.Length > 0)
+                {
+                    
+                    if (mesh.bindposes == null || mesh.bindposes.Length != renderer.bones.Length)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                }
+            }
+            else
+            {
+            }
+            
+            
+            return true;
         }
         
         public void SetAppearanceData(AIAppearanceData appearanceData)
@@ -163,53 +209,71 @@ namespace Duc
         
         private void ApplyAppearance(AIAppearanceData.AppearanceSet appearance)
         {
-            Debug.Log($"ApplyAppearance called. m_HeadRenderer: {m_HeadRenderer != null}");
-            
             if (m_HeadRenderer != null)
             {
-                bool useSlappedMesh = ShouldUseSlappedMesh();
-                Debug.Log($"useSlappedMesh: {useSlappedMesh}, headSlappedMesh: {appearance.headSlappedMesh != null}");
-                
-                if (useSlappedMesh && appearance.headSlappedMesh != null)
+                // Only check for slapped mesh if AI health is properly initialized (not 0)
+                bool useSlappedMesh = false;
+                if (m_AIHealth != null && m_AIHealth.GetCurrentHealth() > 0)
                 {
-                    Debug.Log("Applying slapped mesh...");
-                    m_HeadRenderer.sharedMesh = appearance.headSlappedMesh;
-                    if (appearance.headSlappedMaterial != null)
+                    useSlappedMesh = ShouldUseSlappedMesh();
+                }
+                
+                
+                if (useSlappedMesh)
+                {
+                    
+                    if (appearance.headSlappedMesh != null)
                     {
-                        m_HeadRenderer.material = appearance.headSlappedMaterial;
+                        
+                        
+                        if (IsMeshCompatible(m_HeadRenderer, appearance.headSlappedMesh))
+                        {
+                            m_HeadRenderer.sharedMesh = appearance.headSlappedMesh;
+                            m_IsUsingSlappedMesh = true;
+                        }
+                        else
+                        {
+                        }
                     }
-                    m_IsUsingSlappedMesh = true;
-                    Debug.Log("Slapped mesh applied successfully");
+                    else
+                    {
+                    }
                 }
                 else
                 {
-                    Debug.Log("Applying normal mesh...");
-                    if (appearance.headMesh != null)
+                    
+                    if (appearance.headMesh != null && IsMeshCompatible(m_HeadRenderer, appearance.headMesh))
                     {
                         m_HeadRenderer.sharedMesh = appearance.headMesh;
                     }
-                    if (appearance.headMaterial != null)
+                    else
                     {
-                        m_HeadRenderer.material = appearance.headMaterial;
                     }
                     m_IsUsingSlappedMesh = false;
-                    Debug.Log("Normal mesh applied successfully");
                 }
-            }
-            else
-            {
-                Debug.LogWarning("m_HeadRenderer is null!");
             }
             
             if (m_BodyRenderer != null)
             {
-                if (appearance.bodyMesh != null)
+                if (appearance.bodyMesh != null && IsMeshCompatible(m_BodyRenderer, appearance.bodyMesh))
                 {
                     m_BodyRenderer.sharedMesh = appearance.bodyMesh;
                 }
-                if (appearance.bodyMaterial != null)
+            }
+            
+            if (m_AvatarImage != null)
+            {
+                if (appearance.avatarSprite != null)
                 {
-                    m_BodyRenderer.material = appearance.bodyMaterial;
+                    m_AvatarImage.sprite = appearance.avatarSprite;
+                }
+                else
+                {
+                    appearance.LoadAvatarSprite();
+                    if (appearance.avatarSprite != null)
+                    {
+                        m_AvatarImage.sprite = appearance.avatarSprite;
+                    }
                 }
             }
         }
@@ -244,10 +308,25 @@ namespace Duc
             m_BodyRenderer = renderer;
         }
         
+        public void SetAvatarImage(Image image)
+        {
+            m_AvatarImage = image;
+        }
+        
         [ContextMenu("Test Appearance Update")]
         public void TestAppearanceUpdate()
         {
             UpdateAppearanceForCurrentLevel();
+        }
+        
+        [ContextMenu("Test Avatar Loading")]
+        public void TestAvatarLoading()
+        {
+            if (m_AppearanceData != null)
+            {
+                m_AppearanceData.LoadAllAvatarSprites();
+                UpdateAppearanceForCurrentLevel();
+            }
         }
         
         [ContextMenu("Test Health Check")]
@@ -257,11 +336,6 @@ namespace Duc
             {
                 float healthPercentage = m_AIHealth.GetHealthPercentage();
                 bool shouldUseSlapped = ShouldUseSlappedMesh();
-                Debug.Log($"Test Health Check - Health: {healthPercentage:P1}, Should use slapped: {shouldUseSlapped}, Current using slapped: {m_IsUsingSlappedMesh}");
-            }
-            else
-            {
-                Debug.LogWarning("AIHealth not found for test");
             }
         }
         
@@ -281,9 +355,8 @@ namespace Duc
         {
             if (m_CurrentAppearance != null)
             {
-                m_IsUsingSlappedMesh = !m_IsUsingSlappedMesh; // Toggle
+                m_IsUsingSlappedMesh = !m_IsUsingSlappedMesh;
                 ApplyAppearance(m_CurrentAppearance);
-                Debug.Log($"Test: Switched to {(m_IsUsingSlappedMesh ? "slapped" : "normal")} mesh");
             }
         }
         
@@ -296,40 +369,37 @@ namespace Duc
                 int maxHealth = m_AIHealth.GetMaxHealth();
                 float healthPercentage = m_AIHealth.GetHealthPercentage();
                 
-                Debug.Log($"Force Check Health: {currentHealth}/{maxHealth} ({healthPercentage:P1})");
-                Debug.Log($"Should use slapped: {healthPercentage < m_HealthThreshold}");
-                
                 OnAIHealthChanged(currentHealth, maxHealth);
-            }
-            else
-            {
-                Debug.LogWarning("AIHealth not found for force check!");
             }
         }
         
         private void OnAIHealthChanged(int currentHealth, int maxHealth)
         {
-            Debug.Log($"OnAIHealthChanged called: {currentHealth}/{maxHealth}");
-            
             if (m_CurrentAppearance == null) 
             {
-                Debug.LogWarning("m_CurrentAppearance is null!");
                 return;
             }
             
-            // Simple check: if health < 50%, switch to slapped mesh
-            bool shouldUseSlapped = ShouldUseSlappedMesh();
-            Debug.Log($"shouldUseSlapped: {shouldUseSlapped}, m_IsUsingSlappedMesh: {m_IsUsingSlappedMesh}");
             
-            if (shouldUseSlapped != m_IsUsingSlappedMesh)
+            // Only check for slapped mesh if health is not at maximum (initialization)
+            // This prevents slapped mesh from showing during initialization when health starts at 0
+            if (currentHealth < maxHealth)
             {
-                Debug.Log("Switching mesh...");
-                ApplyAppearance(m_CurrentAppearance);
-                Debug.Log($"AI Head switched to {(shouldUseSlapped ? "slapped" : "normal")} at {currentHealth}/{maxHealth} health");
+                bool shouldUseSlapped = ShouldUseSlappedMesh();
+                
+                if (shouldUseSlapped != m_IsUsingSlappedMesh)
+                {
+                    ApplyAppearance(m_CurrentAppearance);
+                }
             }
             else
             {
-                Debug.Log("No mesh change needed");
+                // If health is at maximum, ensure we're using normal mesh
+                if (m_IsUsingSlappedMesh)
+                {
+                    m_IsUsingSlappedMesh = false;
+                    ApplyAppearance(m_CurrentAppearance);
+                }
             }
         }
         
@@ -338,12 +408,14 @@ namespace Duc
             if (m_AIHealth == null) return false;
             
             float healthPercentage = m_AIHealth.GetHealthPercentage();
-            return healthPercentage < m_HealthThreshold;
+            bool shouldUse = healthPercentage < m_HealthThreshold;
+            
+            
+            return shouldUse;
         }
         
         private void OnDestroy()
         {
-            // Unsubscribe from events
             if (m_AIHealth != null)
             {
                 m_AIHealth.OnHealthChanged -= OnAIHealthChanged;
