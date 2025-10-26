@@ -211,7 +211,6 @@ namespace Duc
         {
             if (m_HeadRenderer != null)
             {
-                // Only check for slapped mesh if AI health is properly initialized (not 0)
                 bool useSlappedMesh = false;
                 if (m_AIHealth != null && m_AIHealth.GetCurrentHealth() > 0)
                 {
@@ -380,9 +379,6 @@ namespace Duc
                 return;
             }
             
-            
-            // Only check for slapped mesh if health is not at maximum (initialization)
-            // This prevents slapped mesh from showing during initialization when health starts at 0
             if (currentHealth < maxHealth)
             {
                 bool shouldUseSlapped = ShouldUseSlappedMesh();
@@ -394,7 +390,6 @@ namespace Duc
             }
             else
             {
-                // If health is at maximum, ensure we're using normal mesh
                 if (m_IsUsingSlappedMesh)
                 {
                     m_IsUsingSlappedMesh = false;

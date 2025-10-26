@@ -108,6 +108,25 @@ namespace Duc
         {
             return GetSpeedMultiplier(level) - 1.0f;
         }
+        
+        public int GetBossLevelsDefeated(int currentLevel)
+        {
+            int defeatedCount = 0;
+            foreach (var bossLevel in m_BossLevels)
+            {
+                if (bossLevel.isActive && bossLevel.level <= currentLevel)
+                {
+                    defeatedCount++;
+                }
+            }
+            return defeatedCount;
+        }
+        
+        public float GetCumulativeSpeedMultiplier(int level)
+        {
+            int bossDefeatedCount = GetBossLevelsDefeated(level);
+            return Mathf.Pow(1.2f, bossDefeatedCount);
+        }
 
         public string GetBossName(int level)
         {

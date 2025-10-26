@@ -47,12 +47,24 @@ namespace Duc
 
         void Start()
         {
+            ApplyCounterSpeed();
+            
             if (m_CounterText != null)
                 m_CounterText.text = "0.0"; 
             if (m_CounterBarAnim != null)
                 m_AnimState = m_CounterBarAnim[clipName];
                 
             HideCounterBar();
+        }
+        
+        private void ApplyCounterSpeed()
+        {
+            var persistentData = PersistentDataManager.Instance;
+            var dataManager = DataManager.Get();
+            if (persistentData == null || dataManager == null) return;
+            
+            int currentLevel = persistentData.GetLevelCount();
+            m_AnimSpeed = dataManager.GetCounterSpeedWithBossBonus(currentLevel);
         }
 
         void Update()

@@ -12,6 +12,9 @@ namespace Duc
         [SerializeField] private SkinnedMeshRenderer m_HeadRenderer;
         [SerializeField] private SkinnedMeshRenderer m_BodyRenderer;
         
+        [Header("Mesh Renderer References")]
+        [SerializeField] private MeshRenderer m_HairRenderer;
+        
         [Header("Health Thresholds")]
         [SerializeField] private float m_HeadSlappedThreshold = 0.5f; 
         [SerializeField] private float m_HeadVerySlappedThreshold = 0.3f; 
@@ -36,24 +39,6 @@ namespace Duc
         public PlayerSkinData.SkinSet CurrentSkin => m_CurrentSkin;
         public int CurrentSkinId => m_SkinData != null ? m_SkinData.CurrentSkinId : 0;
         
-        private void Awake()
-        {   
-            m_PlayerHealth = GetComponent<PlayerHealth>();
-            if (m_PlayerHealth == null)
-            {
-                m_PlayerHealth = GetComponentInChildren<PlayerHealth>();
-            }
-            if (m_PlayerHealth == null)
-            {
-                m_PlayerHealth = GetComponentInParent<PlayerHealth>();
-            }
-            if (m_PlayerHealth == null)
-            {
-                m_PlayerHealth = FindObjectOfType<PlayerHealth>();
-            }
-            
-            m_CoinManager = CoinManager.Get();
-        }
         
         private void Start()
         {
@@ -86,6 +71,44 @@ namespace Duc
             }
             
             return null;
+        }
+        
+        private MeshRenderer FindMeshRenderer(string name)
+        {
+            MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+            
+            foreach (var renderer in renderers)
+            {
+                if (renderer.name.ToLower().Contains(name.ToLower()))
+                {
+                    return renderer;
+                }
+            }
+            
+            return null;
+        }
+        private void Awake()
+        {
+            if (m_HairRenderer == null)
+            {
+                m_HairRenderer = FindMeshRenderer("Hair");
+            }
+            
+            m_PlayerHealth = GetComponent<PlayerHealth>();
+            if (m_PlayerHealth == null)
+            {
+                m_PlayerHealth = GetComponentInChildren<PlayerHealth>();
+            }
+            if (m_PlayerHealth == null)
+            {
+                m_PlayerHealth = GetComponentInParent<PlayerHealth>();
+            }
+            if (m_PlayerHealth == null)
+            {
+                m_PlayerHealth = FindObjectOfType<PlayerHealth>();
+            }
+            
+            m_CoinManager = CoinManager.Get();
         }
         
         
@@ -131,6 +154,15 @@ namespace Duc
                 if (skin.bodyMesh != null)
                 {
                     m_BodyRenderer.sharedMesh = skin.bodyMesh;
+                }
+            }
+            
+            if (m_HairRenderer != null && m_SkinData?.SharedHairMesh != null)
+            {
+                MeshFilter hairFilter = m_HairRenderer.GetComponent<MeshFilter>();
+                if (hairFilter != null)
+                {
+                    hairFilter.mesh = m_SkinData.SharedHairMesh;
                 }
             }
             

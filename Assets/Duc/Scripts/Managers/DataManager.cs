@@ -220,6 +220,17 @@ namespace Duc
             return 2f; 
         }
         
+        public float GetCounterSpeedWithBossBonus(int level)
+        {
+            if (m_PlayerStats != null && m_PlayerStats.bossLevelData != null)
+            {
+                float baseCounterSpeed = 2f; 
+                float cumulativeSpeedMultiplier = m_PlayerStats.bossLevelData.GetCumulativeSpeedMultiplier(level);
+                return baseCounterSpeed * Mathf.Max(0f, cumulativeSpeedMultiplier);
+            }
+            return 2f;
+        }
+        
         public bool IsBossLevel(int level)
         {
             if (m_AIStats != null && m_AIStats.bossLevelData != null)

@@ -40,10 +40,7 @@ namespace Duc
                 return;
             }
         }
-        
-        /// <summary>
-        /// Vibrate device
-        /// </summary>
+
         public void Vibrate()
         {
             if (!m_EnableVibration) return;
@@ -55,9 +52,6 @@ namespace Duc
 #endif
         }
         
-        /// <summary>
-        /// Enable/Disable vibration
-        /// </summary>
         public void SetVibrationEnabled(bool enabled)
         {
             m_EnableVibration = enabled;

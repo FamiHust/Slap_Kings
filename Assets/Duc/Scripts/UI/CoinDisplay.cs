@@ -80,7 +80,19 @@ namespace Duc
             // Update level display
             if (m_LevelText != null)
             {
-                m_LevelText.text = "LEVEL" + coinManager.GetLevelCount().ToString();
+                int levelCount = coinManager.GetLevelCount();
+                var dataManager = DataManager.Get();
+                
+                if (dataManager != null && dataManager.IsBossLevel(levelCount))
+                {
+                    m_LevelText.text = "BOSS";
+                    m_LevelText.color = new Color(1f, 0f, 0f); // Light red color
+                }
+                else
+                {
+                    m_LevelText.text = "LEVEL" + levelCount.ToString();
+                    m_LevelText.color = Color.white; // Default white color
+                }
             }
 
             // Update victory reward display

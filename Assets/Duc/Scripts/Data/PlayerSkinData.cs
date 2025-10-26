@@ -27,7 +27,10 @@ namespace Duc
         [Header("Shared Head Meshes (used by all skins)")]
         [SerializeField] private Mesh m_SharedHeadMesh; 
         [SerializeField] private Mesh m_SharedHeadSlappedMesh; 
-        [SerializeField] private Mesh m_SharedHeadVerySlappedMesh; 
+        [SerializeField] private Mesh m_SharedHeadVerySlappedMesh;
+        
+        [Header("Shared Hair Mesh (used by all skins)")]
+        [SerializeField] private Mesh m_SharedHairMesh; 
         
         [Header("Default Settings")]
         [SerializeField] private SkinSet m_DefaultSkin;
@@ -40,6 +43,7 @@ namespace Duc
         public Mesh SharedHeadMesh => m_SharedHeadMesh;
         public Mesh SharedHeadSlappedMesh => m_SharedHeadSlappedMesh;
         public Mesh SharedHeadVerySlappedMesh => m_SharedHeadVerySlappedMesh;
+        public Mesh SharedHairMesh => m_SharedHairMesh;
 
         public SkinSet GetSkinById(int skinId)
         {

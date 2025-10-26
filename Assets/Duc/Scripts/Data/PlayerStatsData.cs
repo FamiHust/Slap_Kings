@@ -52,15 +52,8 @@ namespace Duc
                 
                 if (bossData != null)
                 {
-                    // Treat boss speed as multiplier (1.0 = no change)
-                    float speedMultiplier = bossData.GetSpeedMultiplier(level);
-                    float finalSpeed = baseSpeed * Mathf.Max(0f, speedMultiplier);
-                    
-                    // Debug log to see speed changes
-                    if (bossData.IsBossLevel(level))
-                    {
-                        // Boss level speed calculation
-                    }
+                    float cumulativeSpeedMultiplier = bossData.GetCumulativeSpeedMultiplier(level);
+                    float finalSpeed = baseSpeed * Mathf.Max(0f, cumulativeSpeedMultiplier);
                     
                     return finalSpeed;
                 }
