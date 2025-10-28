@@ -33,12 +33,24 @@ namespace Duc
             {
                 m_Instance = this;
                 DontDestroyOnLoad(gameObject);
+                LoadSettings();
             }
             else if (m_Instance != this)
             {
                 Destroy(gameObject);
                 return;
             }
+        }
+        
+        private void LoadSettings()
+        {
+            m_EnableVibration = PlayerPrefs.GetInt("VibrateEnabled", 1) == 1;
+        }
+        
+        private void SaveSettings()
+        {
+            PlayerPrefs.SetInt("VibrateEnabled", m_EnableVibration ? 1 : 0);
+            PlayerPrefs.Save();
         }
 
         public void Vibrate()
@@ -55,7 +67,10 @@ namespace Duc
         public void SetVibrationEnabled(bool enabled)
         {
             m_EnableVibration = enabled;
+            SaveSettings();
         }
+        
+        public bool IsVibrationEnabled => m_EnableVibration;
         
         [ContextMenu("Test Vibration")]
         public void TestVibration()

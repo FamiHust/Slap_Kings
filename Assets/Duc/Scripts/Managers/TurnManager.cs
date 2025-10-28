@@ -13,7 +13,6 @@ namespace Duc
         [SerializeField] private float m_AIWaitTime = 3f;
         [SerializeField] private float m_AIAttackTime = 2f;
         [SerializeField] private float m_AIGetSlappedDelay = 1.0f;
-        [SerializeField] private bool m_EnableDebugLogs = true;
         [SerializeField] private int m_AIMinDamage = 10;
         [SerializeField] private int m_AIMaxDamage = 30;
         

@@ -57,11 +57,6 @@ namespace Duc
                         break;
                     }
                 }
-                if (!found && m_EnableDebugLogs && !m_LoggedAnimatorParams)
-                {
-                    m_LoggedAnimatorParams = true;
-                }
-
                 bool foundHit = false;
                 foreach (var p in m_Animator.parameters)
                 {
@@ -70,10 +65,6 @@ namespace Duc
                         foundHit = true;
                         break;
                     }
-                }
-                if (!foundHit && m_EnableDebugLogs)
-                {
-
                 }
             }
         }

@@ -71,10 +71,6 @@ namespace Duc
                         break;
                     }
                 }
-                if (!found && m_EnableDebugLogs && !m_LoggedAnimatorParams)
-                {
-                    m_LoggedAnimatorParams = true;
-                }
             }
         }
 
@@ -144,6 +140,12 @@ namespace Duc
                 m_Animator.SetFloat(m_HashGetSlappedNumber, (float)variant);
                 m_Animator.SetFloat(m_HashSlapPower, power);
                 m_Animator.SetBool(m_HashStartGettingSlapped, true);
+
+                var soundManager = SoundManager.Get();
+                if (soundManager != null)
+                {
+                    soundManager.PlaySound(isMegaGetSlapped ? SoundManager.SoundType.GetMegaSlapped : SoundManager.SoundType.GetNormalSlapped);
+                }
             }
         }
 

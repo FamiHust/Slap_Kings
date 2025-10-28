@@ -26,6 +26,9 @@ namespace Duc
             [Header("Avatar Sprite")]
             [HideInInspector] public Sprite avatarSprite;
             
+            [Header("Ranking")]
+            public string rankDisplayName = ""; 
+            
             [Header("Additional Settings")]
             [HideInInspector] public bool allowMultipleInstances = false;
             [HideInInspector] public float transitionDuration = 0.5f;

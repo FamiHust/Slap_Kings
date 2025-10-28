@@ -20,7 +20,6 @@ namespace Duc
         [SerializeField] private float m_HeadVerySlappedThreshold = 0.3f; 
         
         [Header("Settings")]
-        [SerializeField] private bool m_EnableDebugLogs = true;
         
         [Header("UI Display (Optional)")]
         [SerializeField] private TextMeshProUGUI m_SkinNameText;
@@ -212,12 +211,6 @@ namespace Duc
             bool shouldUseHeadSlapped = ShouldUseHeadSlappedMesh();
             
             ApplySkin(m_CurrentSkin);
-            
-            if (m_EnableDebugLogs)
-            {
-                string headState = shouldUseHeadVerySlapped ? "Very Slapped" : 
-                                 shouldUseHeadSlapped ? "Slapped" : "Normal";
-            }
         }
         
         private bool ShouldUseHeadSlappedMesh()
@@ -446,20 +439,24 @@ namespace Duc
         {
             if (m_SkinData == null) return;
             
+            int defaultSkinId = m_SkinData.DefaultSkin != null ? m_SkinData.DefaultSkin.skinId : 0;
             for (int i = 0; i < m_SkinData.SkinSets.Count; i++)
             {
                 var skin = m_SkinData.SkinSets[i];
-                if (i == 0)
-                {
-                    skin.isUnlocked = true;
-                }
-                else
-                {
-                    skin.isUnlocked = false;
-                }
+                skin.isUnlocked = (skin.skinId == defaultSkinId);
             }
             
-            UpdateCostDisplay();
+            m_SkinData.SetCurrentSkin(defaultSkinId);
+            var defaultSkin = m_SkinData.GetSkinById(defaultSkinId);
+            if (defaultSkin != null)
+            {
+                ApplySkin(defaultSkin);
+                OnSkinIdChanged?.Invoke(defaultSkinId);
+            }
+            else
+            {
+                UpdateCostDisplay();
+            }
         }
 
         public void ResetCurrentSkin()

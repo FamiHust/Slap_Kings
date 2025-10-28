@@ -7,7 +7,6 @@ namespace Duc
     {
         [Header("State Settings")]
         [SerializeField] protected CharacterState m_CurrentState = CharacterState.Idle;
-        [SerializeField] protected bool m_EnableDebugLogs = true;
         
         [Header("State Events")]
         public Action<CharacterState> OnStateChanged;
@@ -49,10 +48,6 @@ namespace Duc
 
             if (m_CurrentStateInstance != null && !m_CurrentStateInstance.CanTransitionTo(newState))
             {
-                if (m_EnableDebugLogs)
-                {
-                    // Invalid state transition
-                }
                 return;
             }
 

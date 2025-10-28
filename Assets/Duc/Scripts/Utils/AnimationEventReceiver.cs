@@ -12,10 +12,12 @@ namespace Duc
         }
 
         [SerializeField] private ActorType m_ActorType = ActorType.Player;
-        [SerializeField] private bool m_EnableDebugLogs = true;
 
         public void OnSlapHit()
         {
+            // Play slap sound based on type
+            PlaySlapSound();
+            
             if (m_ActorType == ActorType.Player)
             {
                 var playerSM = GetComponent<PlayerStateMachine>();
@@ -167,6 +169,25 @@ namespace Duc
             else
             {
                 return Random.Range(10, 31);
+            }
+        }
+
+        private void PlaySlapSound()
+        {
+            var soundManager = SoundManager.Get();
+            if (soundManager == null) return;
+            
+            if (IsLastHit())
+            {
+                soundManager.PlaySound(SoundManager.SoundType.LastHit);
+            }
+            else if (IsMegaSlap())
+            {
+                soundManager.PlaySound(SoundManager.SoundType.MegaSlap);
+            }
+            else
+            {
+                soundManager.PlaySound(SoundManager.SoundType.NormalSlap);
             }
         }
     }

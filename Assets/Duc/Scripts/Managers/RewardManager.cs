@@ -31,13 +31,11 @@ namespace Duc
         {
             base.Awake();
             
-            // Store original target position
             if (m_TargetTransform != null)
             {
                 m_OriginalTargetPosition = m_TargetTransform.position;
             }
             
-            // Ensure all reward coins are initially disabled
             if (m_RewardCoins != null)
             {
                 foreach (var coin in m_RewardCoins)
@@ -50,31 +48,22 @@ namespace Duc
             }
         }
         
-        /// <summary>
-        /// Show reward coins and fly them to target
-        /// </summary>
-        /// <param name="coinCount">Number of coins to show (max is array length)</param>
         public void ShowRewardCoins(int coinCount = 10)
         {
             if (m_RewardCoins == null || m_RewardCoins.Length == 0)
             {
-                Debug.LogWarning("RewardManager: No reward coins assigned!");
                 return;
             }
             
             if (m_TargetTransform == null)
             {
-                Debug.LogWarning("RewardManager: No target transform assigned!");
                 return;
             }
             
-            // Clear any active coins
             ClearActiveCoins();
             
-            // Limit coin count to available coins
             int coinsToShow = Mathf.Min(coinCount, m_RewardCoins.Length);
             
-            // Activate and animate coins
             for (int i = 0; i < coinsToShow; i++)
             {
                 if (m_RewardCoins[i] != null)
@@ -83,49 +72,33 @@ namespace Duc
                 }
             }
         }
-        
-        /// <summary>
-        /// Show victory reward coins
-        /// </summary>
+
         public void ShowVictoryReward()
         {
-            ShowRewardCoins(10);
+            ShowRewardCoins(15);
         }
         
-        /// <summary>
-        /// Show defeat reward coins (fewer coins)
-        /// </summary>
         public void ShowDefeatReward()
         {
             ShowRewardCoins(5);
         }
-        
-        /// <summary>
-        /// Show reward coins from specific panel position
-        /// </summary>
-        /// <param name="coinCount">Number of coins to show</param>
-        /// <param name="startPosition">Starting position for coins</param>
+
         public void ShowRewardCoinsFromPosition(int coinCount, Vector3 startPosition)
         {
             if (m_RewardCoins == null || m_RewardCoins.Length == 0)
             {
-                Debug.LogWarning("RewardManager: No reward coins assigned!");
                 return;
             }
             
             if (m_TargetTransform == null)
             {
-                Debug.LogWarning("RewardManager: No target transform assigned!");
                 return;
             }
             
-            // Clear any active coins
             ClearActiveCoins();
             
-            // Limit coin count to available coins
             int coinsToShow = Mathf.Min(coinCount, m_RewardCoins.Length);
             
-            // Activate and animate coins from specific position
             for (int i = 0; i < coinsToShow; i++)
             {
                 if (m_RewardCoins[i] != null)
@@ -137,31 +110,33 @@ namespace Duc
         
         private IEnumerator AnimateSingleCoin(GameObject coin, float delay)
         {
-            // Wait for stagger delay
             yield return new WaitForSeconds(delay);
             
-            // Add to active coins list
             m_ActiveCoins.Add(coin);
             
-            // Activate coin
             coin.SetActive(true);
+            var soundManager = SoundManager.Get();
+            if (soundManager != null)
+            {
+                soundManager.PlaySound(SoundManager.SoundType.CoinReward);
+            }
             
-            // Reset scale and position
             coin.transform.localScale = Vector3.zero;
             
-            // Scale up animation
             coin.transform.DOScale(Vector3.one, m_ScaleUpDuration)
                 .SetEase(Ease.OutBack);
             
-            // Wait a bit before flying
             yield return new WaitForSeconds(0.5f);
             
-            // Fly to target
             Vector3 targetPos = m_TargetTransform.position;
             coin.transform.DOMove(targetPos, m_FlyDuration)
                 .SetEase(m_FlyEase)
                 .OnComplete(() => {
-                    // Scale down and deactivate when reached target
+                    var sm = SoundManager.Get();
+                    if (sm != null)
+                    {
+                        sm.PlaySound(SoundManager.SoundType.CoinReward);
+                    }
                     coin.transform.DOScale(Vector3.zero, m_ScaleDownDuration)
                         .SetEase(Ease.InBack)
                         .OnComplete(() => {
@@ -173,38 +148,40 @@ namespace Duc
         
         private IEnumerator AnimateSingleCoinFromPosition(GameObject coin, Vector3 startPosition, float delay)
         {
-            // Wait for stagger delay
             yield return new WaitForSeconds(delay);
             
-            // Add to active coins list
             m_ActiveCoins.Add(coin);
             
-            // Activate coin and set position with some random offset
             coin.SetActive(true);
+            var soundManager = SoundManager.Get();
+            if (soundManager != null)
+            {
+                soundManager.PlaySound(SoundManager.SoundType.CoinReward);
+            }
             
-            // Add random offset to spread coins around the panel position
             Vector3 randomOffset = new Vector3(
-                Random.Range(-m_CoinSpreadX, m_CoinSpreadX),  // X offset
-                Random.Range(-m_CoinSpreadY, m_CoinSpreadY),  // Y offset
-                0f                                            // Z offset
+                Random.Range(-m_CoinSpreadX, m_CoinSpreadX), 
+                Random.Range(-m_CoinSpreadY, m_CoinSpreadY),  
+                0f                                         
             );
             coin.transform.position = startPosition + randomOffset;
             coin.transform.localScale = Vector3.zero;
             
             
-            // Scale up animation
             coin.transform.DOScale(Vector3.one, m_ScaleUpDuration)
                 .SetEase(Ease.OutBack);
             
-            // Wait a bit before flying
             yield return new WaitForSeconds(0.5f);
             
-            // Fly to target
             Vector3 targetPos = m_TargetTransform.position;
             coin.transform.DOMove(targetPos, m_FlyDuration)
                 .SetEase(m_FlyEase)
                 .OnComplete(() => {
-                    // Scale down and deactivate when reached target
+                    var sm = SoundManager.Get();
+                    if (sm != null)
+                    {
+                        sm.PlaySound(SoundManager.SoundType.CoinReward);
+                    }
                     coin.transform.DOScale(Vector3.zero, m_ScaleDownDuration)
                         .SetEase(Ease.InBack)
                         .OnComplete(() => {
@@ -213,10 +190,7 @@ namespace Duc
                         });
                 });
         }
-        
-        /// <summary>
-        /// Clear all active coins immediately
-        /// </summary>
+
         public void ClearActiveCoins()
         {
             foreach (var coin in m_ActiveCoins)
@@ -229,10 +203,7 @@ namespace Duc
             }
             m_ActiveCoins.Clear();
         }
-        
-        /// <summary>
-        /// Set target transform for coins to fly to
-        /// </summary>
+
         public void SetTargetTransform(Transform target)
         {
             m_TargetTransform = target;
@@ -241,10 +212,7 @@ namespace Duc
                 m_OriginalTargetPosition = target.position;
             }
         }
-        
-        /// <summary>
-        /// Update target position (useful if target moves)
-        /// </summary>
+
         public void UpdateTargetPosition()
         {
             if (m_TargetTransform != null)
@@ -252,18 +220,12 @@ namespace Duc
                 m_OriginalTargetPosition = m_TargetTransform.position;
             }
         }
-        
-        /// <summary>
-        /// Get current active coin count
-        /// </summary>
+ 
         public int GetActiveCoinCount()
         {
             return m_ActiveCoins.Count;
         }
-        
-        /// <summary>
-        /// Check if any coins are currently animating
-        /// </summary>
+
         public bool IsAnimating()
         {
             return m_ActiveCoins.Count > 0;
@@ -271,10 +233,8 @@ namespace Duc
         
         protected override void OnInitialize()
         {
-            // Initialize reward manager
             if (m_TargetTransform == null)
             {
-                // Try to find coin display as default target
                 var coinDisplay = FindObjectOfType<CoinDisplay>();
                 if (coinDisplay != null)
                 {
@@ -285,13 +245,11 @@ namespace Duc
         
         protected override void OnCleanup()
         {
-            // Cleanup reward manager
             ClearActiveCoins();
         }
         
         protected override void OnDestroy()
         {
-            // Kill all DOTween animations
             foreach (var coin in m_RewardCoins)
             {
                 if (coin != null)
@@ -301,24 +259,6 @@ namespace Duc
             }
             
             base.OnDestroy();
-        }
-        
-        [ContextMenu("Test Victory Reward")]
-        public void TestVictoryReward()
-        {
-            ShowVictoryReward();
-        }
-        
-        [ContextMenu("Test Defeat Reward")]
-        public void TestDefeatReward()
-        {
-            ShowDefeatReward();
-        }
-        
-        [ContextMenu("Clear All Coins")]
-        public void TestClearCoins()
-        {
-            ClearActiveCoins();
         }
     }
 }

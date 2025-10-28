@@ -90,13 +90,19 @@ namespace Duc
                 m_MinPower = playerStats.power.GetMinPowerWithUpgrades(upgrades);
                 m_MaxPower = playerStats.power.GetMaxPowerWithUpgrades(upgrades);
                 
-                // Apply animation settings from PlayerStatsData with boss level bonus
                 m_AnimSpeed = dataManager.GetPowerMeterSpeedWithBossBonus(currentLevel);
                 loopPingPong = playerStats.power.loopPingPong;
+
+                int minP = Mathf.Min(m_MinPower, m_MaxPower);
+                int maxP = Mathf.Max(m_MinPower, m_MaxPower);
+                m_PowerValue = Mathf.Clamp(m_PowerValue, minP, maxP);
+                if (m_PowerText != null)
+                    m_PowerText.text = (isActive ? m_PowerValue : GetMaxPower()).ToString();
                 
-                if (m_EnableDebugLogs && dataManager.IsBossLevel(currentLevel))
+                var ranking = RankingManager.Get();
+                if (ranking != null)
                 {
-                    // Boss level power meter speed increased
+                    ranking.SetScore(GetMaxPower());
                 }
             }
         }
@@ -148,20 +154,16 @@ namespace Duc
                 return;
             }
 
-            // Kill existing scale tween
             if (m_ScaleTween != null)
             {
                 m_ScaleTween.Kill();
             }
 
-            // Set initial scale to 0
             transform.localScale = Vector3.zero;
             
-            // Scale in animation
             m_ScaleTween = transform.DOScale(Vector3.one, m_ScaleInDuration)
                 .SetEase(m_ScaleInEase)
                 .OnComplete(() => {
-                    // Start the actual meter animation after scale in
                     isActive = true;
                     m_Direction = 1;
                     m_AnimState.speed = 0f;  
@@ -190,13 +192,11 @@ namespace Duc
 
         public void EndTurnHide()
         {
-            // Kill existing scale tween
             if (m_ScaleTween != null)
             {
                 m_ScaleTween.Kill();
             }
 
-            // Scale out animation then disable
             m_ScaleTween = transform.DOScale(Vector3.zero, m_ScaleOutDuration)
                 .SetEase(m_ScaleOutEase)
                 .OnComplete(() =>
@@ -213,6 +213,19 @@ namespace Duc
         public int GetMaxPower()
         {
             return Mathf.Max(m_MinPower, m_MaxPower);
+        }
+
+        [ContextMenu("Reset Anim Speed")]
+        public void ResetAnimSpeed()
+        {
+            var dataManager = DataManager.Get();
+            if (dataManager == null) return;
+
+            var persistentData = PersistentDataManager.Instance;
+            if (persistentData == null) return;
+
+            int currentLevel = persistentData.GetLevelCount();
+            m_AnimSpeed = dataManager.GetPowerMeterSpeedWithBossBonus(currentLevel);
         }
 
         protected override void OnInitialize()
@@ -234,7 +247,6 @@ namespace Duc
 
         protected override void OnCleanup()
         {
-            // Kill any active tween
             if (m_ScaleTween != null)
             {
                 m_ScaleTween.Kill();

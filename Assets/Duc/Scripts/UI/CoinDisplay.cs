@@ -15,6 +15,10 @@ namespace Duc
         [SerializeField] private TextMeshProUGUI m_HealthUpgradeCountText;
         [SerializeField] private TextMeshProUGUI m_PowerUpgradeCountText;
 
+        // Cache the displayed reward to prevent it from updating after victory
+        private int m_CurrentVictoryReward = -1;
+        private bool m_IsShowingCurrentReward = false;
+
         private void Start()
         {
             UpdateDisplay();
@@ -22,11 +26,10 @@ namespace Duc
 
         private void OnEnable()
         {
-            // Subscribe to events when UI becomes active
             var persistentData = PersistentDataManager.Instance;
             if (persistentData != null)
             {
-                persistentData.OnHealthUpgradePurchased -= UpdateDisplay; // avoid double subscribe
+                persistentData.OnHealthUpgradePurchased -= UpdateDisplay;
                 persistentData.OnPowerUpgradePurchased -= UpdateDisplay;
                 persistentData.OnProgressReset -= UpdateDisplay;
                 persistentData.OnCoinsChanged -= UpdateDisplay;
@@ -41,7 +44,6 @@ namespace Duc
 
         private void OnDisable()
         {
-            // Unsubscribe when UI is hidden/disabled
             var persistentData = PersistentDataManager.Instance;
             if (persistentData != null)
             {
@@ -57,27 +59,23 @@ namespace Duc
             var coinManager = CoinManager.Get();
             if (coinManager == null) return;
 
-            // Update coin display
             if (m_CoinText != null)
             {
                 m_CoinText.text = coinManager.GetCurrentCoins().ToString();
             }
 
-            // Update health upgrade price
             if (m_HealthPriceText != null)
             {
                 int healthPrice = coinManager.GetHealthUpgradePrice();
                 m_HealthPriceText.text = healthPrice.ToString();
             }
 
-            // Update power upgrade price
             if (m_PowerPriceText != null)
             {
                 int powerPrice = coinManager.GetPowerUpgradePrice();
                 m_PowerPriceText.text = powerPrice.ToString();
             }
 
-            // Update level display
             if (m_LevelText != null)
             {
                 int levelCount = coinManager.GetLevelCount();
@@ -86,37 +84,41 @@ namespace Duc
                 if (dataManager != null && dataManager.IsBossLevel(levelCount))
                 {
                     m_LevelText.text = "BOSS";
-                    m_LevelText.color = new Color(1f, 0f, 0f); // Light red color
+                    m_LevelText.color = new Color(1f, 0f, 0f); 
                 }
                 else
                 {
-                    m_LevelText.text = "LEVEL" + levelCount.ToString();
-                    m_LevelText.color = Color.white; // Default white color
+                    m_LevelText.text = "MATCH " + levelCount.ToString();
+                    m_LevelText.color = Color.white;
                 }
             }
 
-            // Update victory reward display
             if (m_VictoryRewardText != null)
             {
-                int victoryReward = coinManager.CalculateReward();
-                m_VictoryRewardText.text = victoryReward.ToString();
+                // If we're showing a cached reward (during victory screen), keep displaying it
+                if (m_IsShowingCurrentReward && m_CurrentVictoryReward >= 0)
+                {
+                    m_VictoryRewardText.text = m_CurrentVictoryReward.ToString();
+                }
+                else
+                {
+                    int victoryReward = coinManager.CalculateReward();
+                    m_VictoryRewardText.text = victoryReward.ToString();
+                }
             }
 
-            // Update defeat reward display
             if (m_DefeatRewardText != null)
             {
                 int defeatReward = coinManager.GetLoseReward();
                 m_DefeatRewardText.text = defeatReward.ToString();
             }
 
-            // Update health upgrade count display
             if (m_HealthUpgradeCountText != null)
             {
                 int healthUpgradeCount = coinManager.GetHealthUpgradeCount();
                 m_HealthUpgradeCountText.text = "(" + healthUpgradeCount.ToString() + ")";
             }
 
-            // Update power upgrade count display
             if (m_PowerUpgradeCountText != null)
             {
                 int powerUpgradeCount = coinManager.GetPowerUpgradeCount();
@@ -124,7 +126,6 @@ namespace Duc
             }
         }
 
-        // Called by UI buttons
         public void OnHealthUpgradeButtonClick()
         {
             var coinManager = CoinManager.Get();
@@ -153,6 +154,19 @@ namespace Duc
                 coinManager.ResetProgress();
             }
             UpdateDisplay();
+        }
+        
+        public void LockVictoryReward(int rewardAmount)
+        {
+            m_CurrentVictoryReward = rewardAmount;
+            m_IsShowingCurrentReward = true;
+            UpdateDisplay();
+        }
+        
+        public void UnlockVictoryReward()
+        {
+            m_IsShowingCurrentReward = false;
+            m_CurrentVictoryReward = -1;
         }
     }
 }

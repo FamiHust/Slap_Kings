@@ -27,14 +27,14 @@ MonoBehaviour:
     victoryVariantCount: 12
   playerHealth:
     baseMaxHealth: 200
-    healthPerUpgrade: 10
+    healthPerUpgrade: 20
   power:
     baseMinPower: 10
     baseMaxPower: 100
     minPowerPerUpgrade: 5
     maxPowerPerUpgrade: 10
     damagePerPowerUpgrade: 1
-    animSpeed: 2.2
+    animSpeed: 2
     loopPingPong: 1
   controls:
     enableInIdle: 1

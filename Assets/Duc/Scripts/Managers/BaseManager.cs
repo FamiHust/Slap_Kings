@@ -28,7 +28,6 @@ namespace Duc
     public abstract class BaseManager : MonoBehaviour, IGameManager
     {
         [Header("Manager Settings")]
-        [SerializeField] protected bool m_EnableDebugLogs = true;
         [SerializeField] protected bool m_AutoInitialize = true;
         
         public bool IsInitialized { get; protected set; } = false;

@@ -50,6 +50,13 @@ namespace Duc
             {
                 m_PersistentData.OnPlayerVictory();
             }
+            
+            // Update ranking system
+            var rankingManager = RankingManager.Instance;
+            if (rankingManager != null)
+            {
+                rankingManager.OnPlayerVictory();
+            }
         }
 
         public void OnPlayerDefeat()
