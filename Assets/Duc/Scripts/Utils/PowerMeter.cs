@@ -13,6 +13,13 @@ namespace Duc
 
         [Header("UI")]
         [SerializeField] private TextMeshProUGUI m_PowerText;
+        [SerializeField] private TextMeshProUGUI m_ExtraSlapText;
+        
+        [Header("Extra Slap Animation")]
+        [SerializeField] private float m_ExtraSlapAnimDuration = 1.5f;
+        [SerializeField] private float m_ExtraSlapMoveDistance = 100f;
+        [SerializeField] private Color m_ExtraSlapStartColor = new Color(1f, 0.84f, 0f, 1f);
+        [SerializeField] private Color m_ExtraSlapEndColor = new Color(1f, 0.84f, 0f, 0f);
         
         [Header("DOTween Scale Animation")]
         [SerializeField] private float m_ScaleInDuration = 0.3f;
@@ -31,12 +38,20 @@ namespace Duc
         private int m_Direction = 1;        
         private int m_PowerValue = 0;
         private Tween m_ScaleTween;
+        private Tween m_ExtraSlapTween;
+        private Vector3 m_ExtraSlapStartPosition;
 
         protected override void Awake()
         {
             base.Awake();
             if (m_PowerBarAnim != null)
                 m_AnimState = m_PowerBarAnim[clipName];
+            
+            if (m_ExtraSlapText != null)
+            {
+                m_ExtraSlapText.gameObject.SetActive(false);
+                m_ExtraSlapStartPosition = m_ExtraSlapText.transform.position;
+            }
         }
 
         void Start()
@@ -215,6 +230,41 @@ namespace Duc
             return Mathf.Max(m_MinPower, m_MaxPower);
         }
 
+        public void ShowExtraSlapText()
+        {
+            if (m_ExtraSlapText == null) return;
+            
+            int power = GetPowerValue();
+            int maxPower = GetMaxPower();
+            bool isMegaSlap = power >= (maxPower / 2);
+            
+            if (!isMegaSlap) return;
+            
+            if (m_ExtraSlapTween != null)
+            {
+                m_ExtraSlapTween.Kill();
+            }
+            
+            // Reset position, color, and scale
+            m_ExtraSlapText.transform.position = m_ExtraSlapStartPosition;
+            m_ExtraSlapText.color = m_ExtraSlapStartColor;
+            m_ExtraSlapText.transform.localScale = Vector3.one * 0.5f;
+            m_ExtraSlapText.gameObject.SetActive(true);
+            
+            m_ExtraSlapText.transform.DOScale(Vector3.one, 0.3f)
+                .SetEase(Ease.OutBack);
+            
+            Vector3 endPosition = m_ExtraSlapStartPosition + Vector3.up * m_ExtraSlapMoveDistance;
+            m_ExtraSlapTween = m_ExtraSlapText.transform.DOMove(endPosition, m_ExtraSlapAnimDuration)
+                .SetEase(Ease.OutQuad);
+            
+            m_ExtraSlapText.DOColor(m_ExtraSlapEndColor, m_ExtraSlapAnimDuration)
+                .SetEase(Ease.InQuad)
+                .OnComplete(() => {
+                    m_ExtraSlapText.gameObject.SetActive(false);
+                });
+        }
+        
         [ContextMenu("Reset Anim Speed")]
         public void ResetAnimSpeed()
         {
@@ -250,6 +300,11 @@ namespace Duc
             if (m_ScaleTween != null)
             {
                 m_ScaleTween.Kill();
+            }
+            
+            if (m_ExtraSlapTween != null)
+            {
+                m_ExtraSlapTween.Kill();
             }
             
             var persistentData = PersistentDataManager.Instance;

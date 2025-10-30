@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Duc
@@ -12,6 +13,7 @@ namespace Duc
         [Header("Rank Item UI Prefab")]
         [SerializeField] private GameObject m_RankItemPrefab;
         [SerializeField] private Transform m_RankListContainer;
+        [SerializeField] private ScrollRect m_RankScrollRect;
         
         [Header("Medal Icons")]
         [SerializeField] private Sprite[] m_MedalIcons = new Sprite[5];
@@ -39,7 +41,6 @@ namespace Duc
         {
             LoadRankingData();
             InitializeRanking();
-            // Subscribe to power upgrade to refresh score text immediately
             var persistentData = PersistentDataManager.Instance;
             if (persistentData != null)
             {
@@ -290,6 +291,41 @@ namespace Duc
                     rankItemUI.Initialize(item.rankInfo, item.displayName, item.score, false, item.isPlayer, displayPosition, m_CurrentScore, isBossLevel, m_PlayerRankPosition);
                 }
             }
+            
+            StartCoroutine(ScrollToPlayerRank());
+        }
+        
+        private IEnumerator ScrollToBottomAfterLayout()
+        {
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
+            
+            if (m_RankScrollRect != null)
+            {
+                m_RankScrollRect.verticalNormalizedPosition = 0f;
+            }
+        }
+        
+        private IEnumerator ScrollToPlayerRank()
+        {
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
+            
+            if (m_RankScrollRect != null && m_RankListContainer != null)
+            {
+                int totalItems = m_RankListContainer.childCount;
+                if (totalItems > 0 && m_PlayerRankPosition > 0)
+                {
+                    float normalizedPosition = 1f - ((float)m_PlayerRankPosition / totalItems);
+                    normalizedPosition = Mathf.Clamp01(normalizedPosition);
+                    
+                    m_RankScrollRect.verticalNormalizedPosition = normalizedPosition;
+                }
+                else
+                {
+                    m_RankScrollRect.verticalNormalizedPosition = 0f;
+                }
+            }
         }
         
         private class RankingItem
@@ -381,16 +417,14 @@ namespace Duc
             return 1000;
         }
         
-        [ContextMenu("Test Victory")]
-        public void TestVictory()
+        public void ScrollRankingToBottom()
         {
-            OnPlayerVictory();
+            StartCoroutine(ScrollToBottomAfterLayout());
         }
-        
-        [ContextMenu("Reset Ranking")]
-        public void TestResetRanking()
+
+        public void ScrollRankingToPlayer()
         {
-            ResetRanking();
+            StartCoroutine(ScrollToPlayerRank());
         }
         
         public Sprite GetMedalIcon(int rankOrder)

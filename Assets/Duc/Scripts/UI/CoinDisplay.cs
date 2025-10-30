@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 namespace Duc
 {
@@ -15,12 +16,22 @@ namespace Duc
         [SerializeField] private TextMeshProUGUI m_HealthUpgradeCountText;
         [SerializeField] private TextMeshProUGUI m_PowerUpgradeCountText;
 
-        // Cache the displayed reward to prevent it from updating after victory
         private int m_CurrentVictoryReward = -1;
         private bool m_IsShowingCurrentReward = false;
+        
+        [Header("Animation Settings")]
+        [SerializeField] private float m_CoinAnimationDuration = 1f;
+        
+        private Tween m_CoinTween;
+        private int m_CurrentDisplayedCoins = 0;
 
         private void Start()
         {
+            var coinManager = CoinManager.Get();
+            if (coinManager != null)
+            {
+                m_CurrentDisplayedCoins = coinManager.GetCurrentCoins();
+            }
             UpdateDisplay();
         }
 
@@ -61,7 +72,8 @@ namespace Duc
 
             if (m_CoinText != null)
             {
-                m_CoinText.text = coinManager.GetCurrentCoins().ToString();
+                int targetCoins = coinManager.GetCurrentCoins();
+                AnimateCoinText(targetCoins);
             }
 
             if (m_HealthPriceText != null)
@@ -95,7 +107,6 @@ namespace Duc
 
             if (m_VictoryRewardText != null)
             {
-                // If we're showing a cached reward (during victory screen), keep displaying it
                 if (m_IsShowingCurrentReward && m_CurrentVictoryReward >= 0)
                 {
                     m_VictoryRewardText.text = m_CurrentVictoryReward.ToString();
@@ -167,6 +178,46 @@ namespace Duc
         {
             m_IsShowingCurrentReward = false;
             m_CurrentVictoryReward = -1;
+        }
+        
+        private void AnimateCoinText(int targetCoins)
+        {
+            if (m_CoinText == null) return;
+            
+            if (m_CoinTween != null)
+            {
+                m_CoinTween.Kill();
+            }
+            
+            int startCoins = m_CurrentDisplayedCoins;
+            
+            if (m_CurrentDisplayedCoins == 0)
+            {
+                m_CurrentDisplayedCoins = targetCoins;
+                m_CoinText.text = targetCoins.ToString();
+                return;
+            }
+            
+            float elapsed = 0f;
+            m_CoinTween = DOTween.To(() => elapsed, x => elapsed = x, 1f, m_CoinAnimationDuration)
+                .SetEase(Ease.OutQuad)
+                .OnUpdate(() => {
+                    int currentCoins = Mathf.RoundToInt(Mathf.Lerp(startCoins, targetCoins, elapsed));
+                    m_CurrentDisplayedCoins = currentCoins;
+                    m_CoinText.text = currentCoins.ToString();
+                })
+                .OnComplete(() => {
+                    m_CurrentDisplayedCoins = targetCoins;
+                    m_CoinText.text = targetCoins.ToString();
+                });
+        }
+        
+        private void OnDestroy()
+        {
+            if (m_CoinTween != null)
+            {
+                m_CoinTween.Kill();
+            }
         }
     }
 }

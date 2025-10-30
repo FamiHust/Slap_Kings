@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using Duc.Managers;
 
 namespace Duc
 {
@@ -232,12 +233,19 @@ namespace Duc
         public void OnNextSkinButtonClicked()
         {
             NextSkin();
-
+            if (EffectManager.Instance != null)
+            {
+                EffectManager.Instance.PlaySkinChangeEffect();
+            }
         }
         
         public void OnPreviousSkinButtonClicked()
         {
             PreviousSkin();
+            if (EffectManager.Instance != null)
+            {
+                EffectManager.Instance.PlaySkinChangeEffect();
+            }
         }
         
         public void OnTestSlappedMeshButtonClicked()

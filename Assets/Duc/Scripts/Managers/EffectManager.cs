@@ -15,23 +15,47 @@ namespace Duc.Managers
         [Header("Combat Effects")]
         [SerializeField] private ParticleSystem m_PlayerHitEffect;
         [SerializeField] private ParticleSystem m_AIHitEffect;
+        [SerializeField] private ParticleSystem m_PlayerLastHitEffect;
+        [SerializeField] private ParticleSystem m_AILastHitEffect;
+        [SerializeField] private ParticleSystem m_PlayerNormalHitEffect;
+        [SerializeField] private ParticleSystem m_AINormalHitEffect;
+        [SerializeField] private ParticleSystem m_PlayerShieldEffect;
         [SerializeField] private int m_CombatEffectPoolSize = 10;
+        
+        [Header("Skin Effects")]
+        [SerializeField] private ParticleSystem m_SkinChangeEffect;
+        [SerializeField] private int m_SkinEffectPoolSize = 5;
         
         [Header("Effect Spawn Positions")]
         [SerializeField] private Transform m_HealthUpgradeSpawnPoint;
         [SerializeField] private Transform m_PowerUpgradeSpawnPoint;
         [SerializeField] private Transform m_PlayerHitSpawnPoint;
         [SerializeField] private Transform m_AIHitSpawnPoint;
+        [SerializeField] private Transform m_PlayerShieldSpawnPoint;
+        [SerializeField] private Transform m_SkinChangeSpawnPoint;
         
         [Header("Effect Settings")]
         [SerializeField] private float m_EffectDuration = 2f;
         [SerializeField] private Vector3 m_EffectOffset = Vector3.up * 2f;
+        [Header("Shield Effect Settings")]
+        [SerializeField] private float m_ShieldScaleInDuration = 0.2f;
+        [SerializeField] private float m_ShieldScaleOutDuration = 0.2f;
+        [SerializeField] private float m_ShieldTargetScale = 1f;
+        [SerializeField] private Ease m_ShieldEaseIn = Ease.OutBack;
+        [SerializeField] private Ease m_ShieldEaseOut = Ease.InBack;
         
         private Queue<ParticleSystem> m_HealthUpgradePool = new Queue<ParticleSystem>();
         private Queue<ParticleSystem> m_PowerUpgradePool = new Queue<ParticleSystem>();
         private Queue<ParticleSystem> m_PlayerHitPool = new Queue<ParticleSystem>();
         private Queue<ParticleSystem> m_AIHitPool = new Queue<ParticleSystem>();
+        private Queue<ParticleSystem> m_PlayerLastHitPool = new Queue<ParticleSystem>();
+        private Queue<ParticleSystem> m_AILastHitPool = new Queue<ParticleSystem>();
+        private Queue<ParticleSystem> m_PlayerNormalHitPool = new Queue<ParticleSystem>();
+        private Queue<ParticleSystem> m_AINormalHitPool = new Queue<ParticleSystem>();
+        private Queue<ParticleSystem> m_PlayerShieldPool = new Queue<ParticleSystem>();
+        private Queue<ParticleSystem> m_SkinChangePool = new Queue<ParticleSystem>();
         private List<ParticleSystem> m_ActiveEffects = new List<ParticleSystem>();
+        private ParticleSystem m_ActivePlayerShieldEffect;
         
         protected override void OnInitialize()
         {
@@ -41,6 +65,7 @@ namespace Duc.Managers
         
         protected override void OnCleanup()
         {
+            StopAllCoroutines();
             UnsubscribeFromEvents();
             ClearAllEffects();
         }
@@ -84,6 +109,66 @@ namespace Duc.Managers
                     ParticleSystem effect = Instantiate(m_AIHitEffect, transform);
                     effect.gameObject.SetActive(false);
                     m_AIHitPool.Enqueue(effect);
+                }
+            }
+            
+            if (m_PlayerLastHitEffect != null)
+            {
+                for (int i = 0; i < m_CombatEffectPoolSize; i++)
+                {
+                    ParticleSystem effect = Instantiate(m_PlayerLastHitEffect, transform);
+                    effect.gameObject.SetActive(false);
+                    m_PlayerLastHitPool.Enqueue(effect);
+                }
+            }
+            
+            if (m_PlayerNormalHitEffect != null)
+            {
+                for (int i = 0; i < m_CombatEffectPoolSize; i++)
+                {
+                    ParticleSystem effect = Instantiate(m_PlayerNormalHitEffect, transform);
+                    effect.gameObject.SetActive(false);
+                    m_PlayerNormalHitPool.Enqueue(effect);
+                }
+            }
+            
+            if (m_AINormalHitEffect != null)
+            {
+                for (int i = 0; i < m_CombatEffectPoolSize; i++)
+                {
+                    ParticleSystem effect = Instantiate(m_AINormalHitEffect, transform);
+                    effect.gameObject.SetActive(false);
+                    m_AINormalHitPool.Enqueue(effect);
+                }
+            }
+            
+            if (m_AILastHitEffect != null)
+            {
+                for (int i = 0; i < m_CombatEffectPoolSize; i++)
+                {
+                    ParticleSystem effect = Instantiate(m_AILastHitEffect, transform);
+                    effect.gameObject.SetActive(false);
+                    m_AILastHitPool.Enqueue(effect);
+                }
+            }
+
+            if (m_PlayerShieldEffect != null)
+            {
+                for (int i = 0; i < m_CombatEffectPoolSize; i++)
+                {
+                    ParticleSystem effect = Instantiate(m_PlayerShieldEffect, transform);
+                    effect.gameObject.SetActive(false);
+                    m_PlayerShieldPool.Enqueue(effect);
+                }
+            }
+
+            if (m_SkinChangeEffect != null)
+            {
+                for (int i = 0; i < m_SkinEffectPoolSize; i++)
+                {
+                    ParticleSystem effect = Instantiate(m_SkinChangeEffect, transform);
+                    effect.gameObject.SetActive(false);
+                    m_SkinChangePool.Enqueue(effect);
                 }
             }
         }
@@ -148,10 +233,12 @@ namespace Duc.Managers
             Vector3 spawnPosition = GetPowerUpgradeSpawnPosition();
             effect.transform.position = spawnPosition;
             
-            effect.Play();
-            m_ActiveEffects.Add(effect);
-            
-            StartCoroutine(ReturnEffectToPool(effect, m_PowerUpgradePool));
+            if (effect != null)
+            {
+                effect.Play();
+                m_ActiveEffects.Add(effect);
+                StartCoroutine(ReturnEffectToPool(effect, m_PowerUpgradePool));
+            }
         }
         
         public void PlayPlayerHitEffect()
@@ -167,12 +254,14 @@ namespace Duc.Managers
             Vector3 spawnPosition = GetPlayerHitSpawnPosition();
             effect.transform.position = spawnPosition;
             
-            effect.Play();
-            m_ActiveEffects.Add(effect);
-            
-            this.PublishEvent(new CameraShakeEvent(3f, 0.2f, true));
-            
-            StartCoroutine(ReturnEffectToPool(effect, m_PlayerHitPool));
+            if (effect != null)
+            {
+                effect.Play();
+                m_ActiveEffects.Add(effect);
+                
+                this.PublishEvent(new CameraShakeEvent(3f, 0.2f, true));
+                StartCoroutine(ReturnEffectToPool(effect, m_PlayerHitPool));
+            }
         }
         
         public void PlayAIHitEffect()
@@ -188,12 +277,233 @@ namespace Duc.Managers
             Vector3 spawnPosition = GetAIHitSpawnPosition();
             effect.transform.position = spawnPosition;
             
+            if (effect != null)
+            {
+                effect.Play();
+                m_ActiveEffects.Add(effect);
+                
+                this.PublishEvent(new CameraShakeEvent(2.5f, 0.18f, true));
+                
+                StartCoroutine(ReturnEffectToPool(effect, m_AIHitPool));
+            }
+        }
+        
+        public void PlayPlayerLastHitEffect()
+        {
+            if (m_PlayerLastHitPool.Count == 0)
+            {
+                return;
+            }
+            
+            ParticleSystem effect = m_PlayerLastHitPool.Dequeue();
+            effect.gameObject.SetActive(true);
+            
+            Vector3 spawnPosition = GetPlayerHitSpawnPosition();
+            effect.transform.position = spawnPosition;
+            
+            if (effect != null)
+            {
+                effect.Play();
+                m_ActiveEffects.Add(effect);
+                
+                StartCoroutine(ReturnEffectToPool(effect, m_PlayerLastHitPool));
+            }
+        }
+        
+        public void PlayAILastHitEffect()
+        {
+            if (m_AILastHitPool.Count == 0)
+            {
+                Debug.Log("AILastHitPool is empty!");
+                return;
+            }
+            
+            ParticleSystem effect = m_AILastHitPool.Dequeue();
+            effect.gameObject.SetActive(true);
+            
+            Vector3 spawnPosition = GetAIHitSpawnPosition();
+            effect.transform.position = spawnPosition;
+            
+            Debug.Log($"AILastHitEffect spawned at position: {spawnPosition}");
+            
+            if (effect != null)
+            {
+                effect.Play();
+                m_ActiveEffects.Add(effect);
+                
+                StartCoroutine(ReturnEffectToPool(effect, m_AILastHitPool));
+            }
+        }
+        
+        public void PlayPlayerLastHitEffectCombined()
+        {
+            PlayPlayerHitEffect();
+            PlayPlayerLastHitEffect();
+        }
+        
+        public void PlayAILastHitEffectCombined()
+        {
+            Debug.Log("PlayAILastHitEffectCombined called");
+            PlayAIHitEffect();
+            PlayAILastHitEffect();
+        }
+        
+        public void PlayPlayerNormalHitEffect()
+        {
+            if (m_PlayerNormalHitPool.Count == 0)
+            {
+                return;
+            }
+            
+            ParticleSystem effect = m_PlayerNormalHitPool.Dequeue();
+            effect.gameObject.SetActive(true);
+            
+            Vector3 spawnPosition = GetPlayerHitSpawnPosition();
+            effect.transform.position = spawnPosition;
+            
+            if (effect != null)
+            {
+                effect.Play();
+                m_ActiveEffects.Add(effect);
+                
+                StartCoroutine(ReturnEffectToPool(effect, m_PlayerNormalHitPool));
+            }
+        }
+        
+        public void PlayAINormalHitEffect()
+        {
+            if (m_AINormalHitPool.Count == 0)
+            {
+                return;
+            }
+            
+            ParticleSystem effect = m_AINormalHitPool.Dequeue();
+            effect.gameObject.SetActive(true);
+            
+            Vector3 spawnPosition = GetAIHitSpawnPosition();
+            effect.transform.position = spawnPosition;
+            
+            if (effect != null)
+            {
+                effect.Play();
+                m_ActiveEffects.Add(effect);
+                
+                StartCoroutine(ReturnEffectToPool(effect, m_AINormalHitPool));
+            }
+        }
+
+        public void PlaySkinChangeEffect()
+        {
+            if (m_SkinChangePool.Count == 0)
+            {
+                return;
+            }
+            
+            ParticleSystem effect = m_SkinChangePool.Dequeue();
+            effect.gameObject.SetActive(true);
+            
+            Vector3 spawnPosition = GetSkinChangeSpawnPosition();
+            effect.transform.position = spawnPosition;
+            
+            if (effect != null)
+            {
+                effect.Play();
+                m_ActiveEffects.Add(effect);
+                StartCoroutine(ReturnEffectToPool(effect, m_SkinChangePool));
+            }
+        }
+
+        public void PlayPlayerShieldEffect()
+        {
+            if (m_PlayerShieldPool.Count == 0)
+            {
+                return;
+            }
+
+            ParticleSystem effect = m_PlayerShieldPool.Dequeue();
+            effect.gameObject.SetActive(true);
+
+            Vector3 spawnPosition = GetPlayerShieldSpawnPosition();
+            effect.transform.position = spawnPosition;
+            effect.transform.localScale = Vector3.zero;
+
+            if (effect != null)
+            {
+                effect.Play();
+                m_ActiveEffects.Add(effect);
+                effect.transform.DOScale(Vector3.one * m_ShieldTargetScale, m_ShieldScaleInDuration)
+                    .SetEase(m_ShieldEaseIn);
+                StartCoroutine(AutoReturnShield(effect));
+            }
+        }
+
+        private IEnumerator AutoReturnShield(ParticleSystem effect)
+        {
+            float waitTime = Mathf.Max(0f, m_EffectDuration - m_ShieldScaleOutDuration);
+            yield return new WaitForSeconds(waitTime);
+            
+            if (effect != null)
+            {
+                Tween t = effect.transform.DOScale(Vector3.zero, m_ShieldScaleOutDuration)
+                    .SetEase(m_ShieldEaseOut);
+                yield return t.WaitForCompletion();
+            }
+            
+            if (effect != null)
+            {
+                effect.Stop();
+                effect.gameObject.SetActive(false);
+                m_ActiveEffects.Remove(effect);
+                m_PlayerShieldPool.Enqueue(effect);
+            }
+        }
+
+        public void StartPlayerShield()
+        {
+            if (m_ActivePlayerShieldEffect != null)
+            {
+                return;
+            }
+
+            if (m_PlayerShieldPool.Count == 0)
+            {
+                return;
+            }
+
+            var effect = m_PlayerShieldPool.Dequeue();
+            m_ActivePlayerShieldEffect = effect;
+            effect.gameObject.SetActive(true);
+            effect.transform.position = GetPlayerShieldSpawnPosition();
+            effect.transform.localScale = Vector3.zero;
             effect.Play();
-            m_ActiveEffects.Add(effect);
-            
-            this.PublishEvent(new CameraShakeEvent(2.5f, 0.18f, true));
-            
-            StartCoroutine(ReturnEffectToPool(effect, m_AIHitPool));
+            effect.transform.DOScale(Vector3.one * m_ShieldTargetScale, m_ShieldScaleInDuration)
+                .SetEase(m_ShieldEaseIn);
+        }
+
+        public void StopPlayerShield()
+        {
+            if (m_ActivePlayerShieldEffect == null)
+            {
+                return;
+            }
+
+            var effect = m_ActivePlayerShieldEffect;
+            m_ActivePlayerShieldEffect = null;
+
+            if (effect != null)
+            {
+                Tween t = effect.transform.DOScale(Vector3.zero, m_ShieldScaleOutDuration)
+                    .SetEase(m_ShieldEaseOut);
+                t.OnComplete(() =>
+                {
+                    if (effect != null)
+                    {
+                        effect.Stop();
+                        effect.gameObject.SetActive(false);
+                        m_PlayerShieldPool.Enqueue(effect);
+                    }
+                });
+            }
         }
         
         public void PlayEffectAtPosition(ParticleSystem effectPrefab, Vector3 position)
@@ -204,20 +514,26 @@ namespace Duc.Managers
             }
             
             ParticleSystem effect = Instantiate(effectPrefab, position + m_EffectOffset, Quaternion.identity);
-            effect.Play();
-            m_ActiveEffects.Add(effect);
-            
-            StartCoroutine(DestroyEffectAfterDuration(effect));
+            if (effect != null)
+            {
+                effect.Play();
+                m_ActiveEffects.Add(effect);
+                
+                StartCoroutine(DestroyEffectAfterDuration(effect));
+            }
         }
         
         private IEnumerator ReturnEffectToPool(ParticleSystem effect, Queue<ParticleSystem> pool)
         {
             yield return new WaitForSeconds(m_EffectDuration);
             
-            effect.Stop();
-            effect.gameObject.SetActive(false);
-            m_ActiveEffects.Remove(effect);
-            pool.Enqueue(effect);
+            if (effect != null)
+            {
+                effect.Stop();
+                effect.gameObject.SetActive(false);
+                m_ActiveEffects.Remove(effect);
+                pool.Enqueue(effect);
+            }
         }
         
         private IEnumerator DestroyEffectAfterDuration(ParticleSystem effect)
@@ -267,6 +583,42 @@ namespace Duc.Managers
                 var effect = m_AIHitPool.Dequeue();
                 if (effect != null) Destroy(effect.gameObject);
             }
+            
+            while (m_PlayerLastHitPool.Count > 0)
+            {
+                var effect = m_PlayerLastHitPool.Dequeue();
+                if (effect != null) Destroy(effect.gameObject);
+            }
+            
+            while (m_AILastHitPool.Count > 0)
+            {
+                var effect = m_AILastHitPool.Dequeue();
+                if (effect != null) Destroy(effect.gameObject);
+            }
+            
+            while (m_PlayerNormalHitPool.Count > 0)
+            {
+                var effect = m_PlayerNormalHitPool.Dequeue();
+                if (effect != null) Destroy(effect.gameObject);
+            }
+            
+            while (m_AINormalHitPool.Count > 0)
+            {
+                var effect = m_AINormalHitPool.Dequeue();
+                if (effect != null) Destroy(effect.gameObject);
+            }
+            
+            while (m_PlayerShieldPool.Count > 0)
+            {
+                var effect = m_PlayerShieldPool.Dequeue();
+                if (effect != null) Destroy(effect.gameObject);
+            }
+
+            while (m_SkinChangePool.Count > 0)
+            {
+                var effect = m_SkinChangePool.Dequeue();
+                if (effect != null) Destroy(effect.gameObject);
+            }
         }
         
         public void SetEffectOffset(Vector3 offset)
@@ -279,6 +631,22 @@ namespace Duc.Managers
             m_EffectDuration = duration;
         }
         
+        private Vector3 GetSkinChangeSpawnPosition()
+        {
+            if (m_SkinChangeSpawnPoint != null)
+            {
+                return m_SkinChangeSpawnPoint.position + m_EffectOffset;
+            }
+            
+            // Fallback to player hit spawn if available
+            if (m_PlayerHitSpawnPoint != null)
+            {
+                return m_PlayerHitSpawnPoint.position + m_EffectOffset;
+            }
+            
+            return Vector3.zero + m_EffectOffset;
+        }
+
         private Vector3 GetHealthUpgradeSpawnPosition()
         {
             if (m_HealthUpgradeSpawnPoint != null)
@@ -319,6 +687,15 @@ namespace Duc.Managers
             return Vector3.zero + m_EffectOffset;
         }
         
+        private Vector3 GetPlayerShieldSpawnPosition()
+        {
+            if (m_PlayerShieldSpawnPoint != null)
+            {
+                return m_PlayerShieldSpawnPoint.position + m_EffectOffset;
+            }
+            return Vector3.zero + m_EffectOffset;
+        }
+        
         public void SetHealthUpgradeSpawnPoint(Transform spawnPoint)
         {
             m_HealthUpgradeSpawnPoint = spawnPoint;
@@ -337,6 +714,11 @@ namespace Duc.Managers
         public void SetAIHitSpawnPoint(Transform spawnPoint)
         {
             m_AIHitSpawnPoint = spawnPoint;
+        }
+
+        public void SetSkinChangeSpawnPoint(Transform spawnPoint)
+        {
+            m_SkinChangeSpawnPoint = spawnPoint;
         }
     }
 }

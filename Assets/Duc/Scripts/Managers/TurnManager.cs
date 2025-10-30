@@ -54,6 +54,10 @@ namespace Duc
         {
             if (m_IsGameOver) return;
             
+            // Check if PersistentGameManager says game is over
+            var persistentGame = PersistentGameManager.Instance;
+            if (persistentGame != null && persistentGame.IsGameOver()) return;
+            
             m_IsPlayerTurn = true;
             m_IsAITurnActive = false; 
 
@@ -87,6 +91,10 @@ namespace Duc
         public void StartAITurn()
         {
             if (m_IsGameOver) return;
+            
+            // Check if PersistentGameManager says game is over
+            var persistentGame = PersistentGameManager.Instance;
+            if (persistentGame != null && persistentGame.IsGameOver()) return;
             
             m_IsPlayerTurn = false;
             m_IsAITurnActive = true; 
@@ -234,6 +242,11 @@ namespace Duc
             if (!m_IsPlayerTurn)
             {
                 return;
+            }
+            
+            if (m_PowerMeter != null)
+            {
+                m_PowerMeter.ShowExtraSlapText();
             }
 
             AIHealth aiHealth = null;

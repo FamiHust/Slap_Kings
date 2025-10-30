@@ -46,6 +46,7 @@ namespace Duc
         private void Start()
         {
             ReacquireReferences();
+            ReEnablePowerMeterAndCounter();
             StartCoroutine(ShowStartPanelWithDelay());
         }
 
@@ -70,6 +71,21 @@ namespace Duc
             if (m_PausePanel == null)
                 m_PausePanel = FindObjectIncludingInactive("PausePanel");
 
+        }
+
+        private void ReEnablePowerMeterAndCounter()
+        {
+            var pm = PowerMeter.Get();
+            if (pm != null)
+            {
+                pm.gameObject.SetActive(true);
+            }
+
+            var counter = CounterSystem.Get();
+            if (counter != null)
+            {
+                counter.gameObject.SetActive(true);
+            }
         }
 
         private GameObject FindObjectIncludingInactive(string name)
@@ -128,14 +144,19 @@ namespace Duc
             if (m_PersistentGameManager == null) return;
             if (m_PersistentGameManager.IsGameOver()) return;
 
-            if (PowerMeter.Get() != null)
+            // Disable PowerMeter and CounterBar immediately
+            var pm = PowerMeter.Get();
+            if (pm != null)
             {
-                PowerMeter.Get().gameObject.SetActive(false);
+                pm.StopMeter();
+                pm.gameObject.SetActive(false);
             }
 
-            if (CounterSystem.Get() != null)
+            var counter = CounterSystem.Get();
+            if (counter != null)
             {
-                CounterSystem.Get().StopCounter();
+                counter.StopCounter();
+                counter.gameObject.SetActive(false);
             }
             
             // Play defeated sound
@@ -157,14 +178,19 @@ namespace Duc
             if (m_PersistentGameManager == null) return;
             if (m_PersistentGameManager.IsGameOver()) return;
 
-            if (PowerMeter.Get() != null)
+            // Disable PowerMeter and CounterBar immediately
+            var pm = PowerMeter.Get();
+            if (pm != null)
             {
-                PowerMeter.Get().gameObject.SetActive(false);
+                pm.StopMeter();
+                pm.gameObject.SetActive(false);
             }
 
-            if (CounterSystem.Get() != null)
+            var counter = CounterSystem.Get();
+            if (counter != null)
             {
-                CounterSystem.Get().StopCounter();
+                counter.StopCounter();
+                counter.gameObject.SetActive(false);
             }
             
             // Play victory sound
@@ -312,6 +338,8 @@ namespace Duc
                 m_GameplayInput = FindObjectOfType<GameplayInput>();
             if (m_GameplayInput != null)
                 m_GameplayInput.enabled = false;
+                
+            ReEnablePowerMeterAndCounter();
         }
 
         protected override void OnCleanup()

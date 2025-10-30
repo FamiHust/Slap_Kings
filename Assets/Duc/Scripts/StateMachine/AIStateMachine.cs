@@ -205,6 +205,12 @@ namespace Duc
         protected override void OnExitAttacking()
         {
             StopAttackSequence();
+
+            var effectManager = Duc.Managers.EffectManager.Instance;
+            if (effectManager != null)
+            {
+                effectManager.StopPlayerShield();
+            }
         }
 
         protected override void OnExitDead()

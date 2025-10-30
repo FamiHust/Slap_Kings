@@ -187,6 +187,13 @@ namespace Duc
 
             isActive = false;
             
+            // Play shield effect immediately when player taps to capture counter (persist through AI turn)
+            var effectManager = Duc.Managers.EffectManager.Instance;
+            if (effectManager != null)
+            {
+                effectManager.StartPlayerShield();
+            }
+
             OnCounterAttempted?.Invoke(m_CounterValue);
         }
 

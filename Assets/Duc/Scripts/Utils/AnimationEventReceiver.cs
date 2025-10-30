@@ -15,7 +15,6 @@ namespace Duc
 
         public void OnSlapHit()
         {
-            // Play slap sound based on type
             PlaySlapSound();
             
             if (m_ActorType == ActorType.Player)
@@ -26,12 +25,28 @@ namespace Duc
                 {
                     playerSM.OnSlapHit();
                     
-                    if (ShouldPlayHitEffect())
+                    var effectManager = EffectManager.Instance;
+                    if (effectManager != null)
                     {
-                        var effectManager = EffectManager.Instance;
-                        if (effectManager != null)
+                        bool isLastHit = IsLastHit();
+                        bool isMegaSlap = IsMegaSlap();
+                        
+                        Debug.Log($"Player Attack - AI Health: {FindObjectOfType<AIHealth>()?.GetCurrentHealth()}, Player Damage: {GetPlayerDamage()}, IsLastHit: {isLastHit}, IsMegaSlap: {isMegaSlap}");
+                        
+                        if (isLastHit)
                         {
+                            Debug.Log("Playing AI LastHit Effect Combined");
+                            effectManager.PlayAILastHitEffectCombined();
+                        }
+                        else if (isMegaSlap)
+                        {
+                            Debug.Log("Playing AI Hit Effect");
                             effectManager.PlayAIHitEffect();
+                        }
+                        else
+                        {
+                            Debug.Log("Playing AI Normal Hit Effect");
+                            effectManager.PlayAINormalHitEffect();
                         }
                     }
                     return;
@@ -45,12 +60,20 @@ namespace Duc
                 {
                     aiSM.OnSlapHit();
                     
-                    if (ShouldPlayHitEffect())
+                    var effectManager = EffectManager.Instance;
+                    if (effectManager != null)
                     {
-                        var effectManager = EffectManager.Instance;
-                        if (effectManager != null)
+                        if (IsLastHit())
+                        {
+                            effectManager.PlayPlayerLastHitEffectCombined();
+                        }
+                        else if (IsMegaSlap())
                         {
                             effectManager.PlayPlayerHitEffect();
+                        }
+                        else
+                        {
+                            effectManager.PlayPlayerNormalHitEffect();
                         }
                     }
                     return;
@@ -62,46 +85,58 @@ namespace Duc
             {
                 if (m_ActorType == ActorType.Player)
                 {
+                    var effectManager = EffectManager.Instance;
+                    bool isLastHit = IsLastHit();
+                    bool isMegaSlap = IsMegaSlap();
+                    
                     turnManager.ApplyPlayerDamage();
                     
-                    if (ShouldPlayHitEffect())
+                    if (effectManager != null)
                     {
-                        var effectManager = EffectManager.Instance;
-                        if (effectManager != null)
+                        Debug.Log($"TurnManager Player Attack - AI Health: {FindObjectOfType<AIHealth>()?.GetCurrentHealth()}, Player Damage: {GetPlayerDamage()}, IsLastHit: {isLastHit}, IsMegaSlap: {isMegaSlap}");
+                        
+                        if (isLastHit)
                         {
+                            Debug.Log("TurnManager Playing AI LastHit Effect Combined");
+                            effectManager.PlayAILastHitEffectCombined();
+                        }
+                        else if (isMegaSlap)
+                        {
+                            Debug.Log("TurnManager Playing AI Hit Effect");
                             effectManager.PlayAIHitEffect();
+                        }
+                        else
+                        {
+                            Debug.Log("TurnManager Playing AI Normal Hit Effect");
+                            effectManager.PlayAINormalHitEffect();
                         }
                     }
                 }
                 else
                 {
+                    var effectManager2 = EffectManager.Instance;
+                    bool isLastHit = IsLastHit();
+                    bool isMegaSlap = IsMegaSlap();
+                    
                     turnManager.ApplyAIDamage();
                     
-                    if (ShouldPlayHitEffect())
+                    if (effectManager2 != null)
                     {
-                        var effectManager = EffectManager.Instance;
-                        if (effectManager != null)
+                        if (isLastHit)
                         {
-                            effectManager.PlayPlayerHitEffect();
+                            effectManager2.PlayPlayerLastHitEffectCombined();
+                        }
+                        else if (isMegaSlap)
+                        {
+                            effectManager2.PlayPlayerHitEffect();
+                        }
+                        else
+                        {
+                            effectManager2.PlayPlayerNormalHitEffect();
                         }
                     }
                 }
             }
-        }
-        
-        private bool ShouldPlayHitEffect()
-        {
-            if (IsMegaSlap())
-            {
-                return true;
-            }
-            
-            if (IsLastHit())
-            {
-                return true;
-            }
-            
-            return false;
         }
         
         private bool IsMegaSlap()
@@ -126,8 +161,9 @@ namespace Duc
                     var turnManager = FindObjectOfType<TurnManager>();
                     if (turnManager != null)
                     {
+                        int currentHealth = aiHealth.GetCurrentHealth();
                         int damage = GetPlayerDamage();
-                        return aiHealth.GetCurrentHealth() <= damage;
+                        return currentHealth > 0 && currentHealth <= damage;
                     }
                 }
             }
@@ -139,8 +175,9 @@ namespace Duc
                     var turnManager = FindObjectOfType<TurnManager>();
                     if (turnManager != null)
                     {
+                        int currentHealth = playerHealth.GetCurrentHealth();
                         int damage = GetAIDamage();
-                        return playerHealth.GetCurrentHealth() <= damage;
+                        return currentHealth > 0 && currentHealth <= damage;
                     }
                 }
             }
@@ -162,13 +199,12 @@ namespace Duc
             var persistentData = PersistentDataManager.Instance;
             if (persistentData != null)
             {
-                int minDmg = persistentData.GetCurrentAIMinDamage();
                 int maxDmg = persistentData.GetCurrentAIMaxDamage();
-                return Random.Range(minDmg, maxDmg + 1);
+                return maxDmg;
             }
             else
             {
-                return Random.Range(10, 31);
+                return 30;
             }
         }
 
@@ -192,5 +228,7 @@ namespace Duc
         }
     }
 }
+
+
 
 
