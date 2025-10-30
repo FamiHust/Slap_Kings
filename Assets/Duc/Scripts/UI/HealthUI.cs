@@ -37,7 +37,6 @@ namespace Duc
         private int m_LastPlayerHealth;
         private int m_LastAIHealth;
         
-        // Damage text pooling
         private System.Collections.Generic.Queue<GameObject> m_PlayerDamageTextPool = new System.Collections.Generic.Queue<GameObject>();
         private System.Collections.Generic.Queue<GameObject> m_AIDamageTextPool = new System.Collections.Generic.Queue<GameObject>();
 
@@ -47,7 +46,6 @@ namespace Duc
             SetupDamageTextContainers();
             InitializeDamageTextPools();
             
-            // Try to find health components if not assigned
             if (m_PlayerHealth == null)
             {
                 m_PlayerHealth = FindObjectOfType<PlayerHealth>();
@@ -97,7 +95,6 @@ namespace Duc
             int currentHealth = m_PlayerHealth.GetCurrentHealth();
             m_TargetPlayerHealth = currentHealth;
 
-            // Check for damage taken
             if (currentHealth < m_LastPlayerHealth)
             {
                 int damage = m_LastPlayerHealth - currentHealth;
@@ -137,7 +134,6 @@ namespace Duc
             int currentHealth = m_AIHealth.GetCurrentHealth();
             m_TargetAIHealth = currentHealth;
 
-            // Check for damage taken
             if (currentHealth < m_LastAIHealth)
             {
                 int damage = m_LastAIHealth - currentHealth;
@@ -186,14 +182,12 @@ namespace Duc
 
         private void SetupDamageTextContainers()
         {
-            // Create player damage text container
             if (m_PlayerDamageTextContainer == null)
             {
                 GameObject playerContainer = new GameObject("PlayerDamageTextContainer");
                 m_PlayerDamageTextContainer = playerContainer.AddComponent<RectTransform>();
                 m_PlayerDamageTextContainer.SetParent(transform, false);
                 
-                // Set as full screen overlay
                 m_PlayerDamageTextContainer.anchorMin = Vector2.zero;
                 m_PlayerDamageTextContainer.anchorMax = Vector2.one;
                 m_PlayerDamageTextContainer.offsetMin = Vector2.zero;
@@ -202,14 +196,12 @@ namespace Duc
                 m_PlayerDamageTextContainer.localScale = Vector3.one;
             }
 
-            // Create AI damage text container
             if (m_AIDamageTextContainer == null)
             {
                 GameObject aiContainer = new GameObject("AIDamageTextContainer");
                 m_AIDamageTextContainer = aiContainer.AddComponent<RectTransform>();
                 m_AIDamageTextContainer.SetParent(transform, false);
                 
-                // Set as full screen overlay
                 m_AIDamageTextContainer.anchorMin = Vector2.zero;
                 m_AIDamageTextContainer.anchorMax = Vector2.one;
                 m_AIDamageTextContainer.offsetMin = Vector2.zero;
@@ -221,13 +213,11 @@ namespace Duc
 
         private void InitializeDamageTextPools()
         {
-            // Create damage text prefab if not assigned
             if (m_DamageTextPrefab == null)
             {
                 CreateDefaultDamageTextPrefab();
             }
 
-            // Initialize player damage text pool
             for (int i = 0; i < m_DamageTextPoolSize; i++)
             {
                 GameObject playerText = Instantiate(m_DamageTextPrefab, m_PlayerDamageTextContainer, false);
@@ -235,7 +225,6 @@ namespace Duc
                 m_PlayerDamageTextPool.Enqueue(playerText);
             }
 
-            // Initialize AI damage text pool
             for (int i = 0; i < m_DamageTextPoolSize; i++)
             {
                 GameObject aiText = Instantiate(m_DamageTextPrefab, m_AIDamageTextContainer, false);
@@ -248,17 +237,14 @@ namespace Duc
         {
             GameObject prefab = new GameObject("DamageText");
             
-            // Add RectTransform for UI
             RectTransform rectTransform = prefab.AddComponent<RectTransform>();
             rectTransform.sizeDelta = new Vector2(100, 50);
             
-            // Set anchor to center for easier positioning
             rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
             rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
             rectTransform.pivot = new Vector2(0.5f, 0.5f);
             rectTransform.anchoredPosition = Vector2.zero;
             
-            // Add TextMeshProUGUI component for UI text
             TextMeshProUGUI textComponent = prefab.AddComponent<TextMeshProUGUI>();
             textComponent.text = "0";
             textComponent.fontSize = 24f;

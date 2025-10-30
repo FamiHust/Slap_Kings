@@ -247,6 +247,13 @@ namespace Duc
         {
             DeactivateAllMaps();
         }
+
+        [ContextMenu("Reset Map")]
+        public void ResetMapContextMenu()
+        {
+            ClearAllMaps();
+            LoadCurrentLevel();
+        }
         
         private void ClearAllPools()
         {

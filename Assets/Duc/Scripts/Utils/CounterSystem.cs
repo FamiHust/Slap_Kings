@@ -121,20 +121,16 @@ namespace Duc
 
             ShowCounterBar();
 
-            // Kill existing scale tween
             if (m_ScaleTween != null)
             {
                 m_ScaleTween.Kill();
             }
 
-            // Set initial scale to 0
             transform.localScale = Vector3.zero;
             
-            // Scale in animation
             m_ScaleTween = transform.DOScale(Vector3.one, m_ScaleInDuration)
                 .SetEase(m_ScaleInEase)
                 .OnComplete(() => {
-                    // Start the actual counter animation after scale in
                     isActive = true;
                     m_Direction = 1;
                     m_AnimState.speed = 0f;  
@@ -167,13 +163,11 @@ namespace Duc
 
         public void EndTurnHide()
         {
-            // Kill existing scale tween
             if (m_ScaleTween != null)
             {
                 m_ScaleTween.Kill();
             }
 
-            // Scale out animation then hide
             m_ScaleTween = transform.DOScale(Vector3.zero, m_ScaleOutDuration)
                 .SetEase(m_ScaleOutEase)
                 .OnComplete(() => {
@@ -187,7 +181,12 @@ namespace Duc
 
             isActive = false;
             
-            // Play shield effect immediately when player taps to capture counter (persist through AI turn)
+            var sound = Duc.SoundManager.Get();
+            if (sound != null)
+            {
+                sound.PlaySound(Duc.SoundManager.SoundType.Tap);
+            }
+
             var effectManager = Duc.Managers.EffectManager.Instance;
             if (effectManager != null)
             {
@@ -246,7 +245,6 @@ namespace Duc
 
         protected override void OnCleanup()
         {
-            // Kill any active tween
             if (m_ScaleTween != null)
             {
                 m_ScaleTween.Kill();

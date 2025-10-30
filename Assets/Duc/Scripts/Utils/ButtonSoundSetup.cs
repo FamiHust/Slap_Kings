@@ -17,7 +17,6 @@ namespace Duc
             {
                 if (button == null) continue;
                 
-                // Check if ButtonSoundHelper already exists
                 ButtonSoundHelper helper = button.GetComponent<ButtonSoundHelper>();
                 if (helper != null)
                 {
@@ -25,12 +24,9 @@ namespace Duc
                     continue;
                 }
                 
-                // Add ButtonSoundHelper
                 button.gameObject.AddComponent<ButtonSoundHelper>();
                 addedCount++;
             }
-            
-            Debug.Log($"ButtonSoundSetup: Added ButtonSoundHelper to {addedCount} buttons. Skipped {skippedCount} buttons that already have it.");
         }
         
         [ContextMenu("Remove All ButtonSoundHelper")]
@@ -48,8 +44,6 @@ namespace Duc
                     removedCount++;
                 }
             }
-            
-            Debug.Log($"ButtonSoundSetup: Removed {removedCount} ButtonSoundHelper components.");
         }
     }
 }

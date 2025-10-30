@@ -42,6 +42,11 @@ namespace Duc
             bool gameStarted = gameManager != null && gameManager.HasGameStarted();
             if (gameStarted && m_TurnManager != null && m_TurnManager.IsPlayerTurn())
             {
+                var sound = SoundManager.Get();
+                if (sound != null)
+                {
+                    sound.PlaySound(SoundManager.SoundType.Tap);
+                }
                 if (PowerMeter.Get() != null)
                 {
                     PowerMeter.Get().StopMeter();

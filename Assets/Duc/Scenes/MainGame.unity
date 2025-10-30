@@ -2452,6 +2452,8 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: c06618ae045151047820f8aea7e0ac9d, type: 3}
   - soundType: 10
     audioClip: {fileID: 8300000, guid: e7397086825bc9648bcb8fc5d9df4297, type: 3}
+  - soundType: 11
+    audioClip: {fileID: 8300000, guid: 4eb657b14c291ad428f71adab151700f, type: 3}
   m_Volume: 1
   m_SoundEnabled: 1
   m_AutoSetupButtonSounds: 1
@@ -8360,7 +8362,7 @@ Transform:
   m_GameObject: {fileID: 1130005426}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.000015795233, y: 0.037, z: 0.52204233}
+  m_LocalPosition: {x: -0, y: 0.968, z: 0.317}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13090,7 +13092,8 @@ MonoBehaviour:
   m_AILastHitEffect: {fileID: 198279463220958098, guid: 0aefe49cc2efc8b46a57cc6fdeaef4e0, type: 3}
   m_PlayerNormalHitEffect: {fileID: 198928779146796424, guid: e2f1ece6111dfc247a98f2ed42a1c794, type: 3}
   m_AINormalHitEffect: {fileID: 198928779146796424, guid: e2f1ece6111dfc247a98f2ed42a1c794, type: 3}
-  m_PlayerShieldEffect: {fileID: 198534080018704606, guid: 8d9acef849f7240468daa95c1c7f14c4, type: 3}
+  m_PlayerShieldEffect: {fileID: 1587067138302430625, guid: 4cb0a1c2fb64460db9ca8a3a237acd7f, type: 3}
+  m_PlayerShieldDeathEffect: {fileID: 538035554579081515, guid: 506367a4284b470b913064a1de903695, type: 3}
   m_CombatEffectPoolSize: 5
   m_SkinChangeEffect: {fileID: 2801501505124197854, guid: 114ab6919cf39484e946697e02cfa078, type: 3}
   m_SkinEffectPoolSize: 5
@@ -13100,7 +13103,7 @@ MonoBehaviour:
   m_AIHitSpawnPoint: {fileID: 956664194366129100}
   m_PlayerShieldSpawnPoint: {fileID: 1130005427}
   m_SkinChangeSpawnPoint: {fileID: 720}
-  m_EffectDuration: 2
+  m_EffectDuration: 1
   m_EffectOffset: {x: 0, y: 0, z: 0}
   m_ShieldScaleInDuration: 0.5
   m_ShieldScaleOutDuration: 0.5
@@ -35369,6 +35372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8630761197414015492}
   - component: {fileID: 4534723888973073752}
+  - component: {fileID: 8630761197414015493}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -62942,6 +62946,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1512097753}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8630761197414015493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4078992634204909379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa729de07ebc5441ba3d42e20fdaaba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AutoInitialize: 1
+  m_SlowScale: 0.1
+  m_SlowDuration: 0.5
+  m_RecoverDuration: 0.1
+  m_EnableCameraZoom: 1
+  m_TargetFOV: 30
+  m_TargetOrthoSize: 3.5
+  m_ZoomInDuration: 0.2
+  m_ZoomOutDuration: 0.2
+  m_ZoomEaseIn: 9
+  m_ZoomEaseOut: 8
+  m_KnockbackDistance: 1.2
+  m_KnockbackDuration: 0.1
+  m_KnockbackEase: 27
 --- !u!1 &8650678999443056873
 GameObject:
   m_ObjectHideFlags: 0
@@ -63188,7 +63218,7 @@ MonoBehaviour:
   m_ExtraSlapAnimDuration: 1.5
   m_ExtraSlapMoveDistance: 0.2
   m_ExtraSlapStartColor: {r: 0, g: 0, b: 0, a: 1}
-  m_ExtraSlapEndColor: {r: 0, g: 0, b: 0, a: 0}
+  m_ExtraSlapEndColor: {r: 0, g: 0, b: 0, a: 1}
   m_ScaleInDuration: 0.2
   m_ScaleOutDuration: 0.2
   m_ScaleInEase: 27

@@ -48,10 +48,7 @@ namespace Duc
         public List<MapInfo> Maps => m_Maps;
         public GameObject DefaultMapPrefab => m_DefaultMapPrefab;
         public int MaxActiveMaps => m_MaxActiveMaps;
-        
-        /// <summary>
-        /// Lấy map info dựa trên level hiện tại
-        /// </summary>
+
         public MapInfo GetMapForLevel(int level)
         {
             foreach (var map in m_Maps)
@@ -62,12 +59,9 @@ namespace Duc
                 }
             }
             
-            return null; // Không tìm thấy map phù hợp
+            return null;
         }
-        
-        /// <summary>
-        /// Lấy tất cả map info cho level hiện tại
-        /// </summary>
+
         public List<MapInfo> GetAllMapsForLevel(int level)
         {
             List<MapInfo> result = new List<MapInfo>();
@@ -82,26 +76,17 @@ namespace Duc
             
             return result;
         }
-        
-        /// <summary>
-        /// Kiểm tra xem có map nào cho level này không
-        /// </summary>
+
         public bool HasMapForLevel(int level)
         {
             return GetMapForLevel(level) != null;
         }
-        
-        /// <summary>
-        /// Lấy tổng số map được cấu hình
-        /// </summary>
+
         public int GetMapCount()
         {
             return m_Maps.Count;
         }
-        
-        /// <summary>
-        /// Validate dữ liệu map
-        /// </summary>
+
         [ContextMenu("Validate Map Data")]
         public void ValidateMapData()
         {
@@ -113,7 +98,7 @@ namespace Duc
                     map.mapPrefab == null || 
                     map.startLevel > map.endLevel)
                 {
-                    // Invalid map data
+                    
                 }
             }
         }

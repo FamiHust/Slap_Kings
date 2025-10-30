@@ -56,15 +56,9 @@ namespace Duc
             UpdateHealthUI();
         }
 
-        protected virtual void SubscribeToEvents()
-        {
-            // Override in derived classes for specific event subscriptions
-        }
+        protected virtual void SubscribeToEvents() { }
 
-        protected virtual void UnsubscribeFromEvents()
-        {
-            // Override in derived classes for specific event unsubscriptions
-        }
+        protected virtual void UnsubscribeFromEvents() { }
 
         protected virtual void UpdateHealthUI()
         {
@@ -105,21 +99,17 @@ namespace Duc
             var rbs = GetComponentsInChildren<Rigidbody>(true);
             if (rbs.Length == 0) return;
 
-            // Calculate force based on damage and stats
             float force = stats.KnockbackForce + (damage * stats.KnockbackMultiplier);
             Vector3 direction = stats.KnockbackDirection;
             
-            // Check if direction is zero or too small
             if (direction.magnitude < 0.01f) return;
             
             direction = direction.normalized;
 
-            // Apply force to rigidbodies
             foreach (var rb in rbs)
             {
                 if (rb != null)
                 {
-                    // Make sure rigidbody is not kinematic before applying force
                     if (rb.isKinematic)
                     {
                         rb.isKinematic = false;
@@ -132,7 +122,6 @@ namespace Duc
                     }
                     else
                     {
-                        // Only apply to main rigidbody
                         var mainRb = GetComponent<Rigidbody>();
                         if (mainRb != null && mainRb == rb)
                         {
@@ -216,7 +205,6 @@ namespace Duc
                 stateMachine.SetState(CharacterState.Dead);
             }
 
-            // Apply knockback force BEFORE activating ragdoll
             var stats = GetCharacterStats();
             if (stats != null)
             {

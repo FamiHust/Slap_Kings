@@ -357,7 +357,6 @@ namespace Duc
             {
                 return aiAppearanceManager.CurrentAppearance.setName;
             }
-            
             return $"AI Rank {rankOrder}";
         }
         
@@ -379,7 +378,6 @@ namespace Duc
                     return appearance.setName;
                 }
             }
-            
             return "Unknown AI";
         }
         

@@ -13,15 +13,6 @@ namespace Duc
                 m_SkinManager = FindObjectOfType<PlayerSkinManager>();
         }
 
-        [ContextMenu("Reset All Skins")]
-        public void ResetAllSkins()
-        {
-            if (m_SkinManager != null)
-            {
-                m_SkinManager.ResetAllSkins();
-            }
-        }
-
         [ContextMenu("Reset Current Skin")]
         public void ResetCurrentSkin()
         {
@@ -37,7 +28,10 @@ namespace Duc
             PlayerPrefs.DeleteAll();
             PlayerPrefs.Save();
             
-            ResetAllSkins();
+            if (m_SkinManager != null)
+            {
+                m_SkinManager.ResetAllSkins();
+            }
             
             var coinDisplay = FindObjectOfType<CoinDisplay>();
             if (coinDisplay != null)

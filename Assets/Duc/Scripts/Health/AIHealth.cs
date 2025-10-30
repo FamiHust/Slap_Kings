@@ -82,8 +82,6 @@ namespace Duc
         {
             InitializeHealthForLevel();
             UpdateHealthUI();
-            
-            // Update AI appearance when stats change
             UpdateAIAppearance();
         }
         

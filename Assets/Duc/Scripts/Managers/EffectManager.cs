@@ -20,6 +20,7 @@ namespace Duc.Managers
         [SerializeField] private ParticleSystem m_PlayerNormalHitEffect;
         [SerializeField] private ParticleSystem m_AINormalHitEffect;
         [SerializeField] private ParticleSystem m_PlayerShieldEffect;
+        [SerializeField] private ParticleSystem m_PlayerShieldDeathEffect;
         [SerializeField] private int m_CombatEffectPoolSize = 10;
         
         [Header("Skin Effects")]
@@ -53,6 +54,7 @@ namespace Duc.Managers
         private Queue<ParticleSystem> m_PlayerNormalHitPool = new Queue<ParticleSystem>();
         private Queue<ParticleSystem> m_AINormalHitPool = new Queue<ParticleSystem>();
         private Queue<ParticleSystem> m_PlayerShieldPool = new Queue<ParticleSystem>();
+        private Queue<ParticleSystem> m_PlayerShieldDeathPool = new Queue<ParticleSystem>();
         private Queue<ParticleSystem> m_SkinChangePool = new Queue<ParticleSystem>();
         private List<ParticleSystem> m_ActiveEffects = new List<ParticleSystem>();
         private ParticleSystem m_ActivePlayerShieldEffect;
@@ -79,6 +81,26 @@ namespace Duc.Managers
                     ParticleSystem effect = Instantiate(m_HealthUpgradeEffect, transform);
                     effect.gameObject.SetActive(false);
                     m_HealthUpgradePool.Enqueue(effect);
+                }
+            }
+
+            if (m_PlayerShieldEffect != null)
+            {
+                for (int i = 0; i < m_CombatEffectPoolSize; i++)
+                {
+                    var instance = Instantiate(m_PlayerShieldEffect, transform);
+                    instance.gameObject.SetActive(false);
+                    m_PlayerShieldPool.Enqueue(instance);
+                }
+            }
+
+            if (m_PlayerShieldDeathEffect != null)
+            {
+                for (int i = 0; i < m_CombatEffectPoolSize; i++)
+                {
+                    var instance = Instantiate(m_PlayerShieldDeathEffect, transform);
+                    instance.gameObject.SetActive(false);
+                    m_PlayerShieldDeathPool.Enqueue(instance);
                 }
             }
             
@@ -505,6 +527,42 @@ namespace Duc.Managers
                 });
             }
         }
+
+        public bool HasActivePlayerShield()
+        {
+            return m_ActivePlayerShieldEffect != null;
+        }
+
+        public void BreakPlayerShield()
+        {
+            // Stop the persistent shield instantly and return it to pool
+            if (m_ActivePlayerShieldEffect != null)
+            {
+                var shield = m_ActivePlayerShieldEffect;
+                m_ActivePlayerShieldEffect = null;
+                if (shield != null)
+                {
+                    DOTween.Kill(shield.transform);
+                    shield.Stop();
+                    shield.gameObject.SetActive(false);
+                    m_PlayerShieldPool.Enqueue(shield);
+                }
+            }
+
+            // Play shield-death burst at the same spawn position
+            if (m_PlayerShieldDeathPool.Count > 0)
+            {
+                var deathFx = m_PlayerShieldDeathPool.Dequeue();
+                if (deathFx != null)
+                {
+                    deathFx.gameObject.SetActive(true);
+                    deathFx.transform.position = GetPlayerShieldSpawnPosition();
+                    deathFx.transform.localScale = Vector3.one; 
+                    deathFx.Play();
+                    StartCoroutine(ReturnEffectToPool(deathFx, m_PlayerShieldDeathPool));
+                }
+            }
+        }
         
         public void PlayEffectAtPosition(ParticleSystem effectPrefab, Vector3 position)
         {
@@ -611,6 +669,12 @@ namespace Duc.Managers
             while (m_PlayerShieldPool.Count > 0)
             {
                 var effect = m_PlayerShieldPool.Dequeue();
+                if (effect != null) Destroy(effect.gameObject);
+            }
+
+            while (m_PlayerShieldDeathPool.Count > 0)
+            {
+                var effect = m_PlayerShieldDeathPool.Dequeue();
                 if (effect != null) Destroy(effect.gameObject);
             }
 

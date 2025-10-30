@@ -96,7 +96,7 @@ namespace Duc
         public void OnPlayerVictory()
         {
             var dataManager = DataManager.Get();
-            int reward = 100; // Fallback
+            int reward = 100; 
             if (dataManager != null)
             {
                 reward = dataManager.GetVictoryReward(m_VictoryCount);
@@ -166,10 +166,7 @@ namespace Duc
                 OnPowerUpgradePurchased?.Invoke();
             }
         }
-        
-        /// <summary>
-        /// Trừ tiền cho việc mua skin
-        /// </summary>
+
         public bool SpendCoins(int amount)
         {
             if (m_CurrentCoins >= amount)
@@ -182,10 +179,7 @@ namespace Duc
             }
             return false;
         }
-        
-        /// <summary>
-        /// Kiểm tra có đủ tiền để mua skin không
-        /// </summary>
+
         public bool CanAffordSkin(int cost)
         {
             return m_CurrentCoins >= cost;

@@ -311,67 +311,7 @@ namespace Duc
         {
             m_AvatarImage = image;
         }
-        
-        [ContextMenu("Test Appearance Update")]
-        public void TestAppearanceUpdate()
-        {
-            UpdateAppearanceForCurrentLevel();
-        }
-        
-        [ContextMenu("Test Avatar Loading")]
-        public void TestAvatarLoading()
-        {
-            if (m_AppearanceData != null)
-            {
-                m_AppearanceData.LoadAllAvatarSprites();
-                UpdateAppearanceForCurrentLevel();
-            }
-        }
-        
-        [ContextMenu("Test Health Check")]
-        public void TestHealthCheck()
-        {
-            if (m_AIHealth != null)
-            {
-                float healthPercentage = m_AIHealth.GetHealthPercentage();
-                bool shouldUseSlapped = ShouldUseSlappedMesh();
-            }
-        }
-        
-        [ContextMenu("Force Health Check")]
-        public void ForceHealthCheck()
-        {
-            if (m_AIHealth != null)
-            {
-                int currentHealth = m_AIHealth.GetCurrentHealth();
-                int maxHealth = m_AIHealth.GetMaxHealth();
-                OnAIHealthChanged(currentHealth, maxHealth);
-            }
-        }
-        
-        [ContextMenu("Test Slapped Mesh")]
-        public void TestSlappedMesh()
-        {
-            if (m_CurrentAppearance != null)
-            {
-                m_IsUsingSlappedMesh = !m_IsUsingSlappedMesh;
-                ApplyAppearance(m_CurrentAppearance);
-            }
-        }
-        
-        [ContextMenu("Force Check Health")]
-        public void ForceCheckHealth()
-        {
-            if (m_AIHealth != null)
-            {
-                int currentHealth = m_AIHealth.GetCurrentHealth();
-                int maxHealth = m_AIHealth.GetMaxHealth();
-                float healthPercentage = m_AIHealth.GetHealthPercentage();
-                
-                OnAIHealthChanged(currentHealth, maxHealth);
-            }
-        }
-        
+
         private void OnAIHealthChanged(int currentHealth, int maxHealth)
         {
             if (m_CurrentAppearance == null) 

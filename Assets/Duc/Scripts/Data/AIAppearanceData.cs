@@ -131,7 +131,7 @@ namespace Duc
                     appearance.avatarSprite == null || 
                     appearance.startLevel > appearance.endLevel)
                 {
-                    // Invalid appearance data
+                    
                 }
             }
         }

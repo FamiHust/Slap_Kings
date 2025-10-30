@@ -30,22 +30,22 @@ namespace Duc
                     {
                         bool isLastHit = IsLastHit();
                         bool isMegaSlap = IsMegaSlap();
-                        
-                        Debug.Log($"Player Attack - AI Health: {FindObjectOfType<AIHealth>()?.GetCurrentHealth()}, Player Damage: {GetPlayerDamage()}, IsLastHit: {isLastHit}, IsMegaSlap: {isMegaSlap}");
-                        
+                                                
                         if (isLastHit)
                         {
-                            Debug.Log("Playing AI LastHit Effect Combined");
                             effectManager.PlayAILastHitEffectCombined();
+                            var slowMo = SlowMotionManager.Instance;
+                            if (slowMo != null)
+                            {
+                                slowMo.PlayPlayerLastHitSlowMotion();
+                            }
                         }
                         else if (isMegaSlap)
                         {
-                            Debug.Log("Playing AI Hit Effect");
                             effectManager.PlayAIHitEffect();
                         }
                         else
                         {
-                            Debug.Log("Playing AI Normal Hit Effect");
                             effectManager.PlayAINormalHitEffect();
                         }
                     }
@@ -63,6 +63,10 @@ namespace Duc
                     var effectManager = EffectManager.Instance;
                     if (effectManager != null)
                     {
+                        if (effectManager.HasActivePlayerShield())
+                        {
+                            effectManager.BreakPlayerShield();
+                        }
                         if (IsLastHit())
                         {
                             effectManager.PlayPlayerLastHitEffectCombined();
@@ -93,21 +97,22 @@ namespace Duc
                     
                     if (effectManager != null)
                     {
-                        Debug.Log($"TurnManager Player Attack - AI Health: {FindObjectOfType<AIHealth>()?.GetCurrentHealth()}, Player Damage: {GetPlayerDamage()}, IsLastHit: {isLastHit}, IsMegaSlap: {isMegaSlap}");
                         
                         if (isLastHit)
                         {
-                            Debug.Log("TurnManager Playing AI LastHit Effect Combined");
                             effectManager.PlayAILastHitEffectCombined();
+                            var slowMo = SlowMotionManager.Instance;
+                            if (slowMo != null)
+                            {
+                                slowMo.PlayPlayerLastHitSlowMotion();
+                            }
                         }
                         else if (isMegaSlap)
                         {
-                            Debug.Log("TurnManager Playing AI Hit Effect");
                             effectManager.PlayAIHitEffect();
                         }
                         else
                         {
-                            Debug.Log("TurnManager Playing AI Normal Hit Effect");
                             effectManager.PlayAINormalHitEffect();
                         }
                     }
@@ -122,6 +127,10 @@ namespace Duc
                     
                     if (effectManager2 != null)
                     {
+                        if (effectManager2.HasActivePlayerShield())
+                        {
+                            effectManager2.BreakPlayerShield();
+                        }
                         if (isLastHit)
                         {
                             effectManager2.PlayPlayerLastHitEffectCombined();

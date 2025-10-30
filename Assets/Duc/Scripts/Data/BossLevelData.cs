@@ -146,7 +146,7 @@ namespace Duc
                     bossLevel.healthMultiplier <= 0 || 
                     bossLevel.damageMultiplier <= 0)
                 {
-                    // Invalid boss level data
+                    
                 }
             }
         }

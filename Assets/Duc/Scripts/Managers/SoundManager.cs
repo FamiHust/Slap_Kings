@@ -23,7 +23,8 @@ namespace Duc
             UpPower,
             GetNormalSlapped,
             GetMegaSlapped,
-            CoinReward
+            CoinReward,
+            Tap
         }
 
         [Header("Audio Source")]

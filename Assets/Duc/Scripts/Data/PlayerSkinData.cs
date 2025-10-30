@@ -159,7 +159,7 @@ namespace Duc
                     m_SharedHeadVerySlappedMesh == null || 
                     skin.bodyMesh == null)
                 {
-                    // Invalid skin data
+                    
                 }
             }
         }

@@ -92,7 +92,6 @@ namespace Duc
         {
             if (m_IsGameOver) return;
             
-            // Check if PersistentGameManager says game is over
             var persistentGame = PersistentGameManager.Instance;
             if (persistentGame != null && persistentGame.IsGameOver()) return;
             

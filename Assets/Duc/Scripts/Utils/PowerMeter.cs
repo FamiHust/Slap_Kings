@@ -245,7 +245,6 @@ namespace Duc
                 m_ExtraSlapTween.Kill();
             }
             
-            // Reset position, color, and scale
             m_ExtraSlapText.transform.position = m_ExtraSlapStartPosition;
             m_ExtraSlapText.color = m_ExtraSlapStartColor;
             m_ExtraSlapText.transform.localScale = Vector3.one * 0.5f;
