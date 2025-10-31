@@ -27,7 +27,7 @@ namespace Duc
         private int m_CurrentScore = 0;
         private int m_CurrentVictories = 0;
         private RankItemData.RankInfo m_CurrentRank;
-        private int m_PlayerRankPosition = 26; 
+        private int m_PlayerRankPosition = 51; 
         
         public int CurrentScore => m_CurrentScore;
         public int CurrentVictories => m_CurrentVictories;
@@ -84,7 +84,7 @@ namespace Duc
         {
             m_CurrentScore = PlayerPrefs.GetInt("PlayerScore", m_BaseScore);
             m_CurrentVictories = PlayerPrefs.GetInt("PlayerVictories", 0);
-            m_PlayerRankPosition = PlayerPrefs.GetInt("PlayerRankPosition", 26);
+            m_PlayerRankPosition = PlayerPrefs.GetInt("PlayerRankPosition", 51);
             
             UpdateScoreFromPowerMeter();
         }

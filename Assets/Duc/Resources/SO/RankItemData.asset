@@ -18,13 +18,16 @@ MonoBehaviour:
     requiredVictories: 0
   - rankOrder: 2
     rankName: Bronze
-    requiredVictories: 5
+    requiredVictories: 10
   - rankOrder: 3
     rankName: Silver
-    requiredVictories: 10
+    requiredVictories: 20
   - rankOrder: 4
     rankName: Gold
-    requiredVictories: 15
+    requiredVictories: 30
   - rankOrder: 5
     rankName: Diamond
-    requiredVictories: 20
+    requiredVictories: 40
+  - rankOrder: 6
+    rankName: Legend
+    requiredVictories: 50

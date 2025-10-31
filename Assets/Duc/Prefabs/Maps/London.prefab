@@ -353,7 +353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4804053856067179741
 Transform:
   m_ObjectHideFlags: 0
@@ -734,7 +734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5994501173349971659
 Transform:
   m_ObjectHideFlags: 0
@@ -1800,7 +1800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3021879909084918094
 Transform:
   m_ObjectHideFlags: 0
@@ -2104,7 +2104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3074338646605422048
 Transform:
   m_ObjectHideFlags: 0
@@ -2393,7 +2393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4559514457575209115
 Transform:
   m_ObjectHideFlags: 0
@@ -2519,7 +2519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4084060226307650528
 Transform:
   m_ObjectHideFlags: 0
@@ -2840,7 +2840,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1738047751632757495
 Transform:
   m_ObjectHideFlags: 0
@@ -3157,7 +3157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8004008087766275949
 Transform:
   m_ObjectHideFlags: 0
@@ -3346,7 +3346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8624800278179851236
 Transform:
   m_ObjectHideFlags: 0
@@ -3632,7 +3632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2896348128240030328
 Transform:
   m_ObjectHideFlags: 0
@@ -3986,7 +3986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7823951959591298159
 Transform:
   m_ObjectHideFlags: 0
@@ -4364,7 +4364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6120191684120610183
 Transform:
   m_ObjectHideFlags: 0
@@ -4636,7 +4636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3444439041227884462
 Transform:
   m_ObjectHideFlags: 0
@@ -4966,7 +4966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5731035060888840011
 Transform:
   m_ObjectHideFlags: 0
@@ -5151,6 +5151,7 @@ GameObject:
   - component: {fileID: 5339018792336438044}
   - component: {fileID: 154805957388870708}
   - component: {fileID: 4170132560085605516}
+  - component: {fileID: 8311017944915754269}
   m_Layer: 0
   m_Name: TokatAudience (3)
   m_TagString: Untagged
@@ -5225,6 +5226,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &8311017944915754269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917895023925754958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &944700118964058542
 GameObject:
   m_ObjectHideFlags: 0
@@ -5404,7 +5427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4969542138788964486
 Transform:
   m_ObjectHideFlags: 0
@@ -6376,7 +6399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1678988737885645757
 Transform:
   m_ObjectHideFlags: 0
@@ -6534,7 +6557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9150471037977862997
 Transform:
   m_ObjectHideFlags: 0
@@ -6886,7 +6909,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9084868207522647843
 Transform:
   m_ObjectHideFlags: 0
@@ -7368,7 +7391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4004010437074503283
 Transform:
   m_ObjectHideFlags: 0
@@ -7521,6 +7544,7 @@ GameObject:
   - component: {fileID: 6221563705535481394}
   - component: {fileID: 2524138202380473000}
   - component: {fileID: 4152892462477446881}
+  - component: {fileID: 3057251746957938387}
   m_Layer: 0
   m_Name: TokatAudience (5)
   m_TagString: Untagged
@@ -7595,6 +7619,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &3057251746957938387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262320741508527383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &1308509428634049623
 GameObject:
   m_ObjectHideFlags: 0
@@ -8507,7 +8553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6062086488856490721
 Transform:
   m_ObjectHideFlags: 0
@@ -8633,7 +8679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8906467149951397911
 Transform:
   m_ObjectHideFlags: 0
@@ -8790,7 +8836,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2322565563530895902
 Transform:
   m_ObjectHideFlags: 0
@@ -9093,7 +9139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3295474640666530763
 Transform:
   m_ObjectHideFlags: 0
@@ -9381,7 +9427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6924428642725645694
 Transform:
   m_ObjectHideFlags: 0
@@ -9502,6 +9548,7 @@ GameObject:
   - component: {fileID: 2244172891650461938}
   - component: {fileID: 7149985549575920535}
   - component: {fileID: 2810282515421020572}
+  - component: {fileID: 5230576506200958211}
   m_Layer: 0
   m_Name: TokatAudience (2)
   m_TagString: Untagged
@@ -9576,6 +9623,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &5230576506200958211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555007513077390644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &1565556669375041334
 GameObject:
   m_ObjectHideFlags: 0
@@ -9592,7 +9661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1724434792886764615
 Transform:
   m_ObjectHideFlags: 0
@@ -9864,7 +9933,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &357470310746161274
 Transform:
   m_ObjectHideFlags: 0
@@ -10214,7 +10283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2477144572494203016
 Transform:
   m_ObjectHideFlags: 0
@@ -11074,7 +11143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6907765808751018920
 Transform:
   m_ObjectHideFlags: 0
@@ -11414,7 +11483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1485537117810813818
 Transform:
   m_ObjectHideFlags: 0
@@ -11535,6 +11604,7 @@ GameObject:
   - component: {fileID: 6468712223045874201}
   - component: {fileID: 2095531073453690160}
   - component: {fileID: 6047363318318844987}
+  - component: {fileID: 3540293170521122332}
   m_Layer: 0
   m_Name: TokatAudience (10)
   m_TagString: Untagged
@@ -11609,6 +11679,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &3540293170521122332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882778648063775774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &1924889711375594505
 GameObject:
   m_ObjectHideFlags: 0
@@ -12111,7 +12203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8381136393980634304
 Transform:
   m_ObjectHideFlags: 0
@@ -12545,7 +12637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2779873533400498930
 Transform:
   m_ObjectHideFlags: 0
@@ -12866,7 +12958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1367462516664956235
 Transform:
   m_ObjectHideFlags: 0
@@ -12992,7 +13084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5148063228940386108
 Transform:
   m_ObjectHideFlags: 0
@@ -13268,7 +13360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3552887576298199591
 Transform:
   m_ObjectHideFlags: 0
@@ -13394,7 +13486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5704514256360151840
 Transform:
   m_ObjectHideFlags: 0
@@ -13962,7 +14054,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1095651755331407536
 Transform:
   m_ObjectHideFlags: 0
@@ -14328,7 +14420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5762198152057466566
 Transform:
   m_ObjectHideFlags: 0
@@ -14840,7 +14932,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1405552088585987362
 Transform:
   m_ObjectHideFlags: 0
@@ -15708,6 +15800,7 @@ GameObject:
   - component: {fileID: 7919375949518183987}
   - component: {fileID: 6665070162013596536}
   - component: {fileID: 496270954496401700}
+  - component: {fileID: 549753256475200720}
   m_Layer: 0
   m_Name: TokatAudience (4)
   m_TagString: Untagged
@@ -15782,6 +15875,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &549753256475200720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2596951548041842623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &2597821502212432943
 GameObject:
   m_ObjectHideFlags: 0
@@ -17112,7 +17227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7255935365612121175
 Transform:
   m_ObjectHideFlags: 0
@@ -17401,7 +17516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4239829338356458748
 Transform:
   m_ObjectHideFlags: 0
@@ -17753,7 +17868,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5113775086153561905
 Transform:
   m_ObjectHideFlags: 0
@@ -18103,7 +18218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1653048212879396795
 Transform:
   m_ObjectHideFlags: 0
@@ -20010,7 +20125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8688212628492454271
 Transform:
   m_ObjectHideFlags: 0
@@ -20232,7 +20347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6092431858129673159
 Transform:
   m_ObjectHideFlags: 0
@@ -21520,7 +21635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &800180820990952010
 Transform:
   m_ObjectHideFlags: 0
@@ -22000,7 +22115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7650503274961983847
 Transform:
   m_ObjectHideFlags: 0
@@ -22623,6 +22738,7 @@ GameObject:
   - component: {fileID: 2154187452528233800}
   - component: {fileID: 5975876154526968958}
   - component: {fileID: 4661042316854848218}
+  - component: {fileID: 4727398570565499120}
   m_Layer: 0
   m_Name: TokatAudience (11)
   m_TagString: Untagged
@@ -22697,6 +22813,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &4727398570565499120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233087025795803939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &4235568384356574836
 GameObject:
   m_ObjectHideFlags: 0
@@ -23117,7 +23255,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8240222892576653556
 Transform:
   m_ObjectHideFlags: 0
@@ -23243,7 +23381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2116033637325771210
 Transform:
   m_ObjectHideFlags: 0
@@ -23633,7 +23771,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3345923967629900501
 Transform:
   m_ObjectHideFlags: 0
@@ -24018,7 +24156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8631269189186030791
 Transform:
   m_ObjectHideFlags: 0
@@ -24366,7 +24504,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3318544272941156784
 Transform:
   m_ObjectHideFlags: 0
@@ -24672,7 +24810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6843500050589538905
 Transform:
   m_ObjectHideFlags: 0
@@ -26215,7 +26353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6853303276767941293
 Transform:
   m_ObjectHideFlags: 0
@@ -26373,7 +26511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &10171920824915649
 Transform:
   m_ObjectHideFlags: 0
@@ -26904,7 +27042,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6658584094449570761
 Transform:
   m_ObjectHideFlags: 0
@@ -27095,7 +27233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7087290107704839367
 Transform:
   m_ObjectHideFlags: 0
@@ -28076,7 +28214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &782985228631399344
 Transform:
   m_ObjectHideFlags: 0
@@ -28486,6 +28624,7 @@ GameObject:
   - component: {fileID: 865878234155915773}
   - component: {fileID: 7567533258022293074}
   - component: {fileID: 8920322804680945697}
+  - component: {fileID: 5889021995624990045}
   m_Layer: 0
   m_Name: TokatAudience (9)
   m_TagString: Untagged
@@ -28560,6 +28699,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &5889021995624990045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5212519129041080612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &5230821287392170657
 GameObject:
   m_ObjectHideFlags: 0
@@ -28953,7 +29114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6442930272396882667
 Transform:
   m_ObjectHideFlags: 0
@@ -29521,7 +29682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4980740639382303010
 Transform:
   m_ObjectHideFlags: 0
@@ -29873,7 +30034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8191317272773289109
 Transform:
   m_ObjectHideFlags: 0
@@ -30343,7 +30504,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2522437418803085093
 Transform:
   m_ObjectHideFlags: 0
@@ -32041,7 +32202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5481420404960184015
 Transform:
   m_ObjectHideFlags: 0
@@ -32949,7 +33110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5663151443216264631
 Transform:
   m_ObjectHideFlags: 0
@@ -33206,7 +33367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8592518417664214448
 Transform:
   m_ObjectHideFlags: 0
@@ -33332,7 +33493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2222382906535675666
 Transform:
   m_ObjectHideFlags: 0
@@ -33489,7 +33650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4581554935588962229
 Transform:
   m_ObjectHideFlags: 0
@@ -33810,7 +33971,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6068210430046548971
 Transform:
   m_ObjectHideFlags: 0
@@ -34098,7 +34259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4310800362709201264
 Transform:
   m_ObjectHideFlags: 0
@@ -34633,7 +34794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6589248662610597890
 Transform:
   m_ObjectHideFlags: 0
@@ -34859,7 +35020,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2096608970400508365
 Transform:
   m_ObjectHideFlags: 0
@@ -34980,6 +35141,7 @@ GameObject:
   - component: {fileID: 7633705110827705564}
   - component: {fileID: 1065983480215876671}
   - component: {fileID: 4168682600542449566}
+  - component: {fileID: 6022766411168820179}
   m_Layer: 0
   m_Name: TokatAudience (6)
   m_TagString: Untagged
@@ -35054,6 +35216,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &6022766411168820179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6428813755986744086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &6436719987134905574
 GameObject:
   m_ObjectHideFlags: 0
@@ -35403,7 +35587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &644677092600109245
 Transform:
   m_ObjectHideFlags: 0
@@ -35561,7 +35745,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4917856670965069971
 Transform:
   m_ObjectHideFlags: 0
@@ -36360,7 +36544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6176543785831162699
 Transform:
   m_ObjectHideFlags: 0
@@ -36580,7 +36764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &184569813829357049
 Transform:
   m_ObjectHideFlags: 0
@@ -37723,6 +37907,7 @@ GameObject:
   - component: {fileID: 8310003235849112269}
   - component: {fileID: 4793502231253084419}
   - component: {fileID: 3469603267710390625}
+  - component: {fileID: 6771086539144814190}
   m_Layer: 0
   m_Name: TokatAudience (1)
   m_TagString: Untagged
@@ -37797,6 +37982,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &6771086539144814190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7098088601306205390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &7098765485717541517
 GameObject:
   m_ObjectHideFlags: 0
@@ -38141,7 +38348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2596644045984068181
 Transform:
   m_ObjectHideFlags: 0
@@ -38267,7 +38474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7548321572774296590
 Transform:
   m_ObjectHideFlags: 0
@@ -39381,7 +39588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3951857491795684433
 Transform:
   m_ObjectHideFlags: 0
@@ -39507,7 +39714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5778208252550866844
 Transform:
   m_ObjectHideFlags: 0
@@ -39660,6 +39867,7 @@ GameObject:
   - component: {fileID: 3170670137127041142}
   - component: {fileID: 3332147298355808255}
   - component: {fileID: 1636115686662003428}
+  - component: {fileID: 6628643813935205842}
   m_Layer: 0
   m_Name: TokatAudience
   m_TagString: Untagged
@@ -39734,6 +39942,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &6628643813935205842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418530437155667759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &7421767958893257896
 GameObject:
   m_ObjectHideFlags: 0
@@ -40008,7 +40238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3001086705200994148
 Transform:
   m_ObjectHideFlags: 0
@@ -40129,6 +40359,7 @@ GameObject:
   - component: {fileID: 825342130539066908}
   - component: {fileID: 2948127872458568400}
   - component: {fileID: 3796124633369729698}
+  - component: {fileID: 8225714145952730241}
   m_Layer: 0
   m_Name: TokatAudience (7)
   m_TagString: Untagged
@@ -40203,6 +40434,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &8225714145952730241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7491306161389271043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &7506054798312330081
 GameObject:
   m_ObjectHideFlags: 0
@@ -40250,7 +40503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8277746962006316726
 Transform:
   m_ObjectHideFlags: 0
@@ -40376,7 +40629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &786519718906851941
 Transform:
   m_ObjectHideFlags: 0
@@ -40502,7 +40755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7331502742057058430
 Transform:
   m_ObjectHideFlags: 0
@@ -40849,7 +41102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2022582813895601007
 Transform:
   m_ObjectHideFlags: 0
@@ -41007,7 +41260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5490024058170747111
 Transform:
   m_ObjectHideFlags: 0
@@ -41302,7 +41555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9067887930080721170
 Transform:
   m_ObjectHideFlags: 0
@@ -41459,7 +41712,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1713144805095575739
 Transform:
   m_ObjectHideFlags: 0
@@ -41763,7 +42016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3218935722476384043
 Transform:
   m_ObjectHideFlags: 0
@@ -42031,6 +42284,7 @@ GameObject:
   - component: {fileID: 1086483680338975271}
   - component: {fileID: 7497543929413574634}
   - component: {fileID: 8696291558856019465}
+  - component: {fileID: 8385703838057639386}
   m_Layer: 0
   m_Name: TokatAudience (8)
   m_TagString: Untagged
@@ -42105,6 +42359,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &8385703838057639386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7945296190864911274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &7960535548611773462
 GameObject:
   m_ObjectHideFlags: 0
@@ -42507,7 +42783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6894969595662228650
 Transform:
   m_ObjectHideFlags: 0
@@ -42666,7 +42942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1091879659898465615
 Transform:
   m_ObjectHideFlags: 0
@@ -42875,7 +43151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7380519910602107527
 Transform:
   m_ObjectHideFlags: 0
@@ -43411,7 +43687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &183610124423945869
 Transform:
   m_ObjectHideFlags: 0
@@ -44008,7 +44284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6435059582828160453
 Transform:
   m_ObjectHideFlags: 0
@@ -45566,7 +45842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9119914941390968410
 Transform:
   m_ObjectHideFlags: 0
@@ -46506,7 +46782,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &121280361083394428
 Transform:
   m_ObjectHideFlags: 0
@@ -46728,7 +47004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2014910994643966637
 Transform:
   m_ObjectHideFlags: 0
@@ -48193,7 +48469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2113526610339833329
 Transform:
   m_ObjectHideFlags: 0

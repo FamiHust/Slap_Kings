@@ -5296,6 +5296,7 @@ GameObject:
   - component: {fileID: 4731739423123755254}
   - component: {fileID: 6843772040810519976}
   - component: {fileID: 6729110893925131918}
+  - component: {fileID: 4822244476578788174}
   m_Layer: 0
   m_Name: TokatAudience (8)
   m_TagString: Untagged
@@ -5370,6 +5371,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &4822244476578788174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523705961567819155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &526746310478980480
 GameObject:
   m_ObjectHideFlags: 0
@@ -6142,6 +6165,7 @@ GameObject:
   - component: {fileID: 8383681016361251509}
   - component: {fileID: 9207830449601017251}
   - component: {fileID: 1053780955362910990}
+  - component: {fileID: 7154476816772706800}
   m_Layer: 0
   m_Name: TokatAudience (21)
   m_TagString: Untagged
@@ -6216,6 +6240,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &7154476816772706800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615212143826286110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &628753475841034575
 GameObject:
   m_ObjectHideFlags: 0
@@ -13118,6 +13164,7 @@ GameObject:
   - component: {fileID: 4790443283160405530}
   - component: {fileID: 1920234639429758894}
   - component: {fileID: 786962455292039983}
+  - component: {fileID: 1520887406355134735}
   m_Layer: 0
   m_Name: TokatAudience (11)
   m_TagString: Untagged
@@ -13192,6 +13239,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &1520887406355134735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234371412266641302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &1235717798651042246
 GameObject:
   m_ObjectHideFlags: 0
@@ -15931,6 +16000,7 @@ GameObject:
   - component: {fileID: 3997428358205282702}
   - component: {fileID: 2298858566246282579}
   - component: {fileID: 6900949470167847141}
+  - component: {fileID: 8747868084199533773}
   m_Layer: 0
   m_Name: TokatAudience (2)
   m_TagString: Untagged
@@ -16005,6 +16075,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &8747868084199533773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464332609261229501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &1475248893908604857
 GameObject:
   m_ObjectHideFlags: 0
@@ -16241,6 +16333,7 @@ GameObject:
   - component: {fileID: 879700313368165938}
   - component: {fileID: 7999049209145023353}
   - component: {fileID: 6769057177981815361}
+  - component: {fileID: 5991825079220989784}
   m_Layer: 0
   m_Name: TokatAudience (10)
   m_TagString: Untagged
@@ -16315,6 +16408,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &5991825079220989784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543246450562845111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &1543820260801305354
 GameObject:
   m_ObjectHideFlags: 0
@@ -19127,6 +19242,7 @@ GameObject:
   - component: {fileID: 938595032056295828}
   - component: {fileID: 2366946660328370188}
   - component: {fileID: 5939444695535115123}
+  - component: {fileID: 4441260948832808129}
   m_Layer: 0
   m_Name: TokatAudience
   m_TagString: Untagged
@@ -19201,6 +19317,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &4441260948832808129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871539318027722797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &1883468149443355786
 GameObject:
   m_ObjectHideFlags: 0
@@ -22771,6 +22909,7 @@ GameObject:
   - component: {fileID: 9018439116904189306}
   - component: {fileID: 1399243360232707130}
   - component: {fileID: 8282101655925823657}
+  - component: {fileID: 8389228514262001454}
   m_Layer: 0
   m_Name: TokatAudience (18)
   m_TagString: Untagged
@@ -22845,6 +22984,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &8389228514262001454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2340917003119100935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &2351885306355869919
 GameObject:
   m_ObjectHideFlags: 0
@@ -31026,6 +31187,7 @@ GameObject:
   - component: {fileID: 2120410339158599311}
   - component: {fileID: 7306504252973331}
   - component: {fileID: 7114091809838055241}
+  - component: {fileID: 6006868871765230316}
   m_Layer: 0
   m_Name: TokatAudience (16)
   m_TagString: Untagged
@@ -31100,6 +31262,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &6006868871765230316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3253786960736481197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &3256868017126462884
 GameObject:
   m_ObjectHideFlags: 0
@@ -31897,6 +32081,7 @@ GameObject:
   - component: {fileID: 5336489357080405419}
   - component: {fileID: 1248709095324811075}
   - component: {fileID: 6104917371130425921}
+  - component: {fileID: 3450429798031827483}
   m_Layer: 0
   m_Name: TokatAudience (1)
   m_TagString: Untagged
@@ -31971,6 +32156,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &3450429798031827483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3354195939338291717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &3354824493890591946
 GameObject:
   m_ObjectHideFlags: 0
@@ -33387,6 +33594,7 @@ GameObject:
   - component: {fileID: 3793091817431442439}
   - component: {fileID: 1693605816020479264}
   - component: {fileID: 1711828454255881483}
+  - component: {fileID: 1197327378102867118}
   m_Layer: 0
   m_Name: TokatAudience (7)
   m_TagString: Untagged
@@ -33461,6 +33669,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &1197327378102867118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3480627380471416651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &3489383528821274295
 GameObject:
   m_ObjectHideFlags: 0
@@ -43692,6 +43922,7 @@ GameObject:
   - component: {fileID: 1565729492662906500}
   - component: {fileID: 1496969123946659314}
   - component: {fileID: 7628985289117939778}
+  - component: {fileID: 3869313332374083521}
   m_Layer: 0
   m_Name: TokatAudience (4)
   m_TagString: Untagged
@@ -43766,6 +43997,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &3869313332374083521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659147112987079007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &4663242575740660712
 GameObject:
   m_ObjectHideFlags: 0
@@ -45889,6 +46142,7 @@ GameObject:
   - component: {fileID: 7760342138737618560}
   - component: {fileID: 7950188858767999979}
   - component: {fileID: 5861781116908194075}
+  - component: {fileID: 4837224302611704666}
   m_Layer: 0
   m_Name: TokatAudience (9)
   m_TagString: Untagged
@@ -45963,6 +46217,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &4837224302611704666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4904735849980371076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &4914948354441616056
 GameObject:
   m_ObjectHideFlags: 0
@@ -48507,6 +48783,7 @@ GameObject:
   - component: {fileID: 3909987764311049510}
   - component: {fileID: 5268180546438832746}
   - component: {fileID: 3312627355686959851}
+  - component: {fileID: 7908624288658031410}
   m_Layer: 0
   m_Name: TokatAudience (14)
   m_TagString: Untagged
@@ -48581,6 +48858,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &7908624288658031410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5164266996609781541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &5166458449065072218
 GameObject:
   m_ObjectHideFlags: 0
@@ -48624,6 +48923,7 @@ GameObject:
   - component: {fileID: 8898089995769935146}
   - component: {fileID: 4919504730732224280}
   - component: {fileID: 8299472331349227254}
+  - component: {fileID: 2604639586968859388}
   m_Layer: 0
   m_Name: TokatAudience (13)
   m_TagString: Untagged
@@ -48698,6 +48998,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &2604639586968859388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5174724260307770978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &5176231797963882734
 GameObject:
   m_ObjectHideFlags: 0
@@ -50150,6 +50472,7 @@ GameObject:
   - component: {fileID: 4479782155125875402}
   - component: {fileID: 6195485782843753788}
   - component: {fileID: 8412125147721538607}
+  - component: {fileID: 4357667442034886524}
   m_Layer: 0
   m_Name: TokatAudience (15)
   m_TagString: Untagged
@@ -50224,6 +50547,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &4357667442034886524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5399962996746170999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &5402624997401291526
 GameObject:
   m_ObjectHideFlags: 0
@@ -53192,6 +53537,7 @@ GameObject:
   - component: {fileID: 4768564248799709297}
   - component: {fileID: 6507976152226533522}
   - component: {fileID: 4618301175223520768}
+  - component: {fileID: 6116602133597309308}
   m_Layer: 0
   m_Name: TokatAudience (20)
   m_TagString: Untagged
@@ -53266,6 +53612,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &6116602133597309308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5762918192798410145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &5781683118203692818
 GameObject:
   m_ObjectHideFlags: 0
@@ -64212,6 +64580,7 @@ GameObject:
   - component: {fileID: 4805643254753041758}
   - component: {fileID: 4964829633674799439}
   - component: {fileID: 8640002332238230423}
+  - component: {fileID: 1004327314179438382}
   m_Layer: 0
   m_Name: TokatAudience (19)
   m_TagString: Untagged
@@ -64286,6 +64655,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &1004327314179438382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7021452934503937048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &7026477260386255943
 GameObject:
   m_ObjectHideFlags: 0
@@ -68865,6 +69256,7 @@ GameObject:
   - component: {fileID: 4994529655778915298}
   - component: {fileID: 8507995744568015988}
   - component: {fileID: 3243859696047223637}
+  - component: {fileID: 8142840959692317340}
   m_Layer: 0
   m_Name: TokatAudience (12)
   m_TagString: Untagged
@@ -68939,6 +69331,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &8142840959692317340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7589671005290429631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &7593768714124808215
 GameObject:
   m_ObjectHideFlags: 0
@@ -73157,6 +73571,7 @@ GameObject:
   - component: {fileID: 6675763456018839681}
   - component: {fileID: 2938932036392588558}
   - component: {fileID: 4933938126925528043}
+  - component: {fileID: 7144721014401014226}
   m_Layer: 0
   m_Name: TokatAudience (5)
   m_TagString: Untagged
@@ -73231,6 +73646,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &7144721014401014226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040020865972567238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &8041035050291237102
 GameObject:
   m_ObjectHideFlags: 0
@@ -76589,6 +77026,7 @@ GameObject:
   - component: {fileID: 2848644730293503970}
   - component: {fileID: 3531934140907654816}
   - component: {fileID: 4203806844191862130}
+  - component: {fileID: 3156919490833501955}
   m_Layer: 0
   m_Name: TokatAudience (6)
   m_TagString: Untagged
@@ -76663,6 +77101,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &3156919490833501955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8438492258053969812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &8444749892002575030
 GameObject:
   m_ObjectHideFlags: 0
@@ -79815,6 +80275,7 @@ GameObject:
   - component: {fileID: 8326105490213323437}
   - component: {fileID: 2376779142836116057}
   - component: {fileID: 3996523146694042057}
+  - component: {fileID: 8809612754143976195}
   m_Layer: 0
   m_Name: TokatAudience (17)
   m_TagString: Untagged
@@ -79889,6 +80350,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &8809612754143976195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8720786452677324082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &8723466296255333389
 GameObject:
   m_ObjectHideFlags: 0
@@ -82824,6 +83307,7 @@ GameObject:
   - component: {fileID: 2577912706689548687}
   - component: {fileID: 2325636251854292566}
   - component: {fileID: 8896200466242846696}
+  - component: {fileID: 8993690569949291644}
   m_Layer: 0
   m_Name: TokatAudience (3)
   m_TagString: Untagged
@@ -82898,6 +83382,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.6, z: 0.4}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &8993690569949291644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9039496059672705685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23ba3788f50f4c81e437f19dbbf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 0}
+  m_VictoryTrigger: Victory
+  m_DefeatTrigger: Defeat
+  m_ApplauseTrigger: Applause
+  m_VictoryIndexParam: VictorNumber
+  m_DefeatIndexParam: DefeatNumer
+  m_ApplauseIndexParam: ApplauseNumber
+  m_VictoryClipsCount: 6
+  m_DefeatClipsCount: 2
+  m_ApplauseClipsCount: 7
 --- !u!1 &9046066352869609075
 GameObject:
   m_ObjectHideFlags: 0

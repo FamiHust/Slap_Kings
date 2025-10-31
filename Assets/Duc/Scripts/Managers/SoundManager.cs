@@ -24,7 +24,8 @@ namespace Duc
             GetNormalSlapped,
             GetMegaSlapped,
             CoinReward,
-            Tap
+            Tap,
+            SkinChange
         }
 
         [Header("Audio Source")]

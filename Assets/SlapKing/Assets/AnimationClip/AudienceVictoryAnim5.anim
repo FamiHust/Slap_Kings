@@ -2,12 +2,12 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!74 &7400000
 AnimationClip:
-  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: AudienceVictoryAnim5
+  serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -17,7 +17,8 @@ AnimationClip:
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves:
-  - curve:
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -735,10 +736,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RootT.x
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -1456,10 +1459,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RootT.y
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -2177,10 +2182,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RootT.z
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -2898,10 +2905,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RootQ.x
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -3619,10 +3628,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RootQ.y
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -4340,10 +4351,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RootQ.z
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -5061,10 +5074,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RootQ.w
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -5782,10 +5797,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftFootT.x
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -6503,10 +6520,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftFootT.y
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -7051,7 +7070,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2
-        value: 9.031069E-05
+        value: 0.00009031069
         inSlope: 0.068190664
         outSlope: 0.0681908
         tangentMode: 1
@@ -7224,10 +7243,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftFootT.z
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -7945,10 +7966,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftFootQ.x
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -8666,10 +8689,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftFootQ.y
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -9387,10 +9412,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftFootQ.z
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -10108,10 +10135,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftFootQ.w
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -10829,10 +10858,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightFootT.x
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -11550,10 +11581,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightFootT.y
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -12271,10 +12304,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightFootT.z
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -12992,10 +13027,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightFootQ.x
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -13713,10 +13750,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightFootQ.y
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -14434,10 +14473,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightFootQ.z
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -15155,10 +15196,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightFootQ.w
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -15876,10 +15919,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHandT.x
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -16597,10 +16642,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHandT.y
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -17318,10 +17365,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHandT.z
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -18039,10 +18088,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHandQ.x
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -18760,10 +18811,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHandQ.y
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -19481,10 +19534,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHandQ.z
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -20202,10 +20257,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHandQ.w
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -20923,10 +20980,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHandT.x
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -21075,7 +21134,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.53333336
-        value: -2.8424449E-05
+        value: -0.000028424449
         inSlope: -0.7361294
         outSlope: -0.7361293
         tangentMode: 1
@@ -21644,10 +21703,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHandT.y
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -22365,10 +22426,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHandT.z
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -23086,10 +23149,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHandQ.x
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -23807,10 +23872,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHandQ.y
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -24528,10 +24595,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHandQ.z
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -25249,10 +25318,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHandQ.w
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -25970,10 +26041,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Spine Front-Back
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -26691,10 +26764,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Spine Left-Right
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -27412,10 +27487,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Spine Twist Left-Right
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -28133,10 +28210,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Chest Front-Back
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -28854,10 +28933,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Chest Left-Right
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -29447,7 +29528,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2.1666667
-        value: -8.72787E-05
+        value: -0.0000872787
         inSlope: 0.0043990132
         outSlope: 0.0043990114
         tangentMode: 1
@@ -29456,7 +29537,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2.2
-        value: -2.4221956E-05
+        value: -0.000024221956
         inSlope: 0.001191015
         outSlope: 0.001191015
         tangentMode: 1
@@ -29465,7 +29546,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2.2333333
-        value: -7.877777E-06
+        value: -0.000007877777
         inSlope: 0.0014851205
         outSlope: 0.0014851207
         tangentMode: 1
@@ -29474,7 +29555,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2.266667
-        value: 7.478659E-05
+        value: 0.00007478659
         inSlope: 0.001898282
         outSlope: 0.0018982826
         tangentMode: 1
@@ -29575,10 +29656,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Chest Twist Left-Right
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -30296,10 +30379,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: UpperChest Front-Back
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -31017,10 +31102,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: UpperChest Left-Right
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -31205,7 +31292,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.6666667
-        value: 7.1122195E-05
+        value: 0.000071122195
         inSlope: -0.107079215
         outSlope: -0.10707925
         tangentMode: 1
@@ -31738,17 +31825,19 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: UpperChest Twist Left-Right
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
         value: -0.19754526
         inSlope: 0
-        outSlope: -8.8065855E-05
+        outSlope: -0.000088065855
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31756,8 +31845,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.033333335
         value: -0.1975482
-        inSlope: -7.0631504E-05
-        outSlope: -7.06315E-05
+        inSlope: -0.000070631504
+        outSlope: -0.0000706315
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31765,8 +31854,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.06666667
         value: -0.19754997
-        inSlope: -2.8610233E-05
-        outSlope: -2.8610228E-05
+        inSlope: -0.000028610233
+        outSlope: -0.000028610228
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31774,8 +31863,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.10000001
         value: -0.1975501
-        inSlope: -3.5762769E-06
-        outSlope: -3.5762787E-06
+        inSlope: -0.0000035762769
+        outSlope: -0.0000035762787
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31783,8 +31872,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.13333334
         value: -0.1975502
-        inSlope: 2.235175E-06
-        outSlope: 2.2351742E-06
+        inSlope: 0.000002235175
+        outSlope: 0.0000022351742
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31792,8 +31881,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.16666667
         value: -0.19754995
-        inSlope: 6.7054833E-07
-        outSlope: 6.705536E-07
+        inSlope: 0.00000067054833
+        outSlope: 0.0000006705536
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31801,8 +31890,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.20000002
         value: -0.19755016
-        inSlope: -5.1408992E-06
-        outSlope: -5.1408997E-06
+        inSlope: -0.0000051408992
+        outSlope: -0.0000051408997
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31810,8 +31899,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.23333335
         value: -0.1975503
-        inSlope: 1.1846426E-05
-        outSlope: 1.1846424E-05
+        inSlope: 0.000011846426
+        outSlope: 0.000011846424
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31819,8 +31908,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.26666668
         value: -0.19754937
-        inSlope: 2.7939679E-05
-        outSlope: 2.7939679E-05
+        inSlope: 0.000027939679
+        outSlope: 0.000027939679
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31828,8 +31917,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.3
         value: -0.19754843
-        inSlope: 2.9504294E-05
-        outSlope: 2.9504303E-05
+        inSlope: 0.000029504294
+        outSlope: 0.000029504303
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31837,8 +31926,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.33333334
         value: -0.1975474
-        inSlope: 1.8328436E-05
-        outSlope: 1.832843E-05
+        inSlope: 0.000018328436
+        outSlope: 0.00001832843
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31846,8 +31935,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.36666667
         value: -0.19754721
-        inSlope: 8.940694E-06
-        outSlope: 8.940692E-06
+        inSlope: 0.000008940694
+        outSlope: 0.000008940692
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31855,8 +31944,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.40000004
         value: -0.19754681
-        inSlope: 1.1846414E-05
-        outSlope: 1.1846419E-05
+        inSlope: 0.000011846414
+        outSlope: 0.000011846419
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31864,8 +31953,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.43333337
         value: -0.19754642
-        inSlope: -1.3411044E-06
-        outSlope: -1.3411045E-06
+        inSlope: -0.0000013411044
+        outSlope: -0.0000013411045
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31873,8 +31962,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.4666667
         value: -0.1975469
-        inSlope: 3.3527742E-06
-        outSlope: 3.3527708E-06
+        inSlope: 0.0000033527742
+        outSlope: 0.0000033527708
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31882,8 +31971,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.5
         value: -0.1975462
-        inSlope: 9.387737E-06
-        outSlope: 9.3877425E-06
+        inSlope: 0.000009387737
+        outSlope: 0.0000093877425
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31891,8 +31980,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.53333336
         value: -0.19754627
-        inSlope: -1.7434346E-05
-        outSlope: -1.7434344E-05
+        inSlope: -0.000017434346
+        outSlope: -0.000017434344
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31900,8 +31989,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.5666667
         value: -0.19754736
-        inSlope: -1.7434342E-05
-        outSlope: -1.7434348E-05
+        inSlope: -0.000017434342
+        outSlope: -0.000017434348
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31909,8 +31998,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.6
         value: -0.19754744
-        inSlope: -1.654028E-05
-        outSlope: -1.6540278E-05
+        inSlope: -0.00001654028
+        outSlope: -0.000016540278
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31918,8 +32007,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.6333334
         value: -0.19754846
-        inSlope: -3.4421708E-05
-        outSlope: -3.442169E-05
+        inSlope: -0.000034421708
+        outSlope: -0.00003442169
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31927,8 +32016,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.6666667
         value: -0.19754973
-        inSlope: -2.4586934E-05
-        outSlope: -2.458693E-05
+        inSlope: -0.000024586934
+        outSlope: -0.00002458693
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31936,8 +32025,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.70000005
         value: -0.1975501
-        inSlope: -1.3187521E-05
-        outSlope: -1.318753E-05
+        inSlope: -0.000013187521
+        outSlope: -0.00001318753
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31945,8 +32034,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.73333335
         value: -0.19755061
-        inSlope: -1.5869731E-05
-        outSlope: -1.5869737E-05
+        inSlope: -0.000015869731
+        outSlope: -0.000015869737
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31954,8 +32043,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.7666667
         value: -0.19755116
-        inSlope: 1.3411017E-06
-        outSlope: 1.3411036E-06
+        inSlope: 0.0000013411017
+        outSlope: 0.0000013411036
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31963,8 +32052,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.8000001
         value: -0.19755052
-        inSlope: 1.8104914E-05
-        outSlope: 1.810491E-05
+        inSlope: 0.000018104914
+        outSlope: 0.00001810491
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31972,8 +32061,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.8333334
         value: -0.19754995
-        inSlope: 4.4704808E-07
-        outSlope: 4.470494E-07
+        inSlope: 0.00000044704808
+        outSlope: 0.0000004470494
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31981,8 +32070,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.86666673
         value: -0.19755049
-        inSlope: -2.234999E-07
-        outSlope: -2.2350378E-07
+        inSlope: -0.0000002234999
+        outSlope: -0.00000022350378
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31990,8 +32079,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.90000004
         value: -0.19754997
-        inSlope: 4.9173937E-06
-        outSlope: 4.917393E-06
+        inSlope: 0.0000049173937
+        outSlope: 0.000004917393
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -31999,8 +32088,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.9333334
         value: -0.19755016
-        inSlope: 3.1068965E-05
-        outSlope: 3.1068957E-05
+        inSlope: 0.000031068965
+        outSlope: 0.000031068957
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32008,8 +32097,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.9666667
         value: -0.1975479
-        inSlope: 5.0515027E-05
-        outSlope: 5.0514987E-05
+        inSlope: 0.000050515027
+        outSlope: 0.000050514987
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32017,8 +32106,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1
         value: -0.1975468
-        inSlope: 2.5928017E-05
-        outSlope: 2.5928013E-05
+        inSlope: 0.000025928017
+        outSlope: 0.000025928013
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32026,8 +32115,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.0333334
         value: -0.19754617
-        inSlope: -6.035012E-06
-        outSlope: -6.0350094E-06
+        inSlope: -0.000006035012
+        outSlope: -0.0000060350094
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32035,8 +32124,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.0666667
         value: -0.1975472
-        inSlope: -2.7492668E-05
-        outSlope: -2.7492668E-05
+        inSlope: -0.000027492668
+        outSlope: -0.000027492668
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32044,8 +32133,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.1
         value: -0.197548
-        inSlope: -1.6316777E-05
-        outSlope: -1.6316772E-05
+        inSlope: -0.000016316777
+        outSlope: -0.000016316772
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32053,8 +32142,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.1333334
         value: -0.19754829
-        inSlope: -1.6763815E-05
-        outSlope: -1.6763806E-05
+        inSlope: -0.000016763815
+        outSlope: -0.000016763806
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32062,8 +32151,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.1666667
         value: -0.19754912
-        inSlope: -1.8328446E-05
-        outSlope: -1.8328446E-05
+        inSlope: -0.000018328446
+        outSlope: -0.000018328446
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32071,8 +32160,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.2
         value: -0.1975495
-        inSlope: -1.4752165E-05
-        outSlope: -1.4752163E-05
+        inSlope: -0.000014752165
+        outSlope: -0.000014752163
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32080,8 +32169,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.2333333
         value: -0.1975501
-        inSlope: -6.034982E-06
-        outSlope: -6.034986E-06
+        inSlope: -0.000006034982
+        outSlope: -0.000006034986
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32089,8 +32178,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.2666668
         value: -0.19754991
-        inSlope: 1.3411041E-05
-        outSlope: 1.3411047E-05
+        inSlope: 0.000013411041
+        outSlope: 0.000013411047
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32098,8 +32187,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.3000001
         value: -0.19754921
-        inSlope: 2.1457692E-05
-        outSlope: 2.1457692E-05
+        inSlope: 0.000021457692
+        outSlope: 0.000021457692
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32107,8 +32196,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.3333334
         value: -0.19754848
-        inSlope: 3.576312E-06
-        outSlope: 3.5763082E-06
+        inSlope: 0.000003576312
+        outSlope: 0.0000035763082
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32116,8 +32205,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.3666668
         value: -0.19754897
-        inSlope: -1.05053E-05
-        outSlope: -1.0505302E-05
+        inSlope: -0.0000105053
+        outSlope: -0.000010505302
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32125,8 +32214,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.4000001
         value: -0.19754918
-        inSlope: 1.4528645E-05
-        outSlope: 1.4528646E-05
+        inSlope: 0.000014528645
+        outSlope: 0.000014528646
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32134,8 +32223,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.4333334
         value: -0.197548
-        inSlope: 4.3809447E-05
-        outSlope: 4.3809458E-05
+        inSlope: 0.000043809447
+        outSlope: 0.000043809458
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32143,8 +32232,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.4666667
         value: -0.19754626
-        inSlope: 6.1020193E-05
-        outSlope: 6.102019E-05
+        inSlope: 0.000061020193
+        outSlope: 0.00006102019
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32152,8 +32241,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.5000001
         value: -0.19754393
-        inSlope: 7.4207725E-05
-        outSlope: 7.4207725E-05
+        inSlope: 0.000074207725
+        outSlope: 0.000074207725
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32161,8 +32250,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.5333334
         value: -0.19754131
-        inSlope: 7.845468E-05
-        outSlope: 7.845469E-05
+        inSlope: 0.00007845468
+        outSlope: 0.00007845469
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32170,8 +32259,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.5666667
         value: -0.1975387
-        inSlope: 5.1856052E-05
-        outSlope: 5.1856045E-05
+        inSlope: 0.000051856052
+        outSlope: 0.000051856045
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32179,8 +32268,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.6000001
         value: -0.19753785
-        inSlope: 2.145765E-05
-        outSlope: 2.1457647E-05
+        inSlope: 0.00002145765
+        outSlope: 0.000021457647
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32188,8 +32277,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.6333334
         value: -0.19753727
-        inSlope: 2.6822158E-06
-        outSlope: 2.6822113E-06
+        inSlope: 0.0000026822158
+        outSlope: 0.0000026822113
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32197,8 +32286,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.6666667
         value: -0.19753768
-        inSlope: -4.5821118E-05
-        outSlope: -4.5821114E-05
+        inSlope: -0.000045821118
+        outSlope: -0.000045821114
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32206,8 +32295,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.7
         value: -0.19754033
-        inSlope: -9.700642E-05
-        outSlope: -9.700644E-05
+        inSlope: -0.00009700642
+        outSlope: -0.00009700644
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32260,8 +32349,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.9000001
         value: -0.197571
-        inSlope: -6.146735E-05
-        outSlope: -6.146735E-05
+        inSlope: -0.00006146735
+        outSlope: -0.00006146735
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32269,8 +32358,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.9333334
         value: -0.19757202
-        inSlope: -3.822143E-05
-        outSlope: -3.8221435E-05
+        inSlope: -0.00003822143
+        outSlope: -0.000038221435
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32305,8 +32394,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 2.0666668
         value: -0.19758734
-        inSlope: -6.034956E-06
-        outSlope: -6.0349776E-06
+        inSlope: -0.000006034956
+        outSlope: -0.0000060349776
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32386,8 +32475,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 2.3666668
         value: -0.197469
-        inSlope: -5.3420707E-05
-        outSlope: -5.3420714E-05
+        inSlope: -0.000053420707
+        outSlope: -0.000053420714
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
@@ -32459,15 +32548,17 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Neck Nod Down-Up
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 2.9050036E-05
+        value: 0.000029050036
         inSlope: 0
         outSlope: -0.02296836
         tangentMode: 1
@@ -32674,7 +32765,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.7666667
-        value: -8.538841E-05
+        value: -0.00008538841
         inSlope: 0.012704203
         outSlope: 0.012704207
         tangentMode: 1
@@ -32692,7 +32783,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.8333334
-        value: 6.618235E-05
+        value: 0.00006618235
         inSlope: -0.009137391
         outSlope: -0.00913739
         tangentMode: 1
@@ -33016,7 +33107,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2.0333335
-        value: -5.4719272E-05
+        value: -0.000054719272
         inSlope: 0.0071166013
         outSlope: 0.0071165967
         tangentMode: 1
@@ -33025,7 +33116,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2.0666668
-        value: 5.007093E-05
+        value: 0.00005007093
         inSlope: -0.0035717012
         outSlope: -0.0035717008
         tangentMode: 1
@@ -33169,7 +33260,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2.6000001
-        value: 2.947791E-05
+        value: 0.00002947791
         inSlope: -0.012808365
         outSlope: 0
         tangentMode: 1
@@ -33180,10 +33271,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Neck Tilt Left-Right
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -33901,10 +33994,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Neck Turn Left-Right
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -34622,10 +34717,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Head Nod Down-Up
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -35343,10 +35440,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Head Tilt Left-Right
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -36064,10 +36163,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Head Turn Left-Right
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -36785,10 +36886,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Upper Leg Front-Back
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -37506,10 +37609,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Upper Leg In-Out
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -38227,10 +38332,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Upper Leg Twist In-Out
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -38948,10 +39055,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Lower Leg Stretch
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -39669,10 +39778,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Lower Leg Twist In-Out
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -40390,10 +40501,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Foot Up-Down
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -41111,10 +41224,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Foot Twist In-Out
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -41832,10 +41947,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Toes Up-Down
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -42553,10 +42670,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Upper Leg Front-Back
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -43274,10 +43393,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Upper Leg In-Out
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -43995,10 +44116,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Upper Leg Twist In-Out
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -44716,10 +44839,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Lower Leg Stretch
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -45437,10 +45562,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Lower Leg Twist In-Out
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -46158,10 +46285,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Foot Up-Down
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -46879,42 +47008,44 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Foot Twist In-Out
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -3.7907535E-06
+        value: -0.0000037907535
         inSlope: 0
-        outSlope: -1.0245293E-05
+        outSlope: -0.000010245293
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.033333335
-        value: -4.1322633E-06
-        inSlope: 8.196216E-06
-        outSlope: 8.196215E-06
+        value: -0.0000041322633
+        inSlope: 0.000008196216
+        outSlope: 0.000008196215
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.06666667
-        value: -3.244339E-06
-        inSlope: -2.3051889E-05
-        outSlope: -2.3051885E-05
+        value: -0.000003244339
+        inSlope: -0.000023051889
+        outSlope: -0.000023051885
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.10000001
-        value: -5.669056E-06
+        value: -0.000005669056
         inSlope: -0.18104364
         outSlope: -0.18104364
         tangentMode: 1
@@ -47049,7 +47180,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.6
-        value: -6.420375E-06
+        value: -0.000006420375
         inSlope: 0.5645051
         outSlope: 0.5645055
         tangentMode: 1
@@ -47058,16 +47189,16 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.6333334
-        value: -7.2399985E-06
-        inSlope: 3.9551083E-05
-        outSlope: 3.944438E-05
+        value: -0.0000072399985
+        inSlope: 0.000039551083
+        outSlope: 0.00003944438
         tangentMode: 1
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.6666667
-        value: -3.7907535E-06
+        value: -0.0000037907535
         inSlope: -1.206081
         outSlope: -1.2060814
         tangentMode: 1
@@ -47589,7 +47720,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2.6000001
-        value: -4.678678E-06
+        value: -0.000004678678
         inSlope: 1.6072676
         outSlope: 0
         tangentMode: 1
@@ -47600,10 +47731,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Toes Up-Down
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -48321,10 +48454,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Shoulder Down-Up
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -49042,10 +49177,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Shoulder Front-Back
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -49763,10 +49900,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Arm Down-Up
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -50484,10 +50623,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Arm Front-Back
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -51205,10 +51346,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Arm Twist In-Out
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -51926,10 +52069,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Forearm Stretch
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -52647,10 +52792,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Forearm Twist In-Out
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -53368,10 +53515,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Hand Down-Up
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -54089,10 +54238,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Hand In-Out
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -54810,10 +54961,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Shoulder Down-Up
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -55531,10 +55684,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Shoulder Front-Back
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -56252,10 +56407,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Arm Down-Up
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -56973,10 +57130,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Arm Front-Back
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -57694,10 +57853,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Arm Twist In-Out
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -58415,10 +58576,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Forearm Stretch
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -59136,10 +59299,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Forearm Twist In-Out
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -59857,10 +60022,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Hand Down-Up
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -60578,10 +60745,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Hand In-Out
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -60606,10 +60775,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: MotionT.x
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -60634,10 +60805,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: MotionT.y
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -60662,10 +60835,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: MotionT.z
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -60690,10 +60865,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: MotionQ.x
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -60718,10 +60895,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: MotionQ.y
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -60746,10 +60925,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: MotionQ.z
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -60774,10 +60955,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: MotionQ.w
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -60802,10 +60985,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Eye Down-Up
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -60830,10 +61015,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Left Eye In-Out
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -60858,10 +61045,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Eye Down-Up
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -60886,10 +61075,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Right Eye In-Out
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -60914,10 +61105,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Jaw Close
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -60942,10 +61135,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Jaw Left-Right
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -60970,10 +61165,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Thumb.1 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -60998,10 +61195,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Thumb.Spread
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61026,10 +61225,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Thumb.2 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61054,10 +61255,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Thumb.3 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61082,10 +61285,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Index.1 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61110,10 +61315,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Index.Spread
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61138,10 +61345,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Index.2 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61166,10 +61375,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Index.3 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61194,10 +61405,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Middle.1 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61222,10 +61435,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Middle.Spread
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61250,10 +61465,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Middle.2 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61278,10 +61495,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Middle.3 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61306,10 +61525,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Ring.1 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61334,10 +61555,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Ring.Spread
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61362,10 +61585,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Ring.2 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61390,10 +61615,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Ring.3 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61418,10 +61645,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Little.1 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61446,10 +61675,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Little.Spread
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61474,10 +61705,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Little.2 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61502,10 +61735,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: LeftHand.Little.3 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61530,10 +61765,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Thumb.1 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61558,10 +61795,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Thumb.Spread
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61586,10 +61825,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Thumb.2 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61614,10 +61855,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Thumb.3 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61642,10 +61885,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Index.1 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61670,10 +61915,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Index.Spread
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61698,10 +61945,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Index.2 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61726,10 +61975,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Index.3 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61754,10 +62005,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Middle.1 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61782,10 +62035,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Middle.Spread
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61810,10 +62065,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Middle.2 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61838,10 +62095,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Middle.3 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61866,10 +62125,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Ring.1 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61894,10 +62155,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Ring.Spread
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61922,10 +62185,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Ring.2 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61950,10 +62215,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Ring.3 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -61978,10 +62245,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Little.1 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -62006,10 +62275,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Little.Spread
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -62034,10 +62305,12 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Little.2 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
-  - curve:
+    flags: 16
+  - serializedVersion: 2
+    curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -62062,9 +62335,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: RightHand.Little.3 Stretched
-    path:
+    path: 
     classID: 95
     script: {fileID: 0}
+    flags: 16
   m_PPtrCurves: []
   m_SampleRate: 30
   m_WrapMode: 0
@@ -62080,6 +62354,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 8
@@ -62087,6 +62363,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 9
@@ -62094,6 +62372,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 10
@@ -62101,6 +62381,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 11
@@ -62108,6 +62390,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 12
@@ -62115,6 +62399,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 13
@@ -62122,6 +62408,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 14
@@ -62129,6 +62417,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 15
@@ -62136,6 +62426,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 16
@@ -62143,6 +62435,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 17
@@ -62150,6 +62444,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 18
@@ -62157,6 +62453,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 19
@@ -62164,6 +62462,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 20
@@ -62171,6 +62471,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 21
@@ -62178,6 +62480,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 22
@@ -62185,6 +62489,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 23
@@ -62192,6 +62498,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 24
@@ -62199,6 +62507,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 25
@@ -62206,6 +62516,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 26
@@ -62213,6 +62525,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 27
@@ -62220,6 +62534,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 28
@@ -62227,6 +62543,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 29
@@ -62234,6 +62552,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 30
@@ -62241,6 +62561,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 31
@@ -62248,6 +62570,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 32
@@ -62255,6 +62579,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 33
@@ -62262,6 +62588,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 34
@@ -62269,6 +62597,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 35
@@ -62276,6 +62606,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 36
@@ -62283,6 +62615,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 37
@@ -62290,6 +62624,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 38
@@ -62297,6 +62633,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 39
@@ -62304,6 +62642,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 40
@@ -62311,6 +62651,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 41
@@ -62318,6 +62660,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 42
@@ -62325,6 +62669,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 43
@@ -62332,6 +62678,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 44
@@ -62339,6 +62687,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 45
@@ -62346,6 +62696,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 46
@@ -62353,6 +62705,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 47
@@ -62360,6 +62714,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 48
@@ -62367,6 +62723,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 49
@@ -62374,6 +62732,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 50
@@ -62381,6 +62741,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 51
@@ -62388,6 +62750,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 52
@@ -62395,6 +62759,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 53
@@ -62402,6 +62768,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 54
@@ -62409,6 +62777,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 55
@@ -62416,6 +62786,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 56
@@ -62423,6 +62795,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 63
@@ -62430,6 +62804,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 64
@@ -62437,6 +62813,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 65
@@ -62444,6 +62822,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 66
@@ -62451,6 +62831,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 67
@@ -62458,6 +62840,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 68
@@ -62465,6 +62849,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 69
@@ -62472,6 +62858,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 70
@@ -62479,6 +62867,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 71
@@ -62486,6 +62876,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 72
@@ -62493,6 +62885,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 73
@@ -62500,6 +62894,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 74
@@ -62507,6 +62903,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 75
@@ -62514,6 +62912,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 76
@@ -62521,6 +62921,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 77
@@ -62528,6 +62930,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 78
@@ -62535,6 +62939,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 79
@@ -62542,6 +62948,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 80
@@ -62549,6 +62957,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 81
@@ -62556,6 +62966,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 82
@@ -62563,6 +62975,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 83
@@ -62570,6 +62984,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 84
@@ -62577,6 +62993,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 85
@@ -62584,6 +63002,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 86
@@ -62591,6 +63011,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 87
@@ -62598,6 +63020,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 88
@@ -62605,6 +63029,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 89
@@ -62612,6 +63038,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 90
@@ -62619,6 +63047,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 91
@@ -62626,6 +63056,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 92
@@ -62633,6 +63065,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 93
@@ -62640,6 +63074,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 94
@@ -62647,6 +63083,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 95
@@ -62654,6 +63092,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 96
@@ -62661,6 +63101,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 0
@@ -62668,6 +63110,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 1
@@ -62675,6 +63119,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 2
@@ -62682,6 +63128,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 3
@@ -62689,6 +63137,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 4
@@ -62696,6 +63146,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 5
@@ -62703,6 +63155,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 6
@@ -62710,6 +63164,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 57
@@ -62717,6 +63173,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 58
@@ -62724,6 +63182,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 59
@@ -62731,6 +63191,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 60
@@ -62738,6 +63200,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 61
@@ -62745,6 +63209,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 62
@@ -62752,6 +63218,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 97
@@ -62759,6 +63227,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 98
@@ -62766,6 +63236,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 99
@@ -62773,6 +63245,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 100
@@ -62780,6 +63254,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 101
@@ -62787,6 +63263,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 102
@@ -62794,6 +63272,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 103
@@ -62801,6 +63281,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 104
@@ -62808,6 +63290,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 105
@@ -62815,6 +63299,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 106
@@ -62822,6 +63308,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 107
@@ -62829,6 +63317,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 108
@@ -62836,6 +63326,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 109
@@ -62843,6 +63335,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 110
@@ -62850,6 +63344,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 111
@@ -62857,6 +63353,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 112
@@ -62864,6 +63362,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 113
@@ -62871,6 +63371,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 114
@@ -62878,6 +63380,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 115
@@ -62885,6 +63389,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 116
@@ -62892,6 +63398,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 117
@@ -62899,6 +63407,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 118
@@ -62906,6 +63416,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 119
@@ -62913,6 +63425,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 120
@@ -62920,6 +63434,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 121
@@ -62927,6 +63443,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 122
@@ -62934,6 +63452,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 123
@@ -62941,6 +63461,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 124
@@ -62948,6 +63470,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 125
@@ -62955,6 +63479,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 126
@@ -62962,6 +63488,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 127
@@ -62969,6 +63497,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 128
@@ -62976,6 +63506,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 129
@@ -62983,6 +63515,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 130
@@ -62990,6 +63524,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 131
@@ -62997,6 +63533,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 132
@@ -63004,6 +63542,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 133
@@ -63011,6 +63551,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 134
@@ -63018,6 +63560,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 135
@@ -63025,6 +63569,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 136
@@ -63032,6 +63578,8 @@ AnimationClip:
       typeID: 95
       customType: 8
       isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
@@ -63043,7 +63591,7 @@ AnimationClip:
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0

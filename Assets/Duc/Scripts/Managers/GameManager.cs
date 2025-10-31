@@ -12,12 +12,14 @@ namespace Duc
         [SerializeField] private GameObject m_VictoryPanel;
         [SerializeField] private GameObject m_DefeatPanel;
         [SerializeField] private GameObject m_PausePanel;
+        [SerializeField] private GameObject m_HealthPanel; 
 
         [Header("References")]
         [SerializeField] private TurnManager m_TurnManager;
         [SerializeField] private CameraSwitcher m_CameraSwitcher;
         [SerializeField] private GameplayInput m_GameplayInput;
         [SerializeField] private MapManager m_MapManager;
+        [SerializeField] private AudienceAnimationManager m_Audience;
         
         private PersistentGameManager m_PersistentGameManager;
 
@@ -60,6 +62,8 @@ namespace Duc
                 m_GameplayInput = FindObjectOfType<GameplayInput>();
             if (m_MapManager == null)
                 m_MapManager = FindObjectOfType<MapManager>();
+            if (m_Audience == null)
+                m_Audience = AudienceAnimationManager.Instance;
             if (m_StartPanel == null)
                 m_StartPanel = FindObjectIncludingInactive("StartPanel");
             if (m_GameplayPanel == null)
@@ -144,7 +148,6 @@ namespace Duc
             if (m_PersistentGameManager == null) return;
             if (m_PersistentGameManager.IsGameOver()) return;
 
-            // Disable PowerMeter and CounterBar immediately
             var pm = PowerMeter.Get();
             if (pm != null)
             {
@@ -158,12 +161,16 @@ namespace Duc
                 counter.StopCounter();
                 counter.gameObject.SetActive(false);
             }
-            
-            // Play defeated sound
+
             var soundManager = SoundManager.Get();
             if (soundManager != null)
             {
                 soundManager.PlaySound(SoundManager.SoundType.Defeated);
+            }
+            
+            if (m_Audience != null)
+            {
+                m_Audience.PlayDefeatRandom();
             }
             
             SetUIPanel(m_GameplayPanel, false);
@@ -178,7 +185,6 @@ namespace Duc
             if (m_PersistentGameManager == null) return;
             if (m_PersistentGameManager.IsGameOver()) return;
 
-            // Disable PowerMeter and CounterBar immediately
             var pm = PowerMeter.Get();
             if (pm != null)
             {
@@ -193,11 +199,15 @@ namespace Duc
                 counter.gameObject.SetActive(false);
             }
             
-            // Play victory sound
             var soundManager = SoundManager.Get();
             if (soundManager != null)
             {
                 soundManager.PlaySound(SoundManager.SoundType.Victory);
+            }
+            
+            if (m_Audience != null)
+            {
+                m_Audience.PlayVictoryRandom();
             }
             
             SetUIPanel(m_GameplayPanel, false);
@@ -262,6 +272,13 @@ namespace Duc
         private IEnumerator ShowPanelWithDelay(GameObject panel, float delay)
         {
             yield return new WaitForSeconds(delay);
+            
+            // When showing Victory or Defeat, hide Health panel at the same moment
+            if ((panel == m_VictoryPanel || panel == m_DefeatPanel) && m_HealthPanel != null)
+            {
+                m_HealthPanel.SetActive(false);
+            }
+            
             SetUIPanel(panel, true);
         }
         

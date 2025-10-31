@@ -42,6 +42,11 @@ namespace Duc
                         }
                         else if (isMegaSlap)
                         {
+                            var audience = AudienceAnimationManager.Instance;
+                            if (audience != null)
+                            {
+                                audience.PlayApplauseRandom();
+                            }
                             effectManager.PlayAIHitEffect();
                         }
                         else
@@ -109,6 +114,11 @@ namespace Duc
                         }
                         else if (isMegaSlap)
                         {
+                            var audience2 = AudienceAnimationManager.Instance;
+                            if (audience2 != null)
+                            {
+                                audience2.PlayApplauseRandom();
+                            }
                             effectManager.PlayAIHitEffect();
                         }
                         else

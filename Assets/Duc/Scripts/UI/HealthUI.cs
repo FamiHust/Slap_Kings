@@ -31,6 +31,7 @@ namespace Duc
         [SerializeField] private float m_DamageTextMoveSpeed = 2f;
         [SerializeField] private Color m_DamageTextColor = Color.red;
         [SerializeField] private int m_DamageTextPoolSize = 10;
+        [SerializeField] private Color m_HealTextColor = default; // green heal color
         
         private int m_TargetPlayerHealth;
         private int m_TargetAIHealth;
@@ -39,6 +40,9 @@ namespace Duc
         
         private System.Collections.Generic.Queue<GameObject> m_PlayerDamageTextPool = new System.Collections.Generic.Queue<GameObject>();
         private System.Collections.Generic.Queue<GameObject> m_AIDamageTextPool = new System.Collections.Generic.Queue<GameObject>();
+        
+        private bool m_SkipNextPlayerDelta = true;
+        private bool m_SkipNextAIDelta = true;
 
         private void Start()
         {
@@ -64,6 +68,14 @@ namespace Duc
             {
                 m_TargetAIHealth = m_AIHealth.GetCurrentHealth();
                 m_LastAIHealth = m_AIHealth.GetCurrentHealth();
+            }
+            
+            m_SkipNextPlayerDelta = true;
+            m_SkipNextAIDelta = true;
+
+            if (m_HealTextColor == default)
+            {
+                m_HealTextColor = Color.green;
             }
         }
 
@@ -94,11 +106,21 @@ namespace Duc
 
             int currentHealth = m_PlayerHealth.GetCurrentHealth();
             m_TargetPlayerHealth = currentHealth;
-
-            if (currentHealth < m_LastPlayerHealth)
+            
+            if (m_SkipNextPlayerDelta)
+            {
+                m_LastPlayerHealth = currentHealth;
+                m_SkipNextPlayerDelta = false;
+            }
+            else if (currentHealth < m_LastPlayerHealth)
             {
                 int damage = m_LastPlayerHealth - currentHealth;
                 ShowPlayerDamageText(damage);
+            }
+            else if (currentHealth > m_LastPlayerHealth)
+            {
+                int heal = currentHealth - m_LastPlayerHealth;
+                ShowPlayerHealText(heal);
             }
             m_LastPlayerHealth = currentHealth;
 
@@ -133,8 +155,13 @@ namespace Duc
 
             int currentHealth = m_AIHealth.GetCurrentHealth();
             m_TargetAIHealth = currentHealth;
-
-            if (currentHealth < m_LastAIHealth)
+            
+            if (m_SkipNextAIDelta)
+            {
+                m_LastAIHealth = currentHealth;
+                m_SkipNextAIDelta = false;
+            }
+            else if (currentHealth < m_LastAIHealth)
             {
                 int damage = m_LastAIHealth - currentHealth;
                 ShowAIDamageText(damage);
@@ -168,14 +195,48 @@ namespace Duc
 
         public void SetPlayerHealth(PlayerHealth playerHealth)
         {
+            bool isSameInstance = (m_PlayerHealth != null && m_PlayerHealth == playerHealth);
             m_PlayerHealth = playerHealth;
             SetupHealthUI();
+            if (!isSameInstance && m_PlayerHealth != null)
+            {
+                int current = m_PlayerHealth.GetCurrentHealth();
+                m_TargetPlayerHealth = current;
+                m_LastPlayerHealth = current;
+                if (m_PlayerHealthSlider != null)
+                {
+                    m_PlayerHealthSlider.maxValue = m_PlayerHealth.GetMaxHealth();
+                    m_PlayerHealthSlider.value = current;
+                }
+                if (m_PlayerHealthText != null)
+                {
+                    m_PlayerHealthText.text = current.ToString();
+                }
+                m_SkipNextPlayerDelta = true;
+            }
         }
-
+        
         public void SetAIHealth(AIHealth aiHealth)
         {
+            bool isSameInstance = (m_AIHealth != null && m_AIHealth == aiHealth);
             m_AIHealth = aiHealth;
             SetupHealthUI();
+            if (!isSameInstance && m_AIHealth != null)
+            {
+                int current = m_AIHealth.GetCurrentHealth();
+                m_TargetAIHealth = current;
+                m_LastAIHealth = current;
+                if (m_AIHealthSlider != null)
+                {
+                    m_AIHealthSlider.maxValue = m_AIHealth.GetMaxHealth();
+                    m_AIHealthSlider.value = current;
+                }
+                if (m_AIHealthText != null)
+                {
+                    m_AIHealthText.text = current.ToString();
+                }
+                m_SkipNextAIDelta = true;
+            }
         }
 
         #region Damage Text Methods
@@ -275,6 +336,28 @@ namespace Duc
 
             StartCoroutine(AnimateDamageText(damageText, true));
         }
+        
+        private void ShowPlayerHealText(int heal)
+        {
+            if (m_PlayerHealth == null) return;
+            
+            GameObject healText = GetPlayerDamageTextFromPool();
+            if (healText == null) return;
+            
+            RectTransform healRect = healText.GetComponent<RectTransform>();
+            healRect.anchoredPosition = new Vector2(0f, 20f);
+            healRect.localScale = Vector3.one;
+            healText.SetActive(true);
+            
+            TextMeshProUGUI textComponent = healText.GetComponent<TextMeshProUGUI>();
+            if (textComponent != null)
+            {
+                textComponent.text = "+" + heal.ToString();
+                textComponent.color = m_HealTextColor;
+            }
+            
+            StartCoroutine(AnimateDamageText(healText, true));
+        }
 
         private void ShowAIDamageText(int damage)
         {
@@ -322,7 +405,7 @@ namespace Duc
             Vector2 startPos = damageRect.anchoredPosition;
             Vector2 targetPos = startPos + Vector2.up * m_DamageTextMoveSpeed * 50f;
             TextMeshProUGUI textComponent = damageText.GetComponent<TextMeshProUGUI>();
-            Color startColor = m_DamageTextColor;
+            Color startColor = textComponent != null ? textComponent.color : m_DamageTextColor;
 
             float elapsed = 0f;
             while (elapsed < m_DamageTextDuration)

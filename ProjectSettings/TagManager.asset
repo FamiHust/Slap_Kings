@@ -17,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - UI2
+  - PostProcessing
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: CameraSortingLayer
+    uniqueID: 3176171239
     locked: 0

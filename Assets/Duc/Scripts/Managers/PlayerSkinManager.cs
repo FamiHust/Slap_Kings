@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using Duc.Managers;
+using UnityEngine.UI;
 
 namespace Duc
 {
@@ -25,7 +26,8 @@ namespace Duc
         [Header("UI Display (Optional)")]
         [SerializeField] private TextMeshProUGUI m_SkinNameText;
         [SerializeField] private TextMeshProUGUI m_UnlockCostText;
-        [SerializeField] private UnityEngine.UI.Button m_BuySkinButton; 
+        [SerializeField] private Button m_BuySkinButton; 
+        [SerializeField] private Image m_PlayerAvatarImage; // Avatar UI
 
         private PlayerSkinData.SkinSet m_CurrentSkin;
         private PlayerHealth m_PlayerHealth;
@@ -170,6 +172,16 @@ namespace Duc
             OnSkinChanged?.Invoke(skin);
             
             UpdateCostDisplay();
+            UpdatePlayerAvatarImage(skin);
+        }
+
+        private void UpdatePlayerAvatarImage(PlayerSkinData.SkinSet skin)
+        {
+            if (m_PlayerAvatarImage == null || skin == null) return;
+            string avatarKey = !string.IsNullOrEmpty(skin.skinName) ? skin.skinName : ("player" + skin.skinId);
+            Sprite avatarSprite = Resources.Load<Sprite>("SO/PlayerAvatar/" + avatarKey);
+            m_PlayerAvatarImage.sprite = avatarSprite;
+            m_PlayerAvatarImage.enabled = avatarSprite != null;
         }
         
         public void SetSkinById(int skinId)
@@ -181,6 +193,7 @@ namespace Duc
                 {
                     m_SkinData.SetCurrentSkin(skinId);
                     ApplySkin(skin);
+                    UpdatePlayerAvatarImage(skin); // ensure avatar updates always
                     OnSkinIdChanged?.Invoke(skinId);
                 }
             }
@@ -237,6 +250,7 @@ namespace Duc
             {
                 EffectManager.Instance.PlaySkinChangeEffect();
             }
+            SoundManager.Get().PlaySound(SoundManager.SoundType.SkinChange);
         }
         
         public void OnPreviousSkinButtonClicked()
@@ -246,6 +260,7 @@ namespace Duc
             {
                 EffectManager.Instance.PlaySkinChangeEffect();
             }
+            SoundManager.Get().PlaySound(SoundManager.SoundType.SkinChange);
         }
         
         public void OnTestSlappedMeshButtonClicked()
